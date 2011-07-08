@@ -6,6 +6,7 @@ all:
 	@${MAKE} -C dtlogin
 	@${MAKE} -C dtsplash
 	@${MAKE} -C dtpanel
+	@${MAKE} -C dtrun
 
 clean:
 	@${MAKE} -C libmotifmm clean
@@ -15,4 +16,5 @@ clean:
 	@${MAKE} -C dtlogin clean
 	@${MAKE} -C dtsplash clean
 	@${MAKE} -C dtpanel clean
+	@${MAKE} -C dtrun clean
 
