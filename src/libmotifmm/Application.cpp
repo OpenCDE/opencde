@@ -16,7 +16,7 @@ void Application::initialize(std::string name, int argc, char* argv[])
   XtToolkitInitialize();
   context = XtCreateApplicationContext();
 
-  for(int resourceIndex = 0; resourceIndex < fallbackResources.size(); resourceIndex++)
+  for(unsigned int resourceIndex = 0; resourceIndex < fallbackResources.size(); resourceIndex++)
   {
     fallbacks[resourceIndex] = (char*)fallbackResources.at(resourceIndex).c_str();
   }

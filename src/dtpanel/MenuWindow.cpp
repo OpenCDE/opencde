@@ -19,7 +19,7 @@ MenuWindow::MenuWindow(PanelWindow* panelWindow, Motif::Button* menuButton, std:
   panelWindow->getIni()->getSectionNames(name, &menuEntries);
   menuEntries.erase(menuEntries.begin() + 0);
 
-  for(int entryIndex = 0; entryIndex < menuEntries.size(); entryIndex++)
+  for(unsigned int entryIndex = 0; entryIndex < menuEntries.size(); entryIndex++)
   {
     entryButtons.add(new Motif::IconButton("entryButton", getContentPanel()));
     entryButtons.at(entryButtons.size() - 1)->setShadowThickness(0);

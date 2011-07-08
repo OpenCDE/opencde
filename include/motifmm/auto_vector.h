@@ -14,7 +14,7 @@ private:
 public:
     ~auto_vector()
     {
-        for(int index = 0; index < items.size(); index++)
+        for(unsigned int index = 0; index < items.size(); index++)
         {
             delete items.at(index);
         }
@@ -22,7 +22,7 @@ public:
 
     void clear()
     {
-        for(int index = 0; index < items.size(); index++)
+        for(unsigned int index = 0; index < items.size(); index++)
         {
             delete items.at(index);
         }
@@ -54,7 +54,7 @@ public:
 
     void remove(T* ptr)
     {
-        for(int index = 0; index < items.size(); index++)
+        for(unsigned int index = 0; index < items.size(); index++)
         {
             if(ptr == items.at(index))
             {

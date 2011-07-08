@@ -237,7 +237,7 @@ std::string Ini::removeWhitespace(std::string input)
 {
   std::string outputFront;
 
-  for(int index = 0; index < input.length(); index++)
+  for(unsigned int index = 0; index < input.length(); index++)
   {
     if(input[index] == ' ')
     {

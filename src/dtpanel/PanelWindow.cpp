@@ -56,7 +56,7 @@ PanelWindow::PanelWindow() : Motif::Window("panelWindow")
 
   ini->getGroupNames(&menuEntries);
 
-  for(int entryIndex = 0; entryIndex < menuEntries.size(); entryIndex++)
+  for(unsigned int entryIndex = 0; entryIndex < menuEntries.size(); entryIndex++)
   {
     if(menuEntries.at(entryIndex) == "")
     {
@@ -94,9 +94,9 @@ PanelWindow::PanelWindow() : Motif::Window("panelWindow")
 
       ini->getSectionNames("Desktops", &desktopEntries);
       desktopEntries.erase(desktopEntries.begin() + 0);
-      int currentIndex = 0;
+      unsigned int currentIndex = 0;
 
-      for(int desktopIndex = 0; desktopIndex < (desktopEntries.size() + 1) / 2; desktopIndex++)
+      for(unsigned int desktopIndex = 0; desktopIndex < (desktopEntries.size() + 1) / 2; desktopIndex++)
       {
         desktopPanels.add(new Motif::Panel("desktopPanel", desktopsPanel.get()));
         desktopPanels.at(desktopPanels.size() - 1)->setShadowThickness(1);
@@ -126,7 +126,7 @@ PanelWindow::PanelWindow() : Motif::Window("panelWindow")
 
       currentIndex = 0;
 
-      for(int desktopIndex = 0 + ((desktopEntries.size() + 1) / 2); desktopIndex < desktopEntries.size(); desktopIndex++)
+      for(unsigned int desktopIndex = 0 + ((desktopEntries.size() + 1) / 2); desktopIndex < desktopEntries.size(); desktopIndex++)
       {
         desktopPanels.add(new Motif::Panel("desktopPanel", desktopsPanel.get()));
         desktopPanels.at(desktopPanels.size() - 1)->setShadowThickness(1);
