@@ -105,7 +105,7 @@ void IconButton::setLabelPixmap(std::string path, bool transparent)
   Pixel back;
   Pixel arm;
   XpmAttributes attributes;
-  XpmColorSymbol colorSymbol = { NULL, "None", (Pixel)0 };
+  XpmColorSymbol colorSymbol = { NULL, (char *)"None", (Pixel)0 };
 
   XtVaGetValues(widget, XmNbackground, &back, NULL);
   XtVaGetValues(widget, XmNarmColor, &arm, NULL);

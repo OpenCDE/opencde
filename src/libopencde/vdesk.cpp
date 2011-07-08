@@ -188,7 +188,7 @@ int vdesk(int argc, Window winId, int deskNo) {
     long t, throwaway;
     unsigned long ico;
     int change = 0;
-    char* argv[3];
+    const char* argv[3];
 
     argv[0] = "Workspace";
     argv[1] = "Workspace";
