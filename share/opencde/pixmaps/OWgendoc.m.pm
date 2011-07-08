@@ -1,0 +1,50 @@
+/* XPM */
+/*********************************************************************
+*  (c) Copyright 1993, 1994, 1995 Sun Microsystems, Inc.
+**********************************************************************/
+static char * OWgendoc_m_pm[] = {
+/* width height ncolors cpp [x_hot y_hot] */
+"32 32 9 1 0 0",
+/* colors */
+" 	s iconColor2	m white	c white",
+".	s iconGray7	m black	c #424242424242",
+"X	s none	m none	c none",
+"o	s iconGray2	m white	c #bdbdbdbdbdbd",
+"O	s iconGray5	m black	c #737373737373",
+"+	s iconGray3	m white	c #adadadadadad",
+"@	s iconGray4	m white	c #949494949494",
+"#	s iconGray8	m black	c #212121212121",
+"$	s iconColor1	m black	c black",
+/* pixels */
+"                 .XXXXXXXXXXXXXX",
+" ooooooooooooooo O.XXXXXXXXXXXXX",
+" ooooooooooooooo oO.XXXXXXXXXXXX",
+" ooooooooooooooo o+O.XXXXXXXXXXX",
+" ooooooooooooooo o++O.XXXXXXXXXX",
+" ooooooooooooooo o++@O.XXXXXXXXX",
+" ooooooooooooooo o+++@O.XXXXXXXX",
+" ooooooooooooooo o+++@@O.XXXXXXX",
+" ooooooooooooooo#########XXXXXXX",
+" ooooooooooooooooo++++++$XXXXXXX",
+" ooooooooooooooooooooooo$XXXXXXX",
+" ooooooooooooooooooooooo$XXXXXXX",
+" ooooooooooooooooooooooo$XXXXXXX",
+" ooooooooooooooooooooooo$XXXXXXX",
+" ooooooooooooooooooooooo$XXXXXXX",
+" ooooooooooooooooooooooo$XXXXXXX",
+" ooooooooooooooooooooooo$XXXXXXX",
+" ooooooooooooooooooooooo$XXXXXXX",
+" ooooooooooooooooooooooo$XXXXXXX",
+" ooooooooooooooooooooooo$XXXXXXX",
+" ooooooooooooooooooooooo$XXXXXXX",
+" ooooooooooooooooooooooo$XXXXXXX",
+" ooooooooooooooooooooooo$XXXXXXX",
+" ooooooooooooooooooooooo$XXXXXXX",
+" ooooooooooooooooooooooo$XXXXXXX",
+" ooooooooooooooooooooooo$XXXXXXX",
+" ooooooooooooooooooooooo$XXXXXXX",
+" ooooooooooooooooooooooo$XXXXXXX",
+" ooooooooooooooooooooooo$XXXXXXX",
+" ooooooooooooooooooooooo$XXXXXXX",
+" ooooooooooooooooooooooo$XXXXXXX",
+" $$$$$$$$$$$$$$$$$$$$$$$$XXXXXXX"};

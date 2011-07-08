@@ -1,0 +1,53 @@
+/* XPM */
+/*********************************************************************
+*  (c) Copyright 1999 Sun Microsystems, Inc.
+**********************************************************************/
+static char * SDtauaif_m_pm[] = {
+/* width height ncolors cpp [x_hot y_hot] */
+"32 32 12 1 0 0",
+/* colors */
+" 	s iconColor2	m white	c white",
+".	s none	m none	c none",
+"X	s iconGray2	m white	c #bdbdbdbdbdbd",
+"o	s iconColor1	m black	c black",
+"O	s iconGray6	m black	c #636363636363",
+"+	s iconGray3	m white	c #adadadadadad",
+"@	s iconGray7	m black	c #424242424242",
+"#	s iconGray1	m white	c #dededededede",
+"$	s iconGray4	m white	c #949494949494",
+"%	s iconGray8	m black	c #212121212121",
+"&	s iconGray5	m black	c #737373737373",
+"*	s iconColor5	m black	c blue",
+/* pixels */
+"                         .......",
+" XXXXXXXXXXXXXXXXXXXXXXXo.......",
+" XXXXXXXXXXXXXXXXXXXXXXXo.......",
+" XXXXXXXXXXXXXXXXXXXXXXXo.......",
+" XXXXXXXXXXXXXXXXXXXXXXXo.......",
+" XXXXXXXXXXXXXXXXXXXXXXXo.......",
+" XXXXXXXXXOOOXXXXXXXXXXXo.......",
+" XXXXXXXXXO  OXXXXXXXXXXo.......",
+" XXXXXXXXXO ++OXXXXXXXXXo.......",
+" XXXXXXXXXO @ +OXXXXXXXXo.......",
+" XXXXX@XXXO#@# +OXXXXXXXo.......",
+" XXXX@XXXXO#@ # +OOOOXXXo.......",
+" XXXO$XXOXO#@# ##+++OXXXo.......",
+" XX$@XX@XOO+@#######%XXXo.......",
+" XXO&X&OXO#+@+$+$+$+%XXXo.......",
+" XX@&X@&XOO+@$&$&&&&%XXXo.......",
+" XX@&X@&X&#+@O&O&OOO%XXXo.......",
+" XX@&X@&X&O+@&OO@@@@%XXXo.......",
+" XXO&X&OX&#+@@@@@@@@%XXXo.......",
+" XX$@XX@XOO+@%@@################",
+" XXXO$XXOXO+%@@@#**************o",
+" XXXX@XXXXO+@%@@#*** *** *    *o",
+" XXXXX@XXX@+%%@%#*** *** * ****o",
+" XXXXXXXXXO+%%%X#** * ** * ****o",
+" XXXXXXXXX@+%%XX#** * ** *   **o",
+" XXXXXXXXX%%%XXX#*     * * ****o",
+" XXXXXXXXXXXXXXX#* *** * * ****o",
+" XXXXXXXXXXXXXXX#* *** * * ****o",
+" XXXXXXXXXXXXXXX#**************o",
+" XXXXXXXXXXXXXXX#ooooooooooooooo",
+" XXXXXXXXXXXXXXXXXXXXXXXo.......",
+" oooooooooooooooooooooooo......."};

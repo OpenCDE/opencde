@@ -1,0 +1,52 @@
+/* XPM */
+/*********************************************************************
+*  (c) Copyright 1997 Sun Microsystems, Inc.
+**********************************************************************/
+static char * generic_m_pm[] = {
+/* width height ncolors cpp [x_hot y_hot] */
+"32 32 11 1 0 0",
+/* colors */
+" 	s none	m none	c none",
+".	s iconGray1	m white	c #dededededede",
+"X	s iconGray2	m white	c #bdbdbdbdbdbd",
+"o	s iconGray3	m white	c #adadadadadad",
+"O	s iconGray4	m white	c #949494949494",
+"+	s iconGray5	m black	c #737373737373",
+"@	s iconGray7	m black	c #424242424242",
+"#	s iconGray8	m black	c #212121212121",
+"$	s iconGray6	m black	c #636363636363",
+"%	s iconColor2	m white	c white",
+"&	s iconColor4	m white	c green",
+/* pixels */
+"                                ",
+"                                ",
+"                                ",
+"                                ",
+"                                ",
+"        .XoO+@@@@@@#@#@#        ",
+"      ..oooooO+O+O+O++++$#      ",
+"    %.ooooooooooO+O+O+O+++$#    ",
+"  %.oooooooooooooooO+O++++++$#  ",
+"..............................##",
+"%oooooooooooooooooooooooooooooO#",
+".oooooooooooooooooooooooooooooO#",
+"%oooooooooooooooooooooooooooooO#",
+".oooooooooooooooooooooooooooooO#",
+"%oooooooooooooooooooooooooooooO#",
+".++++++++++++++++++++++++++++++#",
+"%oooooooooooooooooooooooooooooO#",
+".++++++++++++++++++++++++++++++#",
+"%oooooooooooooooooooooooooooooO#",
+".oooooooooooooooooooooooooooooO#",
+"%oooooooooooooooooooooooooooooO#",
+".oooooooooooooooooooooooooooooO#",
+"%oooooooooooooooooo##########oO#",
+".ooo&&ooooooooooooo#@@@@@@@@@oO#",
+"%oooooooooooooooooooooooooooooO#",
+".oooooooooooooooooooooooooooooO#",
+"%OOOOOOOOOOOOOOOOOOOOOOOOOOOOOO#",
+"o############################## ",
+"                                ",
+"                                ",
+"                                ",
+"                                "};

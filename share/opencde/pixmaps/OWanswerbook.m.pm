@@ -1,0 +1,50 @@
+/* XPM */
+/*********************************************************************
+*  (c) Copyright 1993, 1994, 1995, 1996 Sun Microsystems, Inc.
+**********************************************************************/
+static char * OWanswerbook_m_pm[] = {
+/* width height ncolors cpp [x_hot y_hot] */
+"32 32 9 1 0 0",
+/* colors */
+" 	s none	m none	c none",
+".	s iconColor2	m white	c white",
+"X	s iconColor5	m black	c blue",
+"o	s iconGray1	m white	c #dededededede",
+"O	s iconGray8	m black	c #212121212121",
+"+	s iconGray3	m white	c #adadadadadad",
+"@	s iconGray6	m black	c #636363636363",
+"#	s iconColor1	m black	c black",
+"$	s iconGray7	m black	c #424242424242",
+/* pixels */
+"                                ",
+"            .......             ",
+"          ..XXXXXXX..           ",
+"        ..XXXXXXXXXXXo.         ",
+"      ..XXXXOOOOOOXXXXXo.       ",
+"     .XXXXOO++++++OOOXXXX@      ",
+"    .XXXOO+++OO+O++++OOXXX@     ",
+"   .XXXO+++..O.OO......#XXX#    ",
+"   .XXO++....O..O....##.#XX#    ",
+"  .XXO++O..........####..#XX#   ",
+"  .XXO++.O......######...#XX#   ",
+" .XXO++.......########....#XX#  ",
+" .XXO+.......#...####.....#XX#  ",
+".XXO++.......#....###......#XX# ",
+".XXO++......#...#..##......#XX# ",
+".XXO+O.#....#..#...#...###.#XX# ",
+".XXO+O.#...#.......#...##..#XX# ",
+".XXO+O##...#.....##....#...#XX# ",
+".XXO+O.#..#....##......###.#XX# ",
+".XXXO+....#..##...........#XXX# ",
+" .XXO+...#.##.............#XX#  ",
+" .XXO+...##.....oooooooooooooooo",
+"  oXXO..#.......oXX$X$X$X$X$X$X#",
+"  .XXO........##oX$X..XX.X$X.X$#",
+"   oXX#.......#.o$X.X$.$.$X$.$X#",
+"   .XXX#........oX$.$X.X.X.X.X$#",
+"    @XXX##....##o$X.X$.$.$.$.$X#",
+"     @XXXX##....oX$.$X.X.X.X.X$#",
+"      #XXXXX####o$X.X$.$.....$X#",
+"        ##XXXXXXoX$X..XX.X.X.X$#",
+"          ##XXXXo$X$X$X$X$X$X$X#",
+"            ####o###############"};

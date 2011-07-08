@@ -1,0 +1,56 @@
+/* XPM */
+/****************************************************************
+*  Copyright (c) 1996 Sun Microsystems, Inc.
+*  All Rights Reserved
+*****************************************************************/
+static char * SDthjava_m_pm[] = {
+/* width height ncolors cpp [x_hot y_hot] */
+"32 32 14 1 0 0",
+/* colors */
+" 	s none	m none	c none",
+".	s iconGray7	m black	c #424242424242",
+"X	s iconColor2	m white	c white",
+"o	s iconGray2	m white	c #bdbdbdbdbdbd",
+"O	s iconGray4	m white	c #949494949494",
+"+	s iconColor1	m black	c black",
+"@	s iconGray5	m black	c #737373737373",
+"#	s iconColor7	m white	c cyan",
+"$	s iconColor5	m black	c blue",
+"%	s iconGray3	m white	c #adadadadadad",
+"&	s iconGray6	m black	c #636363636363",
+"*	s iconColor4	m white	c green",
+"=	s iconGray1	m white	c #dededededede",
+"-	s iconGray8	m black	c #212121212121",
+/* pixels */
+"              .....XXXXXX       ",
+"            ..oOoXX++++++XXX    ",
+"          ..oXXXoX+ooOo.@+++X   ",
+"         .OoXXXXX+OOo#$O$@  %X  ",
+"       XXXXXXXX#X+oOO&O&O.   X+ ",
+"     XX++ooXXXX*X+#O#O&&$O+  X+ ",
+"    X+  .oooX*oX+#oO&*&$#$+  %+ ",
+"    X+ .oXoXoo#X+O*O#O*o#&$+%+  ",
+"   X+  .O$#$*#oX+OO#O*&#&&.++   ",
+"   X+  .OOoOOO#X+#Oo#&o&&#++    ",
+"   X+  .O$OoooOOX+O#$&XX+..+    ",
+"   X+  .OO$OoOOoX+Oo#X++&.$+    ",
+"    X  .O$O#O*&$OX+OX+&....+    ",
+"    X+ .OO$OX+&&&X+&X+.&.$.+    ",
+"     X%%+.O#X+*&#&X+X+&...+     ",
+"      +++O..*X..O&X+&X+$.&+     ",
+"         +O..X+&.X+..X+..+      ",
+"         +..OX+.$X+$.X+..+      ",
+"          ++$X+.X+&.X+.++       ",
+"         XXXXX+XX+%X+++         ",
+"       XX@@@X+@X+@X+%&XXX&      ",
+"       %XXX@@@X+@X+@=X%%&%&     ",
+"        %%%XXXXXXXX=%&-O%&-     ",
+"        @@%%%%%%%%%%%@O&&-      ",
+"         @@@@@@@@@@@.+&&-       ",
+"         .&&@@@@&&..++--        ",
+"         +..&&&&&..+++&         ",
+"     XXX+++.......-++&&+-       ",
+"    X%....++++---++-.&&.-+      ",
+"    &%XXX%%%&&&&&&&&..++++      ",
+"     &+++-----+++++++++++       ",
+"        &++++++++++++&          "};

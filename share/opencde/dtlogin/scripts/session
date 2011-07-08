@@ -1,0 +1,15 @@
+#!/bin/sh
+
+SESSION=`which $0`
+SCRIPTS=`dirname $SESSION`
+PREFIX=`cd $SCRIPTS/../../../..; pwd`
+export OPENCDE_PREFIX=$PREFIX
+export LD_LIBRARY_PATH=$OPENCDE_PREFIX/lib:$LD_LIBRARY_PATH
+export DISPLAY=:0
+
+if [ -f $HOME/.xsession ]; then
+  $HOME/.xsession
+else
+  $OPENCDE_PREFIX/bin/dtsession
+fi
+

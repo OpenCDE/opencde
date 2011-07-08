@@ -1,0 +1,51 @@
+/* XPM */
+/*********************************************************************
+*  (c) Copyright 1999 Sun Microsystems, Inc.
+**********************************************************************/
+static char * rmdisk_m_pm[] = {
+/* width height ncolors cpp [x_hot y_hot] */
+"32 32 10 1 0 0",
+/* colors */
+" 	s none	m none	c none",
+".	s iconGray6	m black	c #636363636363",
+"X	s iconGray5	m black	c #737373737373",
+"o	s iconGray7	m black	c #424242424242",
+"O	s iconGray3	m white	c #adadadadadad",
+"+	s iconGray4	m white	c #949494949494",
+"@	s iconColor1	m black	c black",
+"#	s iconColor7	m white	c cyan",
+"$	s iconGray1	m white	c #dededededede",
+"%	s iconColor4	m white	c green",
+/* pixels */
+" .............................. ",
+".XXXXXXXXoooOO+++++OoooXXXXXXXX@",
+".XXoXXXooOO++++++++OOO+ooXXXoXX@",
+".Xo@oXoOO+++++++++OOO++++oXo@oX@",
+".XXoXoOO+O++++++++OO+#$+++oXoXX@",
+".XXXoOO+OOO+++++++OO+#+++++oXXX@",
+".XXoO++OOOO++++++OOO$#++++++oXX@",
+".X.oO++++OOO+++++OO+#++++++++oX@",
+"..oO++++++OO+++++OO$#++++++++oX@",
+".oO%+++++++OOO++++O##+++++++++o@",
+".o%%$+++++++O+..oo+#++++++++++o@",
+".O+$%%++++++..$O$Ooo++++++++++X@",
+".OO###%%+++.O$O$O$OOo++++++++++@",
+".OO++$###++.$O$$$$$Oo++++++++++@",
+".OOOOO+$##.$O$OooO$$Oo+++++++++@",
+".OOOOOOOOO.O$$oXXo$O$o+O+++++++@",
+".O+++OOOO+o$O$oXXo$$OoOOOOO+++O@",
+".++++++++OoO$$OooO$O$o#+$+OOOOO@",
+".++++++++++.O$$$$$O$o++###$++OO@",
+".++++++++++oOO$O$O$Oo+++%%###$O@",
+".X++++++++++o.O$O$.o++++++%%$#X@",
+".o++++++oooooooooooooooo+++$%%o@",
+".o+++++o++++++++O$O+++++O+++%+o@",
+".Xo++++o+++++++++OO+++++O++++oX@",
+".Xo++++o++++++++O+O+++++O++++oX@",
+".XXo+++o+++++++++O$O++++O+++oXX@",
+".XXXo++o+++++++++OO$++++O++oXXX@",
+".XXoXo+o+++++++++OO$O+++O+oXoXX@",
+".Xo@oXoo++++++++++OOOO++OoXo@oX@",
+".XXoXXXoo++++++++OOO$O+oOXXXoXX@",
+".XXXXXXoXooo++++++O+oooXOXXXXXX@",
+" @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ "};

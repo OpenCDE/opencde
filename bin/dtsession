@@ -1,0 +1,14 @@
+#!/bin/sh
+
+DTSESSION=`which $0`
+BIN=`dirname $DTSESSION`
+PREFIX=`cd $BIN/..; pwd`
+export OPENCDE_PREFIX=$PREFIX
+
+echo `$OPENCDE_PREFIX/bin/dtsplash & sleep 3; pkill dtsplash` &
+sleep 1
+$OPENCDE_PREFIX/bin/dtwm &
+xsetroot -solid Gray
+xsetroot -cursor_name left_ptr
+$OPENCDE_PREFIX/bin/dtpanel
+

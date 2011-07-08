@@ -1,0 +1,12 @@
+#!/bin/sh
+
+if [ -z $1 ]; then
+  echo "Error: No username specified"
+  exit 1
+fi
+
+su -l $1 -c $OPENCDE_PREFIX/share/opencde/dtlogin/scripts/session
+
+pkill -SIGHUP X
+pkill -SIGHUP Xorg
+

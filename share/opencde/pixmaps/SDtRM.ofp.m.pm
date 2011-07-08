@@ -1,0 +1,53 @@
+/* XPM */
+/*********************************************************************
+*  (c) Copyright 1996 Sun Microsystems, Inc.
+**********************************************************************/
+static char * SDtopenfloppy_m_pm[] = {
+/* width height ncolors cpp [x_hot y_hot] */
+"32 32 12 1 0 0",
+/* colors */
+" 	s none	m none	c none",
+".	s iconGray1	m white	c #dededededede",
+"X	s iconGray5	m black	c #737373737373",
+"o	s iconGray6	m black	c #636363636363",
+"O	s iconGray2	m white	c #bdbdbdbdbdbd",
+"+	s iconGray3	m white	c #adadadadadad",
+"@	s iconColor1	m black	c black",
+"#	s iconColor2	m white	c white",
+"$	s iconColor5	m black	c blue",
+"%	s iconGray8	m black	c #212121212121",
+"&	s iconGray4	m white	c #949494949494",
+"*	s iconGray7	m black	c #424242424242",
+/* pixels */
+"                                ",
+"                                ",
+"                                ",
+" ..........................     ",
+".XXXoOOOOOOOOOOOOOOOOOO+XXX@    ",
+".XXXoOOOOOOOOOO######OO+XXX@    ",
+".XXX###########$$$$$$%O+XXX@    ",
+".XX#&&&&&&&&&&$$$$$$$$%+XXX@    ",
+".XX#&&&&&&&&&&&&&&&&&&&%XXX@    ",
+".XX#&&&&&&&&&&&&&&&&&&&%XXX@    ",
+".XX#&&&&&&&&&&&&&&&&&&&%XXX@    ",
+".XX#&&&&&&&&###################%",
+".XX#&&&&&&&#++++++++++++++++++% ",
+".XX#&&&&&&#++++++++++++++++++%  ",
+".XX#&&&&&#++++++++++++++++++%   ",
+".XX#&&&&#++++++++++++++++++%    ",
+".XX#&&&#++++++++++++++++++%@    ",
+".XX#&&#++++++++++++++++++%X@    ",
+".XX#&#++++++++++++++++++%XX@    ",
+".XX##++++++++++++++++++%XXX@    ",
+".XXX%%%%%%%%%%%%%%%%%%%XXXX@    ",
+".XXXXXXXXXXXXXXXXXXXXXXXXXX@    ",
+".XXXXXX*****************XXX@    ",
+".XXXXX*.............*XX+XXX@    ",
+".XXXXX*.@@@.........*XX+XXX@    ",
+".XXXXX*.@&&.........*XX+XXX@    ",
+".XXXXX*.@&&.........*XX+XXX@    ",
+".XXXXX*.@&&.........*XX+XXX@    ",
+".XXXXX*.@&&.........*XX+XXX@    ",
+" .XXXX*.............*XX+XXX@    ",
+"  .XXX*.............*XX+XXX@    ",
+"   .@@@@@@@@@@@@@@@@@@@@@@@     "};

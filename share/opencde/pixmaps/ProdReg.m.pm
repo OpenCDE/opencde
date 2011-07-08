@@ -1,0 +1,56 @@
+/* XPM */
+/*********************************************************************
+*  (c) Copyright 1998 Sun Microsystems, Inc.
+*  All Rights Reserved
+**********************************************************************/
+static char * reg_m_pm[] = {
+/* width height ncolors cpp [x_hot y_hot] */
+"32 32 14 1 0 0",
+/* colors */
+" 	s none	m none	c none",
+".	s topShadowColor	m white	c #bdbdbdbdbdbd",
+"X	s iconGray5	m black	c #737373737373",
+"o	s bottomShadowColor	m black	c #636363636363",
+"O	s iconGray8	m black	c #212121212121",
+"+	s iconColor7	m white	c cyan",
+"@	s iconColor2	m white	c white",
+"#	s iconGray1	m white	c #dededededede",
+"$	s iconGray2	m white	c #bdbdbdbdbdbd",
+"%	s iconColor1	m black	c black",
+"&	s iconGray4	m white	c #949494949494",
+"*	c #00000000FFFF",
+"=	s iconGray7	m black	c #424242424242",
+"-	s iconGray6	m black	c #636363636363",
+/* pixels */
+"     .........        .         ",
+"     .XXXXXXXo       .Oo        ",
+"     .X+++++Oo      .O@Oo       ",
+"     .X+++++Oo     .O@#@Oo      ",
+"    ..X+++++Oo    .O#####Oo     ",
+"   .XXX+++++OX.o .O#$#$#$#Oo    ",
+"   .O+++++++++Oo.OX$X$X$X$XOo   ",
+".....O#+#+#+#O.....%&X&X&O......",
+".****@O$+$+$O@****@O=X=X=O@****o",
+".*X*X*@OX+XO@*X**X@OXOXOXO@X*X*o",
+".*#####@OXO@######@OOOOOOO@###*o",
+".*######@O@#######@@@@@@@@@###*o",
+".*#XXXXXXXXXXXX##XXXXXXXXXXXX#*o",
+".*#X@@@@@@@@@@X##X@@@@@@@@@@X#*o",
+".*#X@@@@@@@@@@X##X@@@@@@@@@@X#*o",
+".*#X@-------@@X##X@------@@@X#*o",
+".*#X@@@@@@@@@@X##X@@@@@@@@@@X#*o",
+".*#X@--------@X##X@--------@X#*o",
+".*#X@@@@@@@@@@X##X@@@@@@@@@@X#*o",
+".*#X@-------@@X##X@------@@@X#*o",
+".*#X@@@@@@@@@@X##X@@@@@@@@@@X#*o",
+".*#X@--------@X##X@--------@X#*o",
+".*#X@@@@@@@@@@X##X@@@@@@@@@@X#*o",
+".*#XXXXXXXXXXXX##XXXXXXXXXXXX#*o",
+".*############################*o",
+".*#--------------------------#*o",
+".*###################&&&&&&&&#*o",
+".*###################&######&#*o",
+".*###################&&&&&&&&#*o",
+".******************************o",
+".ooooooooooooooooooooooooooooooo",
+"                                "};

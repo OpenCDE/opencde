@@ -1,0 +1,37 @@
+/* XPM */
+static char * record_pm[] = {
+/* width height ncolors cpp [x_hot y_hot] */
+"25 25 6 1 0 0",
+/* colors */
+" 	s none	m none	c none",
+".	s topShadowColor	m white	c #bdbdbdbdbdbd",
+"X	s selectColor	m white	c #737373737373",
+"o	s bottomShadowColor	m black	c #636363636363",
+"O	s iconColor3	m black	c red",
+"+	s iconGray3	m white	c #adadadadadad",
+/* pixels */
+"         .......         ",
+"       ..XXXXXXX..       ",
+"     ..XXXXXXXXXXX..     ",
+"    .XXXXXXXXXXXXXXX.    ",
+"   .XXXXXXXXXXXXXXXXXo   ",
+"  .XXXXXXXXXXXXXXXXXXXo  ",
+"  .XXXXXXXXXXXXXXXXXXXo  ",
+" .XXXXXXXXXXXXXXXXXXXXXo ",
+" .XXXXXXXXXO+OXXXXXXXXXo ",
+".XXXXXXXX+O+O+O+XXXXXXXXo",
+".XXXXXXXXO+O+O+OXXXXXXXXo",
+".XXXXXXXO+O+O+O+OXXXXXXXo",
+".XXXXXXX+O+O+O+O+XXXXXXXo",
+".XXXXXXXO+O+O+O+OXXXXXXXo",
+".XXXXXXXXO+O+O+OXXXXXXXXo",
+".XXXXXXXX+O+O+O+XXXXXXXXo",
+" .XXXXXXXXXO+OXXXXXXXXXo ",
+" .XXXXXXXXXXXXXXXXXXXXXo ",
+"  .XXXXXXXXXXXXXXXXXXXo  ",
+"  .XXXXXXXXXXXXXXXXXXXo  ",
+"   .XXXXXXXXXXXXXXXXXo   ",
+"    oXXXXXXXXXXXXXXXo    ",
+"     ooXXXXXXXXXXXoo     ",
+"       ooXXXXXXXoo       ",
+"         ooooooo         "};

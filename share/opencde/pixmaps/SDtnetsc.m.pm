@@ -1,0 +1,55 @@
+/* XPM */
+/****************************************************************
+*  Copyright (c) 1996 Sun Microsystems, Inc.
+*  All Rights Reserved
+*****************************************************************/
+static char * SDtnetsc_m_pm[] = {
+/* width height ncolors cpp [x_hot y_hot] */
+"32 32 13 1 0 0",
+/* colors */
+" 	s iconColor1	m black	c black",
+".	s iconGray8	m black	c #212121212121",
+"X	s iconGray7	m black	c #424242424242",
+"o	s iconGray6	m black	c #636363636363",
+"O	s iconGray5	m black	c #737373737373",
+"+	s iconGray4	m white	c #949494949494",
+"@	s iconGray3	m white	c #adadadadadad",
+"#	s iconColor4	m white	c green",
+"$	s iconColor2	m white	c white",
+"%	s iconColor7	m white	c cyan",
+"&	s iconGray2	m white	c #bdbdbdbdbdbd",
+"*	s iconGray1	m white	c #dededededede",
+"=	s iconColor5	m black	c blue",
+/* pixels */
+"                                ",
+"................................",
+"...X.XXXXXXXXXXXXXXXXXXXXXX.X...",
+".XXXXXXXXXXXXXXXXXXXXXXXXXXXXXX.",
+"XXXXXXXooooooooooooooooooXXXXXXX",
+"XXXXooooooooooooooooooooooooXXXX",
+"XXooooooooOOOOOOOOOOOOooooooooXX",
+"oooooOOOOOOOOOOOOOOOOOOOOOoooooo",
+"oooooOOOOOOOOOOOOOOOOOOOOOoooooo",
+"ooooOOOOO++++++++++++++OOOOOOooo",
+"ooOOOO+++++++++@@++++++++++OOOOo",
+"oOOOOO+++#+@@#@$%&XX&#+++++OOOOO",
+"OOO++++++@@%@%$*O$X X&&&&#+++OOO",
+"O+++#+@@%@%@%@$*O$ =X+&%&&&+#+OO",
+"+++++@@%@%@%@%$*X$  X&%&%&%&%&++",
+"+++@%@%@%@%@%O&$+&= .+&%&%&%&%#+",
+"...o@%@%@%@%O%O$++ XO&%&%&%&%&&&",
+"Xo&&.@%@%O%O%OO$&+X X%&%O%&%&$%$",
+"X@$&XX@%O%O%&$$$@$$$&&@&%O%&$*o*",
+".$o$$XX@@O$*@OOOOOoO@$$@@%=$*o$o",
+"X&$o$&++$*@OOOOOOO+++++$$@$$o*@O",
+" .&$%@$**OOO+++@@@@+++++O$*+*O.X",
+"  = $$@@OO++@@*&O++*@@+++*+*o=  ",
+"   oo*@OO@@+X  $o*  X*+++OO$+   ",
+"   o$*OO+$oX   $o*   XX@++O$+   ",
+"  .$*O++@@$X.  $o$ = .@o++@o$X =",
+"  o$@+++$o$$.X $X*   $o+O@++@$  ",
+"  $*+++$X*o$$  $o* X$o$@ @@+O$X ",
+" O$&@o$@X $o&$ $o& $O@+   O+Oo$ ",
+" o$@O+$..  $o$*$o*$o$@ =   @@O$X",
+" +$@o@*     *o@$o$o*+      @+@*+",
+" $@*&&&&&&&&$$$&o&$&%&&&&&&**O&+"};

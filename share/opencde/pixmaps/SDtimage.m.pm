@@ -1,0 +1,51 @@
+/* XPM */
+/*********************************************************************
+*  (c) Copyright 1993, 1994, 1995 Sun Microsystems, Inc.
+**********************************************************************/
+static char * Simagetool_m_pm[] = {
+/* width height ncolors cpp [x_hot y_hot] */
+"32 32 10 1 0 0",
+/* colors */
+" 	s none	m none	c none",
+".	s iconColor2	m white	c white",
+"X	s iconColor1	m black	c black",
+"o	s iconGray5	m black	c #737373737373",
+"O	s iconGray1	m white	c #dededededede",
+"+	s iconGray6	m black	c #636363636363",
+"@	s iconGray7	m black	c #424242424242",
+"#	s iconGray4	m white	c #949494949494",
+"$	s iconGray2	m white	c #bdbdbdbdbdbd",
+"%	s iconColor5	m black	c blue",
+/* pixels */
+"                                ",
+"                                ",
+"               ..               ",
+"         ......XX......         ",
+"         .ooooooooooooo         ",
+"         .o...........o         ",
+"..........o.XXXXXXXXXXo.........",
+".OOOOOOOOOo.++++++++++oOOOOOOOOX",
+".O+++++++.ooooooooooooo+++++++@X",
+".O+##$##................$#$##+@X",
+".O+#$#$...OOOOOOOOOOOOO..$#$#+@X",
+".O+##$O..................O$##+@X",
+".O+#$O....................O$#+@X",
+".O+#$O..@......%%.........O$#+@X",
+".O+#$....@....%.%%.........$#+@X",
+".O+#$...@..................$#+@X",
+".O+#$........%%O%O%%.%%....$#+@X",
+".O+#$..%%%%O%O.%O%O%%%.%...$#+@X",
+".O+#$...%OO%O.%O%O%O%..%...$#+@X",
+".O+#$....%OOO%O%O%O%%..%...$#+@X",
+".O+#$.....%O%O%O%O%O%..%...$#+@X",
+".O+#$......%O%O%O%O%O%%....$#+@X",
+".O+#$.......%O%O%O%%%%.....$#+@X",
+".O+#$........%%%%%%%.......$#+@X",
+".O+#$O........+++++++++...O$#+@X",
+".O+#$O....................O$#+@X",
+".O+#$OOO................OOO$#+@X",
+".O+#$$$$$$$$$$$$$$$$$$$$$$$$#+@X",
+".O+##########################+@X",
+".O++++++++++++++++++++++++++++@X",
+".O@@@@@@@@@@@@@@@@@@@@@@@@@@@@@X",
+".XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"};

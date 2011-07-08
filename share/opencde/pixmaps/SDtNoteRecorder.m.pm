@@ -1,0 +1,55 @@
+/* XPM */
+/*********************************************************************
+*  (c) Copyright 1997 Sun Microsystems, Inc.
+*  All Rights Reserved
+**********************************************************************/
+static char * SDtNoteRecorder_m_pm[] = {
+/* width height ncolors cpp [x_hot y_hot] */
+"32 32 13 1 0 0",
+/* colors */
+" 	s none	m none	c none",
+".	s iconColor3	m black	c red",
+"X	s iconGray4	m white	c #949494949494",
+"o	s iconColor2	m white	c white",
+"O	s iconGray6	m black	c #636363636363",
+"+	s iconGray8	m black	c #212121212121",
+"@	s iconGray2	m white	c #bdbdbdbdbdbd",
+"#	s iconGray5	m black	c #737373737373",
+"$	s iconGray1	m white	c #dededededede",
+"%	s iconGray3	m white	c #adadadadadad",
+"&	s iconColor1	m black	c black",
+"*	s iconColor7	m white	c cyan",
+"=	s iconGray7	m black	c #424242424242",
+/* pixels */
+"                            .X  ",
+"                           o..X ",
+"                          ..... ",
+"                           ...O ",
+"  ooooooo++oooooooooooooooOo.O  ",
+"  o@@@@@+o#+@@@@@@@@@@@@@O@@@+  ",
+"  o@@@@+o#$%+@@@@@@@@@@@O@@@@+  ",
+"  o@@@+o#$#@%+@@@@@@@@@+O@@@@+  ",
+"  o@@@+#$#@@%%+@@@@@@@@@@#@@@+  ",
+"  o@@@#+XX%%%%+@@@@@@@@@@@X@@+  ",
+"  o@@@%#+XX%XX+@@@@@@@@@@@@%@+  ",
+"  o@@@@%#+XXX&@+@@@@@@@@@@@@@+  ",
+"  o@@@@@%#+&&Xo@+@@@@@@@@@@@@+  ",
+"  o@@@@@@%##&OXo*+@@@@@@@@@@@+  ",
+"  o@@@@@@@@@X+OXo@+@@@@@@@@@@+  ",
+"  o@@@@@@@@@@#&OXo*+@@@@@@@@@+  ",
+"  o@@@@@@@@@@@#&OXoO+@@@@@@@@+  ",
+"  o@@@@@@@@@@@@#+++%O+@@@@@@@+  ",
+"  o@@@@@@@@@@@@@++++o@+@@@@@@+  ",
+"  o@@@@@@@@@@@@+++&+Xo*+@@@@@+  ",
+"  o@@@@@@@@OOOO+=+++OXo@+@@@@+  ",
+"  o@@@@@@@O$%X#&#@@O&OXo*+@@@+  ",
+"  o+++++++O&&&&&#++#O&OXo@++++  ",
+"          O$XO#&#    O&OXo+O    ",
+"           &&&&#      O&+++O    ",
+"            O+#        OOOO+    ",
+"           O+++            O+   ",
+"           O@O+O            O+  ",
+"           O@O+O            O + ",
+"           O@O+O            O + ",
+"           O@O+O            O + ",
+"           O@O+O            O + "};

@@ -1,0 +1,51 @@
+/* XPM */
+/*********************************************************************
+*  (c) Copyright 1999 Sun Microsystems, Inc.
+**********************************************************************/
+static char * dtaudio_m_pm[] = {
+/* width height ncolors cpp [x_hot y_hot] */
+"32 32 10 1 0 0",
+/* colors */
+" 	s none	m none	c none",
+".	s iconGray6	m black	c #636363636363",
+"X	s iconColor2	m white	c white",
+"o	s iconGray3	m white	c #adadadadadad",
+"O	s iconGray2	m white	c #bdbdbdbdbdbd",
+"+	s iconGray7	m black	c #424242424242",
+"@	s iconGray1	m white	c #dededededede",
+"#	s iconGray5	m black	c #737373737373",
+"$	s iconGray4	m white	c #949494949494",
+"%	s iconGray8	m black	c #212121212121",
+/* pixels */
+"                                ",
+"             ....               ",
+"             .XXX.              ",
+"             .XooO.             ",
+"             .X.+XO.            ",
+"             .X.+@XO.           ",
+"             .@.+X@XO.          ",
+"       o.    .@.+@X@XO.         ",
+"      +.     .@.+X@X@XO.        ",
+"     +.      .@.+@@@@@XO....... ",
+"    +.       .@.+O@@@@@XOOOOOO.O",
+"   #.     +  .@.+oOO@@@@XXXXX@.O",
+"  o+o    +   .o.+@ooOO@@@@@@@@.O",
+"  #+    +.   .o.+@@@ooooOoOoOo+O",
+" @+.   o+   .@o.+o$@@@@@@@@@@@+O",
+" o+#   +.   ..o.+$o$oooooo@$@$+O",
+" o+#   +#   .@o.+o$o$$$$$$#$#$%O",
+" o+#   +#   ..o.+$$$$#########+O",
+" o+#   +.   .@o.+$####........%O",
+" @+.   o+   ..o.+##...+++.+.+.%O",
+"  #+    +.   .o.+...++++++++++%O",
+"  o+o    +   +o++.+++++++++++%%O",
+"   #.     +  .o+%+++++++%%%%%%OO",
+"    +.       +o++++++++%OOOOOOO ",
+"     +.      +o+%+++++%O        ",
+"      +.     +o%%++++%O         ",
+"       o.    %o+%+++%O          ",
+"             +o%%++%O           ",
+"             %o%%+%O            ",
+"             %o%%%O             ",
+"             %%%%O              ",
+"             OOOO               "};

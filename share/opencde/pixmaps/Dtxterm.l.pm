@@ -1,0 +1,66 @@
+/* XPM */
+/*********************************************************************
+*  (c) Copyright 1993, 1994 Hewlett-Packard Company	
+*  (c) Copyright 1993, 1994 International Business Machines Corp.
+*  (c) Copyright 1993, 1994 Sun Microsystems, Inc.
+*  (c) Copyright 1993, 1994 Unix System Labs, Inc., a subsidiary of
+*      Novell, Inc.
+**********************************************************************/
+
+/**      Novell, Inc.							**/
+static char ** xterm.m.px  = {
+"48 42 12 1",
+"   m None   c None             s None",
+".  s bottomShadowColor     m black c #646464646464",
+"X  s iconGray3     m white c #afafafafafaf",
+"o  s iconGray2     m white c #c8c8c8c8c8c8",
+"O  s iconGray1     m white c #e1e1e1e1e1e1",
+"+  s topShadowColor        m white c #c8c8c8c8c8c8",
+"@  s iconColor2    m white c white",
+"#  s iconColor1    m black c black",
+"$  s iconGray6     m black c #646464646464",
+"%  s iconGray7     m black c #4b4b4b4b4b4b",
+"&  s iconGray5     m black c #7d7d7d7d7d7d",
+"*  s iconGray4     m white c #969696969696",
+"                                                ",
+"                                                ",
+"                                                ",
+"                                                ",
+"             .....................              ",
+"           ..XoOXOXOXOXOXOXOXOXOoX..+           ",
+"          .X@@@@@@@@@@@@@@@@@@@@@@@X.+          ",
+"         .@oooooooooooooooooooooooooo#+         ",
+"         .@oooooooooooooooooooooooooo#+         ",
+"         .@oo$$$$$$$$$$$$$$$$$$$$$$oo#+         ",
+"         .@oo$####################@oo#+         ",
+"         .@oo$#%%%%%%%%%%%%%%%%%%#@oo#+         ",
+"         .@oo$#%%%%%%%%%%%%%%%%%%#@oo#+         ",
+"         .@oo$#%%%%ooo%%%%%oo%%%%#@oo#+         ",
+"         .@oo$#%%%%%ooo%%%oo%%%%%#@oo#+         ",
+"         .@oo$#%%%%%%ooo%oo%%%%%%#@oo#+         ",
+"         .@oo$#%%%%%%%oooo%%%%%%%#@oo#+         ",
+"         .@oo$#%%%%%%%%ooo%%%%%%%#@oo#+         ",
+"         .@oo$#%%%%%%%ooooo%%%%%%#@oo#+         ",
+"         .@oo$#%%%%%%oo%%ooo%%%%%#@oo#+         ",
+"         .@oo$#%%%%%oo%%%%ooo%%%%#@oo#+         ",
+"         .@oo$#%%%%oo%%%%%%ooo%%%#@oo#+         ",
+"         .@oo$#%%%%%%%%%%%%%%%%%%#@oo#+         ",
+"         .@oo$#%%%%%%%%%%%%%%%%%%#@oo#+         ",
+"         .@oo$#%%%%%%%%%%%%%%%%%%#@oo#+         ",
+"         .@oo$####################@oo#+         ",
+"         .@oo$@@@@@@@@@@@@@@@@@@@@@oo#+         ",
+"         .@oooooooooooooooooooooooooo#+         ",
+"         .@oooooooooooooooooooooooooo#+         ",
+"         .###########################++         ",
+"          +++++##$$$$$$$$$$$$$$##+++++          ",
+"          .....###$&&&&&&&&&&$#######           ",
+"         ..@@@@@@@@@@@@@@@@@@@@@@@@@@#+         ",
+"        ..@OO$O$O$O$O$O$O$O$O$OOO$O$O@#+        ",
+"       ..@OO$X$X$X$X$X$X$X$X$X$XOO$X$O@#+       ",
+"      ..@OO$X$X$X$XXXXXXXXX$X$X$OOO$X$O@#+      ",
+"      .*OOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO#+     ",
+"      .**********************************#+     ",
+"      .###################################+     ",
+"      .++++++++++++++++++++++++++++++++++++     ",
+"                                                ",
+"                                                "};
