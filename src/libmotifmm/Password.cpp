@@ -18,28 +18,32 @@ void Password::modifyVerifyCallback(Widget widget, XtPointer client_data, XtPoin
   Password* password = (Password*)client_data;
   XmTextVerifyCallbackStruct* callbackStruct = (XmTextVerifyCallbackStruct*) call_data;
   XmTextBlock textBlock = callbackStruct->text;
-  XmTextPosition textPosition = callbackStruct->currInsert;
 
-  if(password->settingText == true)
+  if(password->settingText)
   {
     return;
   }
 
+  /* prevent paste operations by denying modifications >1 char */
   if(textBlock->length > 1)
   {
     callbackStruct->doit = False;
     return;
   }
-
-  if(textBlock->length == 0)
+  
+  /* deletion.  Will delete from start position onwards. */
+  if(callbackStruct->startPos < callbackStruct->endPos)
   {
-    callbackStruct->doit = False;
+    callbackStruct->endPos = password->text.size();
+    password->text.resize(callbackStruct->startPos);
     return;
   }
 
-  if(callbackStruct->startPos < callbackStruct->endPos)
+  /* disallow insertions */
+  if((unsigned) callbackStruct->startPos < password->text.size())
   {
-    //std::cout << "delete " << callbackStruct->startPos << " " << callbackStruct->endPos << std::endl;
+    callbackStruct->doit = False;
+    return;
   }
 
   password->text = password->text + textBlock->ptr[0];
