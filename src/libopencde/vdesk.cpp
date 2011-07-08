@@ -79,7 +79,6 @@ long get_wm_state(Window w, unsigned long int * ico)
     Atom real_type; int real_format;
     unsigned long items_read, items_left;
     long *data, state = -1;
-    char * n;
 
     *ico = 0;
     if (XGetWindowProperty(dpy, w, wm_state, 0L, 2L, False,
@@ -107,7 +106,7 @@ long get_wm_state(Window w, unsigned long int * ico)
 void on_clients(Window w) {
     Window dummy_w, *wins;
     unsigned int i, nwins;
-    unsigned long int sticky, ico;
+    unsigned long int ico;
 
     long state = get_wm_state(w, &ico);
 
@@ -162,7 +161,6 @@ int remap(Display * d, Window win){
     Window root;
     int x, y;
     unsigned int w, h, border, depth;
-    Status st;
     
     /*
      *  Map in and fix windowpositions.  Works for all but kde.
@@ -185,7 +183,7 @@ void usage() {
 
 
 int vdesk(int argc, Window winId, int deskNo) {
-    long t, throwaway;
+    long t;
     unsigned long ico;
     int change = 0;
     const char* argv[3];
