@@ -13,6 +13,8 @@ class Grab;
 class PanelWindow : public Motif::Window
 {
 private:
+  static const int DESKTOP_BTN_WIDTH = 130;
+
   std::auto_ptr<OpenCDE::Ini> ini;
   std::auto_ptr<ExitDialog> exitDialog;
 

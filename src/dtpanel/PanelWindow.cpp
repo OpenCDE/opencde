@@ -96,64 +96,60 @@ PanelWindow::PanelWindow() : Motif::Window("panelWindow")
 
       ini->getSectionNames("Desktops", &desktopEntries);
       desktopEntries.erase(desktopEntries.begin() + 0);
-      unsigned int currentIndex = 0;
+      
+      /* expand panel width by 130px for each button in one row of desktop
+       * buttons.  (i.e. inc panel width by 
+       * DESKTOP_BTN_WIDTH * (number of desktops / 2))
+       */
+      panelWidth += DESKTOP_BTN_WIDTH * ((desktopEntries.size() + 1) / 2);
+      
+      /* offset counter used to determine X coord of panels */
+      unsigned int panelOffset = 0;
 
-      for(unsigned int desktopIndex = 0; desktopIndex < (desktopEntries.size() + 1) / 2; desktopIndex++)
+      for(unsigned int desktopIndex = 0; desktopIndex < desktopEntries.size(); desktopIndex++)
       {
+        bool topRow = desktopIndex < (desktopEntries.size() + 1)/2;
+	unsigned int panelIndex = desktopPanels.size();
+	unsigned int buttonIndex = desktopButtons.size();
+      
+        /* first, create panels for all of the buttons */
         desktopPanels.add(new Motif::Panel("desktopPanel", desktopsPanel.get()));
-        desktopPanels.at(desktopPanels.size() - 1)->setShadowThickness(1);
-        desktopPanels.at(desktopPanels.size() - 1)->setShadowType(Motif::ShadowType::IN);
-        desktopPanels.at(desktopPanels.size() - 1)->setWidth(125);
-        desktopPanels.at(desktopPanels.size() - 1)->setHeight(28);
-        desktopPanels.at(desktopPanels.size() - 1)->setX(36 + (currentIndex * 130));
-        desktopPanels.at(desktopPanels.size() - 1)->setY(6);
-        currentIndex++;
-        panelWidth+=130;
-
-        desktopButtons.add(new Motif::ToggleButton("desktopButton", desktopPanels.at(desktopPanels.size() - 1)));
-        desktopButtons.at(desktopButtons.size() - 1)->setShadowThickness(2);
-        desktopButtons.at(desktopButtons.size() - 1)->setHighlightThickness(0);
-        desktopButtons.at(desktopButtons.size() - 1)->setTopAttachment(Motif::Attachment::FORM);
-        desktopButtons.at(desktopButtons.size() - 1)->setLeftAttachment(Motif::Attachment::FORM);
-        desktopButtons.at(desktopButtons.size() - 1)->setRightAttachment(Motif::Attachment::FORM);
-        desktopButtons.at(desktopButtons.size() - 1)->setBottomAttachment(Motif::Attachment::FORM);
-        desktopButtons.at(desktopButtons.size() - 1)->setTopOffset(1);
-        desktopButtons.at(desktopButtons.size() - 1)->setLeftOffset(1);
-        desktopButtons.at(desktopButtons.size() - 1)->setBottomOffset(1);
-        desktopButtons.at(desktopButtons.size() - 1)->setRightOffset(1);
-        desktopButtons.at(desktopButtons.size() - 1)->setText(desktopEntries.at(desktopIndex));
-        desktopButtons.at(desktopButtons.size() - 1)->setTag(desktopEntries.at(desktopIndex));
-        desktopButtons.at(desktopButtons.size() - 1)->setValueChangedFunction(FUNCTION(PanelWindow::onDesktopButtonClicked));
-      }
-
-      currentIndex = 0;
-
-      for(unsigned int desktopIndex = 0 + ((desktopEntries.size() + 1) / 2); desktopIndex < desktopEntries.size(); desktopIndex++)
-      {
-        desktopPanels.add(new Motif::Panel("desktopPanel", desktopsPanel.get()));
-        desktopPanels.at(desktopPanels.size() - 1)->setShadowThickness(1);
-        desktopPanels.at(desktopPanels.size() - 1)->setShadowType(Motif::ShadowType::IN);
-        desktopPanels.at(desktopPanels.size() - 1)->setBottomAttachment(Motif::Attachment::FORM);
-        desktopPanels.at(desktopPanels.size() - 1)->setWidth(125);
-        desktopPanels.at(desktopPanels.size() - 1)->setHeight(28);
-        desktopPanels.at(desktopPanels.size() - 1)->setX(36 + (currentIndex * 130));
-        desktopPanels.at(desktopPanels.size() - 1)->setBottomOffset(6);
-        currentIndex++;
-
-        desktopButtons.add(new Motif::ToggleButton("desktopButton", desktopPanels.at(desktopPanels.size() - 1)));
-        desktopButtons.at(desktopButtons.size() - 1)->setShadowThickness(2);
-        desktopButtons.at(desktopButtons.size() - 1)->setHighlightThickness(0);
-        desktopButtons.at(desktopButtons.size() - 1)->setTopAttachment(Motif::Attachment::FORM);
-        desktopButtons.at(desktopButtons.size() - 1)->setLeftAttachment(Motif::Attachment::FORM);
-        desktopButtons.at(desktopButtons.size() - 1)->setRightAttachment(Motif::Attachment::FORM);
-        desktopButtons.at(desktopButtons.size() - 1)->setBottomAttachment(Motif::Attachment::FORM);
-        desktopButtons.at(desktopButtons.size() - 1)->setTopOffset(1);
-        desktopButtons.at(desktopButtons.size() - 1)->setLeftOffset(1);
-        desktopButtons.at(desktopButtons.size() - 1)->setBottomOffset(1);
-        desktopButtons.at(desktopButtons.size() - 1)->setRightOffset(1);
-        desktopButtons.at(desktopButtons.size() - 1)->setText(desktopEntries.at(desktopIndex));
-        desktopButtons.at(desktopButtons.size() - 1)->setTag(desktopEntries.at(desktopIndex));
-        desktopButtons.at(desktopButtons.size() - 1)->setValueChangedFunction(FUNCTION(PanelWindow::onDesktopButtonClicked));
+        desktopPanels.at(panelIndex)->setShadowThickness(1);
+        desktopPanels.at(panelIndex)->setShadowType(Motif::ShadowType::IN);
+        desktopPanels.at(panelIndex)->setWidth(125);
+        desktopPanels.at(panelIndex)->setHeight(28);
+        
+	/* bottom row panels are attached to the form, and offset, top have
+	 * default attachment and have a fixed y
+	 */
+	if (topRow)
+	{
+	  desktopPanels.at(panelIndex)->setY(6);
+	  panelOffset = desktopIndex;
+	}
+	else
+	{
+	  desktopPanels.at(panelIndex)->setBottomAttachment(Motif::Attachment::FORM);
+	  desktopPanels.at(panelIndex)->setBottomOffset(6);
+	  panelOffset = desktopIndex - ((desktopEntries.size()+1)/2);
+	}
+	desktopPanels.at(panelIndex)->setX(36 + (panelOffset * DESKTOP_BTN_WIDTH));
+	
+	/* now the buttons themselves */
+        desktopButtons.add(new Motif::ToggleButton("desktopButton", desktopPanels.at(panelIndex)));
+        desktopButtons.at(buttonIndex)->setShadowThickness(2);
+        desktopButtons.at(buttonIndex)->setHighlightThickness(0);
+        desktopButtons.at(buttonIndex)->setTopAttachment(Motif::Attachment::FORM);
+        desktopButtons.at(buttonIndex)->setLeftAttachment(Motif::Attachment::FORM);
+        desktopButtons.at(buttonIndex)->setRightAttachment(Motif::Attachment::FORM);
+        desktopButtons.at(buttonIndex)->setBottomAttachment(Motif::Attachment::FORM);
+        desktopButtons.at(buttonIndex)->setTopOffset(1);
+        desktopButtons.at(buttonIndex)->setLeftOffset(1);
+        desktopButtons.at(buttonIndex)->setBottomOffset(1);
+        desktopButtons.at(buttonIndex)->setRightOffset(1);
+        desktopButtons.at(buttonIndex)->setText(desktopEntries.at(desktopIndex));
+        desktopButtons.at(buttonIndex)->setTag(desktopEntries.at(desktopIndex));
+        desktopButtons.at(buttonIndex)->setValueChangedFunction(FUNCTION(PanelWindow::onDesktopButtonClicked));
       }
 
       exitButton.reset(new Motif::Button("exitButton", desktopsPanel.get()));
