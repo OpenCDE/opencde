@@ -66,20 +66,22 @@ RunWindow::RunWindow() : Motif::Window("RunWindow")
   
   
   /* Run */
-  runButton.reset(new Motif::Button("Run", mainPanel.get()));
+  runButton.reset(new Motif::Button("runButton", mainPanel.get()));
   runButton->setActivateFunction(FUNCTION(RunWindow::onRunButtonPressed));
   
   runButton->setRightAttachment(Motif::Attachment::WIDGET);
   runButton->setRightOffset(10);
   
   runButton->setTopAttachment(Motif::Attachment::FORM);
-  runButton->setTopOffset(14);
+  runButton->setTopOffset(6);
   
+  runButton->setText("Run");
   runButton->setShadowThickness(2);
+  runButton->setShowAsDefault(1);
   
   
   /* Close */
-  closeButton.reset(new Motif::Button("Cancel", mainPanel.get()));
+  closeButton.reset(new Motif::Button("cancelButton", mainPanel.get()));
   closeButton->setActivateFunction(FUNCTION(RunWindow::onClose));
   
   closeButton->setRightAttachment(Motif::Attachment::FORM);
@@ -88,6 +90,7 @@ RunWindow::RunWindow() : Motif::Window("RunWindow")
   closeButton->setTopAttachment(Motif::Attachment::FORM);
   closeButton->setTopOffset(14);
   
+  closeButton->setText("Cancel");
   closeButton->setShadowThickness(2);
   
   /* set our widget attachment now that everything's been created */
@@ -118,6 +121,17 @@ void RunWindow::onRunButtonPressed(void* caller)
   /* FIXME: handle exec ourselves.  Do we really want this going
    * through to system()?
    */
+  
+  /* since we don't want to be too careless, let's do a tiny bit of
+   * sanity checking before we dump this into system()...
+   */
+  std::string text = pathText->getText();
+  if (text.empty() || 
+      std::string::npos == text.find_last_not_of(" \t\f\v\n\r"))
+  {
+    return;
+  }
+   
   OpenCDE::Shell::executeFork(this->pathText->getText());
   exit(EXIT_SUCCESS);
 }
