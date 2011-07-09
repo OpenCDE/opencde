@@ -161,19 +161,6 @@ void Container::setInitialFocus(Component* component)
   XtSetValues(widget, args, 1);
 }
 
-void Container::setResizable(bool resizable)
-{
-  Arg args[5];
-
-  std::cout << "Warning: setResizable sets loads of stuff which needs cleaning" << std::endl;
-  XtSetArg(args[0], XmNresizable, false);
-  XtSetArg(args[1], XmNallowShellResize, false);
-  XtSetArg(args[2], XmNnoResize, true);
-  XtSetArg(args[4], XmNminWidth, 1024);
-  XtSetArg(args[3], XmNminHeight, 768);
-  XtSetValues(widget, args, 5);
-}
-
 void Container::setMovable(bool movable)
 {
   Arg args[1];

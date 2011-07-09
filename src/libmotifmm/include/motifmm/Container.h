@@ -72,7 +72,6 @@ public:
   virtual void setStyle(int style);
   virtual void setVisible(bool visible);
   virtual void setInitialFocus(Component* component);
-  virtual void setResizable(bool resizable);
   virtual void setMovable(bool movable);
   virtual void setMwmFunctions(int functions);
   virtual void unmap();
