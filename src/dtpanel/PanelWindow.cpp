@@ -4,6 +4,8 @@
 
 PanelWindow::PanelWindow() : Motif::Window("panelWindow")
 {
+  clockButtonIndex = -1;
+  calButtonIndex = -1;
   hasDesktopsPanel = false;
   std::vector<std::string> sectionNames;
   ini.reset(new OpenCDE::Ini(OpenCDE::Environment::getHome() + "/.opencde/" + OpenCDE::Environment::getName() + "/menus.ini"));
@@ -208,11 +210,34 @@ PanelWindow::PanelWindow() : Motif::Window("panelWindow")
       iconButtons.at(iconButtons.size() - 1)->setShadowThickness(0);
       iconButtons.at(iconButtons.size() - 1)->setTopAttachment(Motif::Attachment::FORM);
       iconButtons.at(iconButtons.size() - 1)->setTopOffset(1);
-      iconButtons.at(iconButtons.size() - 1)->setLabelType(Motif::LabelType::PIXMAP);
-      iconButtons.at(iconButtons.size() - 1)->setLabelPixmap(OpenCDE::Filesystem::relativeFallback(ini->getValue(menuEntries.at(entryIndex), "", "pixmap"), OpenCDE::Environment::getPrefix() + "/share/opencde/pixmaps"), true);
-      iconButtons.at(iconButtons.size() - 1)->setHeight(58);
+      //iconButtons.at(iconButtons.size() - 1)->setLabelType(Motif::LabelType::PIXMAP);
+      //iconButtons.at(iconButtons.size() - 1)->setLabelPixmap(OpenCDE::Filesystem::relativeFallback(ini->getValue(menuEntries.at(entryIndex), "", "pixmap"), OpenCDE::Environment::getPrefix() + "/share/opencde/pixmaps"), true);
       iconButtons.at(iconButtons.size() - 1)->setTag(menuEntries.at(entryIndex));
       iconButtons.at(iconButtons.size() - 1)->setActivateFunction(FUNCTION(PanelWindow::onIconButtonClicked));
+
+      if(menuEntries.at(entryIndex) == "Clock")
+      {
+        clockButtonIndex = iconButtons.size() - 1;
+        clockTimer.reset(new Motif::Timer());
+        clockTimer->start(30000);
+        clockTimer->setIntervalFunction(FUNCTION(PanelWindow::onClockTimerTick));
+        onClockTimerTick(NULL);
+      }
+      else if(menuEntries.at(entryIndex) == "Calendar")
+      {
+        calButtonIndex = iconButtons.size() - 1;
+        calTimer.reset(new Motif::Timer());
+        calTimer->start(30000);
+        calTimer->setIntervalFunction(FUNCTION(PanelWindow::onCalTimerTick));
+        onCalTimerTick(NULL);
+      }
+      else
+      {
+      iconButtons.at(iconButtons.size() - 1)->setLabelType(Motif::LabelType::PIXMAP);
+      iconButtons.at(iconButtons.size() - 1)->setLabelPixmap(OpenCDE::Filesystem::relativeFallback(ini->getValue(menuEntries.at(entryIndex), "", "pixmap"), OpenCDE::Environment::getPrefix() + "/share/opencde/pixmaps"), true);
+      }
+
+      iconButtons.at(iconButtons.size() - 1)->setHeight(58);
 
       if(iconButtons.size() == 1)
       {
@@ -450,5 +475,142 @@ void PanelWindow::onMenuWindowClose(MenuWindow* menuWindow)
 OpenCDE::Ini* PanelWindow::getIni()
 {
   return ini.get();
+}
+
+void PanelWindow::onCalTimerTick(void* caller)
+{
+  std::string month;
+  int month_x = 16;
+  int month_y = 20;
+
+  int width = iconButtons.at(calButtonIndex)->getWidth();
+  int height = iconButtons.at(calButtonIndex)->getHeight();
+
+  std::string day;
+  int day_x = 19;
+  int day_y = 35;
+
+  int bufsize = 5;
+
+  // Get the month and day from time.h
+  time_t rawtime;
+  struct tm* timeinfo;
+  char buffer[bufsize];
+
+  time(&rawtime);
+  timeinfo = localtime(&rawtime);
+
+  strftime(buffer,bufsize,"%b",timeinfo);
+  month = buffer;
+
+  strftime(buffer,bufsize,"%d",timeinfo);
+  day = buffer;
+
+  // Center single digit days
+  if(atoi(day.c_str()) < 10) {
+       day_x += 3;
+  }
+
+  iconButtons.at(calButtonIndex)->setPixmap(OpenCDE::Environment::getPrefix() + "/share/opencde/pixmaps/FpCM.l.pm");
+  iconButtons.at(calButtonIndex)->setWidth(width);
+  iconButtons.at(calButtonIndex)->setHeight(height);
+  iconButtons.at(calButtonIndex)->drawText(month_x, month_y, month.c_str());
+  iconButtons.at(calButtonIndex)->drawText(day_x, day_y, day.c_str());
+}
+
+void PanelWindow::onClockTimerTick(void* caller)
+{
+  int bufsize = 5;
+  int minute;
+  int hour;
+
+  int width = iconButtons.at(clockButtonIndex)->getWidth();
+  int height = iconButtons.at(clockButtonIndex)->getHeight();
+
+  int origin_x = 24;
+  int origin_y = 24;
+
+  // Angles
+  double minute_a, minute_left_a, minute_right_a;
+  double hour_a, hour_left_a, hour_right_a;
+
+  // Maximum radius of arms, width is the distance from origin to the base
+  // point (left or right) of the triangle.
+  int minute_r = 14;
+  int hour_r   = 10;
+  int width_r  = 2;
+
+  int numPoints = 4;
+
+  XPoint leftPoint_hour,   rightPoint_hour,   apexPoint_hour;
+  XPoint leftPoint_minute, rightPoint_minute, apexPoint_minute;
+
+  XPoint hourHand[numPoints];
+  XPoint minuteHand[numPoints];
+
+  // Get the hour and minute
+  time_t rawtime;
+  struct tm* timeinfo;
+  char buffer[bufsize];
+
+  time(&rawtime);
+  timeinfo = localtime(&rawtime);
+
+  strftime(buffer,bufsize,"%l",timeinfo);
+  hour = atoi(buffer);
+
+  strftime(buffer,bufsize,"%M",timeinfo);
+  minute = atoi(buffer);
+
+  // Compute the angles of all three points of the triangle in radians
+  // after finding the hour and minute angles
+  minute_a = 6 * minute * M_PI / 180;
+  hour_a   = 0.5 * (60 * hour + minute) * M_PI / 180;
+
+  minute_left_a  = minute_a - 90; // origin to left vertex
+  hour_left_a    = hour_a   - 90; // origin to left vertex
+  minute_right_a = minute_a + 90; // origin to right vertex
+  hour_right_a   = hour_a   + 90; // origin to right vertex
+
+  // Find the offsets of the points in the triangle
+
+  // Minute hand triangle
+  apexPoint_minute.x  = origin_x + (minute_r * sin(minute_a));
+  apexPoint_minute.y  = origin_y - (minute_r * cos(minute_a));
+
+  leftPoint_minute.x  = origin_x + (width_r * sin(minute_left_a));
+  leftPoint_minute.y  = origin_y - (width_r * cos(minute_left_a));
+
+  rightPoint_minute.x = origin_x + (width_r * sin(minute_right_a));
+  rightPoint_minute.y = origin_y - (width_r * cos(minute_right_a));
+
+  minuteHand[0] = leftPoint_minute;
+  minuteHand[1] = rightPoint_minute;
+  minuteHand[2] = apexPoint_minute;
+  minuteHand[3] = leftPoint_minute;
+
+  // Hour hand triangle
+  apexPoint_hour.x  = origin_x + (hour_r   * sin(hour_a));
+  apexPoint_hour.y  = origin_y - (hour_r   * cos(hour_a));
+
+  leftPoint_hour.x  = origin_x + (width_r * sin(hour_left_a));
+  leftPoint_hour.y  = origin_y - (width_r * cos(hour_left_a));
+
+  rightPoint_hour.x = origin_x + (width_r * sin(hour_right_a));
+  rightPoint_hour.y = origin_y - (width_r * cos(hour_right_a));
+
+  // Place the points in order of drawing them, return to first point.
+  hourHand[0] = leftPoint_hour;
+  hourHand[1] = rightPoint_hour;
+  hourHand[2] = apexPoint_hour;
+  hourHand[3] = leftPoint_hour;
+
+  // Blank the pixmap with the clock face and resize.
+  iconButtons.at(clockButtonIndex)->setPixmap(OpenCDE::Environment::getPrefix() + "/share/opencde/pixmaps/Fpclock.l.pm");
+  iconButtons.at(clockButtonIndex)->setHeight(height);
+  iconButtons.at(clockButtonIndex)->setWidth(width);
+
+  // Draw the clock hands
+  iconButtons.at(clockButtonIndex)->drawClockHands(hourHand,minuteHand,numPoints);
 }
 

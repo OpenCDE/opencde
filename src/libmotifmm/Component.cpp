@@ -543,5 +543,45 @@ void Component::setIconPlacement(int iconPlacement)
   XtSetValues(widget, args, 1);
 }
 
+void Component::drawClockHands(XPoint* hour, XPoint* minute, int points)
+{
+  Arg args[2];
+  GC gc;
+  Pixmap p;
+
+  XtSetArg(args[0], XmNlabelPixmap, &p);
+  XtGetValues(widget, args, 1);
+
+  Display *display = XtDisplay(widget);
+  gc = XCreateGC(display, p, NULL, 0);
+  XDrawLines(display, p, gc, hour,  points, CoordModeOrigin);
+  XDrawLines(display, p, gc, minute,points, CoordModeOrigin);
+  XFillPolygon(display, p, gc, hour,   points, Convex, CoordModeOrigin);
+  XFillPolygon(display, p, gc, minute, points, Convex, CoordModeOrigin);
+  //refreshPixmap();
+
+  XtSetArg(args[0], XmNlabelType, XmPIXMAP);
+  XtSetArg(args[1], XmNlabelPixmap, p);
+  XtSetValues(widget, args, 2);
+}
+
+void Component::drawText(int x, int y, std::string text)
+{
+  Arg args[2];
+  GC gc;
+  Pixmap p;
+  Display *display = XtDisplay(widget);
+
+  XtSetArg(args[0], XmNlabelPixmap, &p);
+  XtGetValues(widget, args, 1);
+
+  gc = XCreateGC(display, p, NULL, 0);
+  XDrawString(display, p, gc, x, y, text.c_str(), strlen(text.c_str()));
+
+  XtSetArg(args[0], XmNlabelType, XmPIXMAP);
+  XtSetArg(args[1], XmNlabelPixmap, p);
+  XtSetValues(widget, args, 2);
+}
+
 }
 

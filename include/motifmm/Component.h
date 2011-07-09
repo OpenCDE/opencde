@@ -78,6 +78,8 @@ public:
   virtual void setPixmap(std::string path);
   virtual void setIconPlacement(int iconPlacement);
   virtual void setText(std::string text);
+  virtual void drawClockHands(XPoint* hour, XPoint* minute, int points);
+  virtual void drawText(int x, int y, std::string text);
   virtual void setNoResize(bool noResize);
   virtual void setToggled(bool toggled);
   virtual bool getToggled();

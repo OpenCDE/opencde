@@ -16,7 +16,8 @@ LockDialog::LockDialog() : Motif::Dialog("lockDialog")
   int panelHeight = 294;
   int pictureSize = 256;
 
-  if(OpenCDE::Environment::getUsername() != "root")
+  //if(OpenCDE::Environment::getUsername() != "root")
+  if(geteuid() != 0)
   {
     throw OpenCDE::OpenCDEException("This application must be run as root");
   }
@@ -29,8 +30,9 @@ LockDialog::LockDialog() : Motif::Dialog("lockDialog")
   setHeight(totalHeight);
   setX(-1);
   setY(-1);
-  setResizable(false);
-  setMovable(false);
+  //setResizable(false);
+  //setMovable(false);
+  setMwmFunctions(0);
   getContentPanel()->setShadowThickness(0);
 
   dialogPanel.reset(new Motif::Panel("dialogPanel", getContentPanel()));

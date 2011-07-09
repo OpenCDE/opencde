@@ -161,15 +161,6 @@ void Container::setInitialFocus(Component* component)
   XtSetValues(widget, args, 1);
 }
 
-void Container::setMovable(bool movable)
-{
-  Arg args[1];
-
-  std::cout << "Warning: setMovable disables a lot more than just moving" << std::endl;
-  XtSetArg(args[0], XmNmwmFunctions, 0);
-  XtSetValues(widget, args, 1);
-}
-
 void Container::setMwmFunctions(int functions)
 {
   Arg args[1];

@@ -19,7 +19,7 @@ void Password::modifyVerifyCallback(Widget widget, XtPointer client_data, XtPoin
   XmTextVerifyCallbackStruct* callbackStruct = (XmTextVerifyCallbackStruct*) call_data;
   XmTextBlock textBlock = callbackStruct->text;
 
-  if(password->settingText)
+  if(password->settingText == true)
   {
     return;
   }

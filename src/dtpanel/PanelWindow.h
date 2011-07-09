@@ -1,6 +1,8 @@
 #ifndef PANELWINDOW_H
 #define PANELWINDOW_H
 
+#include <math.h>
+
 #include <motifmm.h>
 #include <opencde.h>
 
@@ -34,6 +36,11 @@ private:
   std::auto_ptr<Motif::Button> minimizeButton;
   Motif::auto_vector<MenuWindow> menuWindows;
 
+  int clockButtonIndex;
+  std::auto_ptr<Motif::Timer> clockTimer;
+  int calButtonIndex;
+  std::auto_ptr<Motif::Timer> calTimer;
+
 public:
   PanelWindow();
   ~PanelWindow();
@@ -53,6 +60,8 @@ public:
   void onIconButtonClicked(void* caller);
   void onDesktopButtonClicked(void* caller);
   void onMenuWindowClose(MenuWindow* menuWindow);
+  void onClockTimerTick(void* caller);
+  void onCalTimerTick(void* caller);
 
   OpenCDE::Ini* getIni();
 

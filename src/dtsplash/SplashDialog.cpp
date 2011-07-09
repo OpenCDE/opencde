@@ -11,7 +11,8 @@ SplashDialog::SplashDialog() : Motif::Dialog("splashDialog")
   setX(0);
   setY(0);
   //setResizable(false);
-  setMovable(false);
+  //setMovable(false);
+  setMwmFunctions(0);
   getContentPanel()->setShadowThickness(0);
 
   vendorLogoPanel.reset(new Motif::Panel("vendorLogoPanel", getContentPanel()));
@@ -40,6 +41,10 @@ SplashDialog::SplashDialog() : Motif::Dialog("splashDialog")
   vendorLogoLabel->setWidth(512);
   vendorLogoLabel->setHeight(128);
 
+  timer.reset(new Motif::Timer());
+  timer->setIntervalFunction(FUNCTION(SplashDialog::onTimerTick));
+  timer->start(3000);
+
   setVisible(true);
 }
 
@@ -47,3 +52,9 @@ SplashDialog::~SplashDialog()
 {
 
 }
+
+void SplashDialog::onTimerTick(void* caller)
+{
+  exit(0);
+}
+
