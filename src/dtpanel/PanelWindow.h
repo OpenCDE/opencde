@@ -13,6 +13,7 @@ class Grab;
 class PanelWindow : public Motif::Window
 {
 private:
+  /* total width of desktop buttons (includes padding, shadow, etc.) */
   static const int DESKTOP_BTN_WIDTH = 130;
 
   std::auto_ptr<OpenCDE::Ini> ini;
