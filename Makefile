@@ -22,6 +22,7 @@ install:
 	cp bin/dtlogin ${PREFIX}/bin/
 	cp bin/dtpad ${PREFIX}/bin/
 	cp bin/dtpanel ${PREFIX}/bin/
+	cp bin/dtrun ${PREFIX}/bin/
 	cp bin/dtsession ${PREFIX}/bin/
 	cp bin/dtsplash ${PREFIX}/bin/
 	cp bin/dtterm ${PREFIX}/bin/
@@ -38,6 +39,7 @@ uninstall:
 	rm -f ${PREFIX}/bin/dtlogin
 	rm -f ${PREFIX}/bin/dtpad
 	rm -f ${PREFIX}/bin/dtpanel
+	rm -f ${PREFIX}/bin/dtrun
 	rm -f ${PREFIX}/bin/dtsession
 	rm -f ${PREFIX}/bin/dtsplash
 	rm -f ${PREFIX}/bin/dtterm

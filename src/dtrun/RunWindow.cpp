@@ -73,7 +73,7 @@ RunWindow::RunWindow() : Motif::Window("RunWindow")
   runButton->setRightOffset(10);
   
   runButton->setTopAttachment(Motif::Attachment::FORM);
-  runButton->setTopOffset(6);
+  runButton->setTopOffset(8);
   
   runButton->setText("Run");
   runButton->setShadowThickness(2);
@@ -85,7 +85,7 @@ RunWindow::RunWindow() : Motif::Window("RunWindow")
   closeButton->setActivateFunction(FUNCTION(RunWindow::onClose));
   
   closeButton->setRightAttachment(Motif::Attachment::FORM);
-  closeButton->setRightOffset(10);
+  closeButton->setRightOffset(9);
   
   closeButton->setTopAttachment(Motif::Attachment::FORM);
   closeButton->setTopOffset(14);
