@@ -6,6 +6,12 @@ BINDIR="`dirname $BIN`"
 PREFIX="`dirname $BINDIR`"
 cd "$CWD"
 
+if [ -f ~/.dtwmrc ]; then
+	CONFIG=~/.dtwmrc
+else 
+	CONFIG=$PREFIX/share/opencde/dtwm/dtwmrc
+fi
+
 XFILESEARCHPATH=$PREFIX/share/opencde/app-defaults/Dtwm mwm -name Dtwm \
--xrm "Dtwm*configFile: $PREFIX/share/opencde/dtwm/dtwmrc"
+-xrm "Dtwm*configFile: $CONFIG"
 
