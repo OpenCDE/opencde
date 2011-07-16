@@ -4,11 +4,13 @@
 
 #include "LoginWindow.h"
 
-void split(int argc, char* argv[])
+void print_usage(const char *prgName);
+
+void split(int argc, char* argv[], bool daemonize)
 {
   int pid = 0;
 
-  if(argc < 2 || std::string(argv[1]) != "-nodaemon")
+  if(argc < 2 || daemonize)
   {
     pid = fork();
   }
@@ -34,15 +36,34 @@ void safe_main(int argc, char* argv[])
   {
     throw OpenCDE::OpenCDEException("This application must be run as root");
   }
-
-  if(argc < 2)
+  
+  /* parse command line args */
+  
+  bool daemonize = true;
+  bool internal = false;
+  
+  int i;
+  char *prgName = argv[0];
+  for (i = 0; i < argc; i++)
   {
-    split(argc, argv);
+    if (! strcmp("-nodaemon", argv[i]))
+    {
+      daemonize = false;
+    }
+    else if (! strcmp("-internal_dont_specify", argv[i]))
+    {
+      internal = true;
+    }
+    else if (! strcmp("-h", argv[i]) || i > 0)
+    {
+      /* unknown option, or -h specified */
+      print_usage(prgName);
+    }
   }
 
-  if(std::string(argv[1]) != "internal_dont_specify")
+  if(! internal)
   {
-    split(argc, argv);
+    split(argc, argv, daemonize);
   }
 
   Motif::Application::addFallbackResource("*highlightColor: #B24D7A");
@@ -86,3 +107,8 @@ int main(int argc, char* argv[])
   }
 }
 
+void print_usage(const char *prgName)
+{
+  std::cout << "Usage: " << std::string(prgName) << " [-nodaemon]" << std::endl;
+  exit(0);
+}

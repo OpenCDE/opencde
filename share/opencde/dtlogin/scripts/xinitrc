@@ -1,4 +1,4 @@
 #!/bin/sh
 
-$OPENCDE_PREFIX/bin/dtlogin internal_dont_specify
+$OPENCDE_PREFIX/bin/dtlogin -internal_dont_specify
 
