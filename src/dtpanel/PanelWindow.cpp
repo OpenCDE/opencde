@@ -136,7 +136,9 @@ PanelWindow::PanelWindow() : Motif::Window("panelWindow")
 	desktopPanels.at(panelIndex)->setX(36 + (panelOffset * DESKTOP_BTN_WIDTH));
 	
 	/* now the buttons themselves */
-        desktopButtons.add(new Motif::ToggleButton("desktopButton", desktopPanels.at(panelIndex)));
+	std::stringstream buttonName;
+	buttonName << "desktopButton" << (1 + buttonIndex);
+        desktopButtons.add(new Motif::ToggleButton(buttonName.str(), desktopPanels.at(panelIndex)));
         desktopButtons.at(buttonIndex)->setShadowThickness(2);
         desktopButtons.at(buttonIndex)->setHighlightThickness(0);
         desktopButtons.at(buttonIndex)->setTopAttachment(Motif::Attachment::FORM);
