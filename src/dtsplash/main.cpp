@@ -37,7 +37,7 @@ void safe_main(int argc, char* argv[])
   
   try
   {
-    if (seconds == 0 || seconds == -1) {
+    if (seconds < 1) {
       new SplashDialog();
     }
     else
