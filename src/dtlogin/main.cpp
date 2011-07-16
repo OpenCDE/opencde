@@ -10,7 +10,7 @@ void split(int argc, char* argv[], bool daemonize)
 {
   int pid = 0;
 
-  if(argc < 2 || daemonize)
+  if(daemonize)
   {
     pid = fork();
   }
