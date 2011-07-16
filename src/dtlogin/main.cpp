@@ -1,5 +1,6 @@
 #include <motifmm.h>
 #include <opencde.h>
+#include <unistd.h>
 
 #include "LoginWindow.h"
 
@@ -29,7 +30,7 @@ void safe_main(int argc, char* argv[])
 {
   OpenCDE::Environment::initialize(argc, argv);
 
-  if(OpenCDE::Environment::getUsername() != "root")
+  if(geteuid() != 0)
   {
     throw OpenCDE::OpenCDEException("This application must be run as root");
   }
