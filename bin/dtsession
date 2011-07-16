@@ -5,7 +5,7 @@ BIN=`dirname $DTSESSION`
 PREFIX=`cd $BIN/..; pwd`
 export OPENCDE_PREFIX=$PREFIX
 
-$OPENCDE_PREFIX/bin/dtsplash
+$OPENCDE_PREFIX/bin/dtsplash -s 2
 
 $OPENCDE_PREFIX/bin/dtwm &
 xsetroot -solid Gray
