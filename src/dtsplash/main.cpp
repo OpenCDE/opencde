@@ -1,7 +1,10 @@
 #include <motifmm.h>
 #include <opencde.h>
+#include <unistd.h>
 
 #include "SplashDialog.h"
+
+void print_usage();
 
 void safe_main(int argc, char* argv[])
 {
@@ -12,10 +15,35 @@ void safe_main(int argc, char* argv[])
   Motif::Application::addFallbackResource("*lockDialog.background: Black");
   Motif::Application::addFallbackResource("*password.background: Gray50");
   Motif::Application::initialize("Dtsplash", argc, argv);
-
+  
+  /* parse command line args */
+  int c;
+  extern char *optarg;
+  int seconds = -1;
+  
+  while ((c = getopt(argc, argv, "s:h?")) != -1)
+  {
+    switch (c)
+    {
+      case 's':
+        seconds = atoi(optarg);
+        break;
+      case 'h':
+      case '?':
+        print_usage();
+	break;
+    }
+  }
+  
   try
   {
-    new SplashDialog();
+    if (seconds == 0 || seconds == -1) {
+      new SplashDialog();
+    }
+    else
+    {
+      new SplashDialog(seconds);
+    }
   }
   catch(std::exception& e)
   {
@@ -39,5 +67,11 @@ int main(int argc, char* argv[])
 
     return 1;
   }
+}
+
+void print_usage()
+{
+  std::cout << "Usage: dtsplash [-s seconds] [-h]" << std::endl;
+  exit(0);
 }
 

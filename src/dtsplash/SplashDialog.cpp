@@ -4,6 +4,16 @@
 
 SplashDialog::SplashDialog() : Motif::Dialog("splashDialog")
 {
+  SplashDialog::init(DEFAULT_SPLASH_TIME);
+}
+
+SplashDialog::SplashDialog(unsigned int seconds) : Motif::Dialog("splashDialog")
+{
+  SplashDialog::init(seconds);
+}
+
+void SplashDialog::init(unsigned int seconds)
+{
   setStyle(Motif::Style::SYSTEM);
   setDecorations(Motif::Decorations::NONE);
   setWidth(Motif::Application::getScreenWidth());
@@ -41,9 +51,12 @@ SplashDialog::SplashDialog() : Motif::Dialog("splashDialog")
   vendorLogoLabel->setWidth(512);
   vendorLogoLabel->setHeight(128);
 
+
+  /* set up our timer to exit */
+  int ms = seconds * 1000;
   timer.reset(new Motif::Timer());
   timer->setIntervalFunction(FUNCTION(SplashDialog::onTimerTick));
-  timer->start(3000);
+  timer->start(ms);
 
   setVisible(true);
 }
