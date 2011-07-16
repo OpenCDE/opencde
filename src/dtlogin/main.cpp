@@ -7,7 +7,10 @@ void split(int argc, char* argv[])
 {
   int pid = 0;
 
-  pid = fork();
+  if(argc < 2 || std::string(argv[1]) != "-nodaemon")
+  {
+    pid = fork();
+  }
 
   if(pid != 0)
   {
