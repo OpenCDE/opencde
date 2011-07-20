@@ -99,9 +99,19 @@ int Application::getScreenWidth()
   return XDisplayWidth(display, 0);
 }
 
+int Application::getScreenWidth(int screen_number)
+{  
+  return XDisplayWidth(display, screen_number);
+}
+
 int Application::getScreenHeight()
 {
   return XDisplayHeight(display, 0);
+}
+
+int Application::getScreenHeight(int screen_number)
+{
+  return XDisplayHeight(display, screen_number);
 }
 
 }
