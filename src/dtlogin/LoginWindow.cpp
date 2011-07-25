@@ -186,17 +186,14 @@ void LoginWindow::onTextActivate(void* caller)
 
 void LoginWindow::onRestartButtonActivate(void* caller)
 {
-  OpenCDE::Shell::executeFork("shutdown -r now");
-  OpenCDE::Shell::executeFork("reboot");
+  OpenCDE::Shell::executeFork("shutdown -r now; reboot");
 
   setVisible(false);
 }
 
 void LoginWindow::onShutdownButtonActivate(void* caller)
 {
-  OpenCDE::Shell::executeFork("shutdown -hp now");
-  OpenCDE::Shell::executeFork("shutdown -p now");
-  OpenCDE::Shell::executeFork("poweroff");
+  OpenCDE::Shell::executeFork("shutdown -hp now; shutdown -p now; poweroff");
 
   setVisible(false);
 }
