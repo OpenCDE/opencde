@@ -25,8 +25,38 @@ public:
   static std::string getName();
   static Display* getDisplay();
   static void addFallbackResource(std::string fallbackResource);
+  
+  /**
+   * Get the width of the first screen for the default display.
+   * 
+   * @see getScreenWidth(int)
+   * @return width of screen in pixels
+   */
   static int getScreenWidth();
+  
+  /**
+   * Get the width of the given screen for the default display.
+   * 
+   * @param screen_number number of screen to get width of
+   * @return width of screen in pixels
+   */
+  static int getScreenWidth(int screen_number);
+  
+  /**
+   * Get the height of the first screen for the default display.
+   * 
+   * @see getScreenHeight(int)
+   * @return height of the screen in pixels
+   */
   static int getScreenHeight();
+  
+  /**
+   * Get the height of the given screen for the default display.
+   * 
+   * @param screen_number number of screen to get height of
+   * @return height of screen in pixels
+   */
+  static int getScreenHeight(int screen_number);
 
 };
 
