@@ -6,6 +6,7 @@ namespace Motif
 void Timer::intervalCallback(XtPointer clientData, XtIntervalId* id)
 {
   Timer* timer = (Timer*)clientData;
+  timer->id = -1;
 
   if(timer->intervalFunction.get() != NULL)
   {
@@ -33,6 +34,7 @@ Timer::~Timer()
   if(id != -1)
   {
     XtRemoveTimeOut(id);
+    id = -1;
   }
 }
 
@@ -46,7 +48,13 @@ void Timer::start(int time)
 void Timer::stop()
 {
   stopped = true;
-  XtRemoveTimeOut(id);
+  intervalFunction.reset(NULL);
+
+  if(id != -1)
+  {
+    XtRemoveTimeOut(id);
+    id = -1;
+  }
 }
 
 void Timer::setIntervalFunction(Function* function)

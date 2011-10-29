@@ -78,11 +78,12 @@ public:
   virtual void setPixmap(std::string path);
   virtual void setIconPlacement(int iconPlacement);
   virtual void setText(std::string text);
-  virtual void drawClockHands(XPoint* hour, XPoint* minute, int points);
+  virtual void OBSOLETEdrawClockHands(XPoint* hour, XPoint* minute, int points);
   virtual void drawText(int x, int y, std::string text);
   virtual void setNoResize(bool noResize);
   virtual void setToggled(bool toggled);
   virtual bool getToggled();
+  virtual int getValue();
   virtual void setResizable(bool resizable);
   virtual void setShadowType(int shadowType);
   virtual void setFocus();
@@ -107,6 +108,17 @@ public:
   virtual Pixel getBackground();
   virtual Pixel getForeground();
 
+  virtual bool isRealized();
+  virtual int getSliderSize();
+  virtual int getMaximum();
+  virtual int getMinimum();
+  virtual void setValue(int value);
+  virtual void setSliderSize(int sliderSize);
+  virtual void setPageIncrement(int pageIncrement);
+  virtual void setIncrement(int increment);
+  virtual void setMaximum(int maximum);
+  virtual void setAccelerator(std::string accelerator);
+  virtual void setAcceleratorText(std::string acceleratorText);
   virtual int getX();
   virtual int getY();
   virtual int getWidth();

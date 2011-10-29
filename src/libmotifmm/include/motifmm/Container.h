@@ -70,6 +70,12 @@ public:
   virtual Panel* getContentPanel();
   virtual void setDecorations(int decorations);
   virtual void setStyle(int style);
+  virtual void setIconName(std::string name);
+  virtual void setIconPixmap(std::string path);
+  //virtual void setIconMask(std::string path);
+
+  //XmNiconWindow <-- can get the window of the icon which is cool
+
   virtual void setVisible(bool visible);
   virtual void setInitialFocus(Component* component);
   virtual void setMwmFunctions(int functions);

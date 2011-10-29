@@ -26,6 +26,8 @@ public:
   static Display* getDisplay();
   static void addFallbackResource(std::string fallbackResource);
   
+  static void addResources(std::string path);
+  
   /**
    * Get the width of the first screen for the default display.
    * 

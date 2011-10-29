@@ -132,6 +132,14 @@ void Container::setDecorations(int decorations)
   XtSetValues(widget, args, 1);
 }
 
+void Container::setIconName(std::string name)
+{
+  Arg args[1];
+
+  XtSetArg(args[0], XmNiconName, name.c_str());
+  XtSetValues(getWidget(), args, 1);
+}
+
 void Container::setStyle(int style)
 {
   Arg args[1];
@@ -177,6 +185,29 @@ void Container::unmap()
 void Container::minimize()
 {
   XIconifyWindow(XtDisplay(widget), XtWindow(widget), 0);
+}
+
+void Container::setIconPixmap(std::string path)
+{
+  Arg args[1];
+  Pixmap p;
+  Pixmap m;
+  Pixel back;
+  XpmAttributes attr;
+
+  XtVaGetValues(widget, XmNbackground, &back, NULL);
+  XpmColorSymbol none_color = { NULL, (char*)"None", (Pixel)0 };
+  none_color.pixel = back;
+
+  attr.valuemask = XpmReturnPixels | XpmColorSymbols | XpmCloseness;
+  attr.colorsymbols = &none_color;
+  attr.numsymbols = 1;
+  attr.closeness = 80000;
+
+  XpmReadFileToPixmap(XtDisplay(widget), DefaultRootWindow(XtDisplay(widget)), (char*)path.c_str(), &p, NULL, &attr);
+
+  XtSetArg(args[0], XmNiconPixmap, p);
+  XtSetValues(widget, args, 1);
 }
 
 }

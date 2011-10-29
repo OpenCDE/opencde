@@ -20,6 +20,10 @@ Panel::Panel(std::string name, Panel* panel)
   XtSetArg(args[0], XmNnoResize, False);
   widget = XmCreateForm(panel->getWidget(), (char*)name.c_str(), args, 1);
   XtManageChild(widget);
+
+  //Widget s;
+  //s = XmCreateScrollBar(widget, "scroll", NULL, 0);
+  //XtManageChild(s);
 }
 
 Panel::~Panel()

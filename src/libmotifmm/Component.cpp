@@ -283,7 +283,7 @@ Widget Component::getWidget()
 void Component::setPixmap(std::string path)
 {
   Arg args[2];
-  Pixmap p;
+  Pixmap p = NULL;
   Pixel back;
   XpmAttributes attr;
 
@@ -297,6 +297,11 @@ void Component::setPixmap(std::string path)
   attr.closeness = 80000;
 
   XpmReadFileToPixmap(XtDisplay(widget), DefaultRootWindow(XtDisplay(widget)), (char*)path.c_str(), &p, NULL, &attr);
+
+  if(p == NULL)
+  {
+    return;
+  }
 
   XtSetArg(args[0], XmNlabelType, XmPIXMAP);
   XtSetArg(args[1], XmNlabelPixmap, p);
@@ -473,8 +478,8 @@ void Component::setLabelType(int labelType)
 void Component::setLabelPixmap(std::string path, bool transparent)
 {
   Arg args[1];
-  Pixmap pixmap;
-  Pixmap mask;
+  Pixmap pixmap = NULL;
+  Pixmap mask = NULL;
   Pixel back;
   Pixel arm;
   XpmAttributes attributes;
@@ -489,6 +494,12 @@ void Component::setLabelPixmap(std::string path, bool transparent)
   attributes.closeness = 80000;
 
   XpmReadFileToPixmap(XtDisplay(widget), DefaultRootWindow(XtDisplay(widget)), (char*)path.c_str(), &pixmap, NULL, &attributes);
+
+  if(pixmap == NULL)
+  {
+    return;
+  }
+
   XtSetArg(args[0], XmNlabelPixmap, pixmap);
   XtSetValues(widget, args, 1);
 
@@ -496,6 +507,12 @@ void Component::setLabelPixmap(std::string path, bool transparent)
   {
     colorSymbol.pixel = arm;
     XpmReadFileToPixmap(XtDisplay(widget), DefaultRootWindow(XtDisplay(widget)), (char*)path.c_str(), &mask, NULL, &attributes);
+
+    if(mask == NULL)
+    {
+      return;
+    }
+
     XtSetArg(args[0], XmNarmPixmap, mask);
     XtSetValues(widget, args, 1);
   }
@@ -543,7 +560,7 @@ void Component::setIconPlacement(int iconPlacement)
   XtSetValues(widget, args, 1);
 }
 
-void Component::drawClockHands(XPoint* hour, XPoint* minute, int points)
+void Component::OBSOLETEdrawClockHands(XPoint* hour, XPoint* minute, int points)
 {
   Arg args[2];
   GC gc;
@@ -560,9 +577,10 @@ void Component::drawClockHands(XPoint* hour, XPoint* minute, int points)
   XFillPolygon(display, p, gc, minute, points, Convex, CoordModeOrigin);
   //refreshPixmap();
 
-  XtSetArg(args[0], XmNlabelType, XmPIXMAP);
-  XtSetArg(args[1], XmNlabelPixmap, p);
-  XtSetValues(widget, args, 2);
+  if(XtIsRealized(widget) == true)
+  {
+    XClearArea(XtDisplay(widget), XtWindow(widget), 0, 0, 1, 1, True);
+  }
 }
 
 void Component::drawText(int x, int y, std::string text)
@@ -581,6 +599,125 @@ void Component::drawText(int x, int y, std::string text)
   XtSetArg(args[0], XmNlabelType, XmPIXMAP);
   XtSetArg(args[1], XmNlabelPixmap, p);
   XtSetValues(widget, args, 2);
+}
+
+int Component::getValue()
+{
+  Arg args[1];
+  int value = 0;
+
+  XtSetArg(args[0], XmNvalue, &value);
+  XtGetValues(widget, args, 1);
+
+  return value;
+}
+
+int Component::getMaximum()
+{
+  Arg args[1];
+  int value = 0;
+
+  XtSetArg(args[0], XmNmaximum, &value);
+  XtGetValues(widget, args, 1);
+
+  return value;
+}
+
+int Component::getMinimum()
+{
+  Arg args[1];
+  int value = 0;
+
+  XtSetArg(args[0], XmNminimum, &value);
+  XtGetValues(widget, args, 1);
+
+  return value;
+}
+
+int Component::getSliderSize()
+{
+  Arg args[1];
+  int value = 0;
+
+  XtSetArg(args[0], XmNsliderSize, &value);
+  XtGetValues(widget, args, 1);
+
+  return value;
+}
+
+void Component::setMaximum(int maximum)
+{
+  Arg args[2];
+
+  //if(getValue() > maximum)
+  //{
+  //  setValue(maximum);
+  //}
+
+  XtSetArg(args[0], XmNmaximum, maximum);
+  XtSetArg(args[1], XmNminimum, 0);
+  XtSetValues(widget, args, 2);
+}
+
+void Component::setValue(int value)
+{
+  Arg args[1];
+
+  XtSetArg(args[0], XmNvalue, value);
+  XtSetValues(widget, args, 1);
+}
+
+void Component::setSliderSize(int sliderSize)
+{
+  Arg args[1];
+
+  //if(sliderSize > getMaximum() - getMinimum())
+  //{
+  //  sliderSize = getMaximum() - getMinimum();
+  //}
+
+  XtSetArg(args[0], XmNsliderSize, sliderSize);
+  XtSetValues(widget, args, 1);
+}
+
+void Component::setIncrement(int increment)
+{
+  Arg args[1];
+
+  XtSetArg(args[0], XmNincrement, increment);
+  XtSetValues(widget, args, 1);
+}
+
+void Component::setPageIncrement(int pageIncrement)
+{
+  Arg args[1];
+
+  XtSetArg(args[0], XmNpageIncrement, pageIncrement);
+  XtSetValues(widget, args, 1);
+}
+
+bool Component::isRealized()
+{
+  return XtIsRealized(widget);
+}
+
+void Component::setAccelerator(std::string accelerator)
+{
+  Arg args[1];
+
+  XtSetArg(args[0], XmNaccelerator, accelerator.c_str());
+  XtSetValues(widget, args, 1);
+}
+
+void Component::setAcceleratorText(std::string acceleratorText)
+{
+  Arg args[1];
+  XmString txt = NULL;
+
+  txt = XmStringCreateLocalized((char*)acceleratorText.c_str());
+  XtSetArg(args[0], XmNacceleratorText, txt);
+  XtSetValues(widget, args, 1);
+  XmStringFree(txt);
 }
 
 }

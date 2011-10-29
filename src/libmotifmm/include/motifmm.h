@@ -5,6 +5,7 @@
 #include <string>
 #include <memory>
 #include <vector>
+#include <fstream>
 
 #include <stdlib.h>
 #include <stdio.h>
@@ -27,6 +28,9 @@
 #include <Xm/RowColumn.h>
 #include <Xm/IconButton.h>
 #include <Xm/IconButtonP.h>
+#include <Xm/ScrollBar.h>
+#include <Xm/ScrolledW.h>
+#include <Xm/Separator.h>
 
 #include <motifmm/MessageBox.h>
 #include <motifmm/MotifException.h>
@@ -41,7 +45,9 @@
     #include <motifmm/Dialog.h>
 
   #include <motifmm/Panel.h>
+  #include <motifmm/ScrolledPanel.h>
   #include <motifmm/Button.h>
+  #include <motifmm/Separator.h>
   #include <motifmm/ScrolledText.h>
   #include <motifmm/Text.h>
   #include <motifmm/Label.h>
@@ -52,6 +58,7 @@
   #include <motifmm/Custom.h>
   #include <motifmm/IconButton.h>
   #include <motifmm/Timer.h>
+  #include <motifmm/ScrollBar.h>
 
 #endif
 

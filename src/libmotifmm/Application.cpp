@@ -94,6 +94,25 @@ void Application::addFallbackResource(std::string fallbackResource)
   fallbackResources.push_back(fallbackResource);
 }
 
+void Application::addResources(std::string path)
+{
+  std::ifstream file;
+  std::string line;
+
+  file.open(path.c_str());
+
+  if(file.is_open() == false)
+  {
+    return;
+  }
+
+  while(file.eof() == false)
+  {
+    getline(file, line);
+    addFallbackResource(line);
+  }
+}
+
 int Application::getScreenWidth()
 {
   return XDisplayWidth(display, 0);
@@ -115,4 +134,3 @@ int Application::getScreenHeight(int screen_number)
 }
 
 }
-
