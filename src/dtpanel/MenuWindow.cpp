@@ -95,7 +95,7 @@ void MenuWindow::onShow(void* caller)
   setX(x-1);
 
   OpenCDE::Workspace::moveToWorkspace(XtWindow(getWidget()), 0);
-  slideTimer->start(25);
+  onSlideInterval(slideTimer.get());
 }
 
 Motif::Button* MenuWindow::getMenuButton()
