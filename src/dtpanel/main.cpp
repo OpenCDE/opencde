@@ -6,7 +6,9 @@
 void safe_main(int argc, char* argv[])
 {
   OpenCDE::Environment::initialize(argc, argv);
+  Motif::Application::addResources(OpenCDE::Environment::getPrefix() + "/share/opencde/app-defaults/Dtpanel");
 
+  /*
   Motif::Application::addFallbackResource("*highlightColor: #B24D7A");
   Motif::Application::addFallbackResource("*background: #AEB2C3");
   //Motif::Application::addFallbackResource("*panelWindow.background: Orange");
@@ -15,6 +17,7 @@ void safe_main(int argc, char* argv[])
   Motif::Application::addFallbackResource("*desktopsPanel*fontList: -*-helvetica-*-r-*-*-14-*-*-*-*-*-*-*");
   Motif::Application::addFallbackResource("*menuWindow*fontList: -*-helvetica-*-r-*-*-13-*-*-*-*-*-*-*");
   Motif::Application::addFallbackResource("*menuWindow*foreground: White");
+  */
 
   Motif::Application::initialize("Dtpanel", argc, argv);
 
