@@ -20,7 +20,7 @@ install:
 	chmod o=rx ${PREFIX}/bin/dtlock
 
 	cp bin/dtlogin ${PREFIX}/bin/
-	cp bin/dtpad ${PREFIX}/bin/
+	# cp bin/dtpad ${PREFIX}/bin/
 	cp bin/dtpanel ${PREFIX}/bin/
 	cp bin/dtrun ${PREFIX}/bin/
 	cp bin/dtsession ${PREFIX}/bin/
