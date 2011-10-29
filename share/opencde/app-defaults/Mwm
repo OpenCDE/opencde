@@ -1,0 +1,12 @@
+*highlightColor: #B24D7A
+*highlightThickness: 1
+*activeBackground: #B24D7A
+*background: #AEB2C3
+*title*fontList: -*-helvetica-bold-r-*-*-17-*-*-*-*-*-*-*
+*menu*fontList: -*-helvetica-medium-r-*-*-12-*-*-*-*-*-*-*
+*icon*fontList: -*-helvetica-bold-r-*-*-12-*-*-*-*-*-*-*
+*resizeBorderWidth: 6
+*moveOpaque: True
+*iconPlacement: Top Left
+*iconAutoPlace: True
+
