@@ -1,7 +1,7 @@
 # Available platforms:- FREEBSD LINUX OTHER
-PLATFORM=LINUX
+PLATFORM=FREEBSD
 
-PREFIX=/opt/dt
+PREFIX=/usr/local
 
 CC=gcc
 CFLAGS=-Wall -Os -I/usr/X11R6/include -I/usr/local/include

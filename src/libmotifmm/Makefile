@@ -10,6 +10,7 @@ all: ${OUT}
 
 ${OUT}: ${OBJ}
 	${CPP} -shared -o ${OUT} ${OBJ} ${LDFLAGS} -lXpm -lXm -lXt -lX11
+	mkdir -p ../../include
 	cp -r include/* ../../include
 
 .cpp.o:
@@ -18,4 +19,5 @@ ${OUT}: ${OBJ}
 .PHONY: clean
 clean:
 	rm -f ${OUT} ${OBJ}
+	rm -rf ../../include
 
