@@ -1,0 +1,34 @@
+OpenCDE
+-------
+
+*** Compiling / Installing ***
+
+Before attempting to compile OpenCDE, you must edit the 'config.Mk'
+file. Ensure that the PLATFORM variable is set to your target platform
+and that the PREFIX variable points to the location in which you would
+like to install OpenCDE to.
+
+If using an operating system other than FreeBSD or Linux, you will
+likely need to modify the CFLAGS, CPPFLAGS and LDFLAGS to point to your
+build environment.
+
+OpenCDE requires no dependencies other than OpenMotif and it's required
+libraries.
+
+You can compile and install OpenCDE by issuing the following commands
+
+$ cd opencde
+$ make
+# make install
+
+If you are porting OpenCDE and require the build to be handled by some
+kind of build harness, you can use the following commands to prevent you
+from needing to edit config.Mk.
+
+$ cd opencde
+$ make PLATFORM=FREEBSD
+# make PREFIX=/usr/local install
+
+Enjoy,
+
+The OpenCDE Consortium
