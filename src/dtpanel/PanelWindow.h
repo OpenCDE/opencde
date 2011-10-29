@@ -43,6 +43,9 @@ private:
   std::auto_ptr<Motif::Timer> clockTimer;
   int calButtonIndex;
   std::auto_ptr<Motif::Timer> calTimer;
+  Pixmap clockPixmap;
+
+  void drawClockHands(XPoint* hour, XPoint* minute, int points);
 
 public:
   PanelWindow();

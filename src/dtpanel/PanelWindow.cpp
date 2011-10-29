@@ -4,6 +4,8 @@
 
 PanelWindow::PanelWindow() : Motif::Window("panelWindow")
 {
+  clockPixmap = NULL;
+  setIconPixmap(OpenCDE::Environment::getPrefix() + "/share/opencde/pixmaps/SDtWsm.l.pm");
   clockButtonIndex = -1;
   calButtonIndex = -1;
   hasDesktopsPanel = false;
@@ -81,7 +83,7 @@ PanelWindow::PanelWindow() : Motif::Window("panelWindow")
       desktopsPanel->setBottomOffset(1);
       desktopsPanel->setX(currentWidth);
 
-      lockButton.reset(new Motif::Button("exitButton", desktopsPanel.get()));
+      lockButton.reset(new Motif::Button("lockButton", desktopsPanel.get()));
       lockButton->setShadowThickness(0);
       lockButton->setHighlightThickness(1);
       lockButton->setTopAttachment(Motif::Attachment::FORM);
@@ -203,7 +205,7 @@ PanelWindow::PanelWindow() : Motif::Window("panelWindow")
         menuButtons.at(menuButtons.size() - 1)->setVisible(false);
       }
 
-      iconButtons.add(new Motif::Button("menuButton", iconsPanel.get()));
+      iconButtons.add(new Motif::Button("iconButton", iconsPanel.get()));
       iconButtons.at(iconButtons.size() - 1)->setHighlightThickness(1);
       iconButtons.at(iconButtons.size() - 1)->setShadowThickness(0);
       iconButtons.at(iconButtons.size() - 1)->setTopAttachment(Motif::Attachment::FORM);
@@ -219,6 +221,7 @@ PanelWindow::PanelWindow() : Motif::Window("panelWindow")
         clockTimer.reset(new Motif::Timer());
         clockTimer->start(30000);
         clockTimer->setIntervalFunction(FUNCTION(PanelWindow::onClockTimerTick));
+	iconButtons.at(clockButtonIndex)->setPixmap(OpenCDE::Environment::getPrefix() + "/share/opencde/pixmaps/Fpclock.l.pm");
         onClockTimerTick(NULL);
       }
       else if(menuEntries.at(entryIndex) == "Calendar")
@@ -231,8 +234,8 @@ PanelWindow::PanelWindow() : Motif::Window("panelWindow")
       }
       else
       {
-      iconButtons.at(iconButtons.size() - 1)->setLabelType(Motif::LabelType::PIXMAP);
-      iconButtons.at(iconButtons.size() - 1)->setLabelPixmap(OpenCDE::Filesystem::relativeFallback(ini->getValue(menuEntries.at(entryIndex), "", "pixmap"), OpenCDE::Environment::getPrefix() + "/share/opencde/pixmaps"), true);
+        iconButtons.at(iconButtons.size() - 1)->setLabelType(Motif::LabelType::PIXMAP);
+        iconButtons.at(iconButtons.size() - 1)->setLabelPixmap(OpenCDE::Filesystem::relativeFallback(ini->getValue(menuEntries.at(entryIndex), "", "pixmap"), OpenCDE::Environment::getPrefix() + "/share/opencde/pixmaps"), true);
       }
 
       iconButtons.at(iconButtons.size() - 1)->setHeight(58);
@@ -291,6 +294,7 @@ PanelWindow::PanelWindow() : Motif::Window("panelWindow")
   if(desktopButtons.size() > 0)
   {
     OpenCDE::Workspace::setBackgroundPixmap(OpenCDE::Filesystem::relativeFallback(ini->getValue("Desktops", desktopButtons.at(0)->getTag(), "backdrop"), OpenCDE::Environment::getPrefix() + "/share/opencde/backdrops"));
+    setIconName(desktopButtons.at(0)->getTag());
   }
 
   setVisible(true);
@@ -428,6 +432,7 @@ void PanelWindow::onDesktopButtonClicked(void* caller)
   OpenCDE::Workspace::setWorkspace(desktop);
   OpenCDE::Workspace::setBackgroundPixmap(OpenCDE::Filesystem::relativeFallback(ini->getValue("Desktops", toggleButton->getTag(), "backdrop"), OpenCDE::Environment::getPrefix() + "/share/opencde/backdrops"));
   //setTitle(toggleButton->getTag());
+  setIconName(toggleButton->getTag());
 }
 
 void PanelWindow::onShown(void* caller)
@@ -518,6 +523,26 @@ void PanelWindow::onCalTimerTick(void* caller)
 
 void PanelWindow::onClockTimerTick(void* caller)
 {
+  if(clockPixmap == 0)
+  {
+    Arg args[2];
+    Pixel back;
+    XpmAttributes attr;
+  
+    XtVaGetValues(widget, XmNbackground, &back, NULL);
+    XpmColorSymbol none_color = { NULL, (char*)"None", (Pixel)0 };
+    none_color.pixel = back;
+
+    attr.valuemask = XpmReturnPixels | XpmColorSymbols | XpmCloseness;
+    attr.colorsymbols = &none_color;
+    attr.numsymbols = 1;
+    attr.closeness = 80000;
+  
+    XpmReadFileToPixmap(XtDisplay(widget), DefaultRootWindow(XtDisplay(widget)), (
+char*)std::string(OpenCDE::Environment::getPrefix(
+) + "/share/opencde/pixmaps/Fpclock.l.pm").c_str(), &clockPixmap, NULL, &attr);
+  }
+
   int bufsize = 5;
   int minute;
   int hour;
@@ -604,11 +629,39 @@ void PanelWindow::onClockTimerTick(void* caller)
   hourHand[3] = leftPoint_hour;
 
   // Blank the pixmap with the clock face and resize.
-  iconButtons.at(clockButtonIndex)->setPixmap(OpenCDE::Environment::getPrefix() + "/share/opencde/pixmaps/Fpclock.l.pm");
+  //iconButtons.at(clockButtonIndex)->setPixmap(OpenCDE::Environment::getPrefix() + "/share/opencde/pixmaps/Fpclock.l.pm");
   iconButtons.at(clockButtonIndex)->setHeight(height);
   iconButtons.at(clockButtonIndex)->setWidth(width);
 
   // Draw the clock hands
-  iconButtons.at(clockButtonIndex)->drawClockHands(hourHand,minuteHand,numPoints);
+  Pixmap destPixmap;
+  Arg args[1];
+  XtSetArg(args[0], XmNlabelPixmap, &destPixmap);
+  XtGetValues(iconButtons.at(clockButtonIndex)->getWidget(), args, 1);
+  //iconButtons.at(clockButtonIndex)->drawClockHands(hourHand,minuteHand,numPoints);
+  drawClockHands(hourHand,minuteHand,numPoints);
 }
 
+void PanelWindow::drawClockHands(XPoint* hour, XPoint* minute, int points)
+{
+  Arg args[2];
+  GC gc;
+  Pixmap p;
+  
+  XtSetArg(args[0], XmNlabelPixmap, &p);
+  XtGetValues(iconButtons.at(clockButtonIndex)->getWidget(), args, 1);
+
+  Display *display = XtDisplay(widget);
+  gc = XCreateGC(display, p, NULL, 0);
+  XCopyArea(XtDisplay(widget), clockPixmap, p, gc, 0, 0, iconButtons.at(clockButtonIndex)->getWidth(), iconButtons.at(clockButtonIndex)->getHeight(), 0, 0);
+  XDrawLines(display, p, gc, hour,  points, CoordModeOrigin);
+  XDrawLines(display, p, gc, minute,points, CoordModeOrigin);
+  XFillPolygon(display, p, gc, hour,   points, Convex, CoordModeOrigin);
+  XFillPolygon(display, p, gc, minute, points, Convex, CoordModeOrigin);
+  //refreshPixmap();
+
+  if(XtIsRealized(widget) == true)
+  {
+    XClearArea(XtDisplay(widget), XtWindow(iconButtons.at(clockButtonIndex)->getWidget()), 0, 0, 1, 1, True);
+  }
+}
