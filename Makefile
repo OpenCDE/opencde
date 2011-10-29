@@ -20,6 +20,7 @@ install:
 	chmod o=rx ${PREFIX}/bin/dtlock
 
 	cp bin/dtlogin ${PREFIX}/bin/
+	cp bin/dtfile ${PREFIX}/bin/
 	# cp bin/dtpad ${PREFIX}/bin/
 	cp bin/dtpanel ${PREFIX}/bin/
 	cp bin/dtrun ${PREFIX}/bin/
@@ -35,6 +36,7 @@ install:
 uninstall:
 	rm -r -f ${PREFIX}/share/opencde
 	rm -r -f ${PREFIX}/etc/opencde
+	rm -f ${PREFIX}/bin/dtfile
 	rm -f ${PREFIX}/bin/dtlock
 	rm -f ${PREFIX}/bin/dtlogin
 	rm -f ${PREFIX}/bin/dtpad
