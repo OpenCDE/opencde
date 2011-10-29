@@ -3,6 +3,7 @@
 
 MenuWindow::MenuWindow(PanelWindow* panelWindow, Motif::Button* menuButton, std::string name) : Motif::Window("menuWindow")
 {
+  setHeight(1);
   borderHeight = 0;
   this->menuButton = menuButton;
   this->name = name;
@@ -40,8 +41,9 @@ MenuWindow::MenuWindow(PanelWindow* panelWindow, Motif::Button* menuButton, std:
   }
 
   setWidth(175);
-  setHeight(10);
-  setY(panelWindow->getY());
+  setHeight(1);
+
+  setY(panelWindow->getY()-10);
 
   Position x;
   Position y;
@@ -81,7 +83,6 @@ void MenuWindow::onClose(void* caller)
 
 void MenuWindow::onShow(void* caller)
 {
-
   Position x;
   Position y;
 
@@ -104,14 +105,26 @@ Motif::Button* MenuWindow::getMenuButton()
 
 void MenuWindow::onSlideInterval(void* caller)
 {
-  setHeight(getHeight() + 25);
+  //for(int index = 0; index < 6; index++)
+  while(true)
+  {
+    if(getHeight() >= targetHeight)
+    {
+      break;
+    }
+
+    setHeight(getHeight() + 4);
+    setY(panelWindow->getY() - getHeight() - borderHeight + 4);
+    //XSync(XtDisplay(widget), False);
+    XmUpdateDisplay(widget);
+  }
 
   if(getHeight() >= targetHeight)
   {
-    slideTimer->stop();
+    //slideTimer->stop();
     setHeight(targetHeight);
+    setY(panelWindow->getY() - getHeight() - borderHeight + 4);
   }
 
-  setY(panelWindow->getY() - getHeight() - borderHeight + 4);
+  //XFlush(XtDisplay(widget));
 }
-
