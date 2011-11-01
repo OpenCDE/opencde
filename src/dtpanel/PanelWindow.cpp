@@ -221,7 +221,10 @@ PanelWindow::PanelWindow() : Motif::Window("panelWindow")
         clockTimer.reset(new Motif::Timer());
         clockTimer->start(30000);
         clockTimer->setIntervalFunction(FUNCTION(PanelWindow::onClockTimerTick));
-	iconButtons.at(clockButtonIndex)->setPixmap(OpenCDE::Environment::getPrefix() + "/share/opencde/pixmaps/Fpclock.l.pm");
+	
+	
+	std::string clockPath = OpenCDE::Filesystem::pathToResource(std::string("clock.xpm"), std::string("dtpanel"), OpenCDE::Filesystem::ICON);
+	iconButtons.at(clockButtonIndex)->setPixmap(clockPath);
         onClockTimerTick(NULL);
       }
       else if(menuEntries.at(entryIndex) == "Calendar")
@@ -235,7 +238,11 @@ PanelWindow::PanelWindow() : Motif::Window("panelWindow")
       else
       {
         iconButtons.at(iconButtons.size() - 1)->setLabelType(Motif::LabelType::PIXMAP);
-        iconButtons.at(iconButtons.size() - 1)->setLabelPixmap(OpenCDE::Filesystem::relativeFallback(ini->getValue(menuEntries.at(entryIndex), "", "pixmap"), OpenCDE::Environment::getPrefix() + "/share/opencde/pixmaps"), true);
+	std::string pixmapName = ini->getValue(menuEntries.at(entryIndex), "", "pixmap");
+	std::string pixmapPath = OpenCDE::Filesystem::pathToResource(pixmapName,
+	  std::string("dtpanel"), OpenCDE::Filesystem::ICON);
+	
+	iconButtons.at(iconButtons.size() - 1)->setLabelPixmap(pixmapPath);
       }
 
       iconButtons.at(iconButtons.size() - 1)->setHeight(58);
@@ -483,15 +490,15 @@ OpenCDE::Ini* PanelWindow::getIni()
 void PanelWindow::onCalTimerTick(void* caller)
 {
   std::string month;
-  int month_x = 16;
-  int month_y = 20;
+  const int month_x = 20;
+  const int month_y = 24;
 
   int width = iconButtons.at(calButtonIndex)->getWidth();
   int height = iconButtons.at(calButtonIndex)->getHeight();
 
   std::string day;
-  int day_x = 19;
-  int day_y = 35;
+  int day_x = 24;
+  const int day_y = 39;
 
   int bufsize = 5;
 
@@ -514,7 +521,11 @@ void PanelWindow::onCalTimerTick(void* caller)
        day_x += 3;
   }
 
-  iconButtons.at(calButtonIndex)->setPixmap(OpenCDE::Environment::getPrefix() + "/share/opencde/pixmaps/FpCM.l.pm");
+
+  iconButtons.at(calButtonIndex)->setPixmap(
+  	OpenCDE::Filesystem::pathToResource(std::string("cal.xpm"), 
+						std::string("dtpanel"), 
+						OpenCDE::Filesystem::ICON));
   iconButtons.at(calButtonIndex)->setWidth(width);
   iconButtons.at(calButtonIndex)->setHeight(height);
   iconButtons.at(calButtonIndex)->drawText(month_x, month_y, month.c_str());
@@ -538,9 +549,9 @@ void PanelWindow::onClockTimerTick(void* caller)
     attr.numsymbols = 1;
     attr.closeness = 80000;
   
+    std::string clockPath = OpenCDE::Filesystem::pathToResource(std::string("clock.xpm"), std::string("dtpanel"), OpenCDE::Filesystem::ICON);
     XpmReadFileToPixmap(XtDisplay(widget), DefaultRootWindow(XtDisplay(widget)), (
-char*)std::string(OpenCDE::Environment::getPrefix(
-) + "/share/opencde/pixmaps/Fpclock.l.pm").c_str(), &clockPixmap, NULL, &attr);
+char*)clockPath.c_str(), &clockPixmap, NULL, &attr);
   }
 
   int bufsize = 5;
@@ -628,8 +639,6 @@ char*)std::string(OpenCDE::Environment::getPrefix(
   hourHand[2] = apexPoint_hour;
   hourHand[3] = leftPoint_hour;
 
-  // Blank the pixmap with the clock face and resize.
-  //iconButtons.at(clockButtonIndex)->setPixmap(OpenCDE::Environment::getPrefix() + "/share/opencde/pixmaps/Fpclock.l.pm");
   iconButtons.at(clockButtonIndex)->setHeight(height);
   iconButtons.at(clockButtonIndex)->setWidth(width);
 
@@ -638,7 +647,7 @@ char*)std::string(OpenCDE::Environment::getPrefix(
   Arg args[1];
   XtSetArg(args[0], XmNlabelPixmap, &destPixmap);
   XtGetValues(iconButtons.at(clockButtonIndex)->getWidget(), args, 1);
-  //iconButtons.at(clockButtonIndex)->drawClockHands(hourHand,minuteHand,numPoints);
+  
   drawClockHands(hourHand,minuteHand,numPoints);
 }
 

@@ -27,7 +27,7 @@ MenuWindow::MenuWindow(PanelWindow* panelWindow, Motif::Button* menuButton, std:
     entryButtons.at(entryButtons.size() - 1)->setHighlightThickness(1);
     entryButtons.at(entryButtons.size() - 1)->setIconPlacement(Motif::IconPlacement::LEFT);
 
-    entryButtons.at(entryButtons.size() - 1)->setPixmap(OpenCDE::Filesystem::relativeFallback(panelWindow->getIni()->getValue(name, menuEntries.at(entryIndex), "pixmap"), OpenCDE::Environment::getPrefix() + "/share/opencde/pixmaps"));
+    entryButtons.at(entryButtons.size() - 1)->setPixmap(OpenCDE::Filesystem::pathToResource(panelWindow->getIni()->getValue(name, menuEntries.at(entryIndex), "pixmap"), "dtpanel", OpenCDE::Filesystem::ICON));
 
     entryButtons.at(entryButtons.size() - 1)->setTag(menuEntries.at(entryIndex));
     entryButtons.at(entryButtons.size() - 1)->setText(menuEntries.at(entryIndex));
