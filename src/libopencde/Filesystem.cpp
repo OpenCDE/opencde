@@ -66,7 +66,6 @@ std::string Filesystem::relativeFallback(std::string path, std::string fallback)
 
 std::string Filesystem::pathToResource(std::string res, std::string application, Filesystem::OFSResType type)
 {
-  std::cout << application << " requested " << res << "\n";
   if(res.length() < 1)
   {
     throw OpenCDEException("the resource path '" + res + "' is invalid");
@@ -88,7 +87,7 @@ std::string Filesystem::pathToResource(std::string res, std::string application,
         return path;
       }
       
-      path = Environment::getPrefix() + "/" + application + "/icons/" + res;
+      path = Environment::getPrefix() + "/share/opencde/" + application + "/icons/" + res;
       if (Filesystem::fileExists(path))
       {
         return path;
@@ -100,7 +99,7 @@ std::string Filesystem::pathToResource(std::string res, std::string application,
         return path;
       }
       
-      path = Environment::getPrefix() + "/icons/" + res;
+      path = Environment::getPrefix() + "/share/opencde/icons/" + res;
       if (Filesystem::fileExists(path))
       {
         return path;
@@ -114,7 +113,7 @@ std::string Filesystem::pathToResource(std::string res, std::string application,
         return path;
       }
       
-      path = Environment::getPrefix() + "/" + application + "/backdrops/" + res;
+      path = Environment::getPrefix() + "/share/opencde/" + application + "/backdrops/" + res;
       if (Filesystem::fileExists(path))
       {
         return path;
@@ -126,7 +125,7 @@ std::string Filesystem::pathToResource(std::string res, std::string application,
         return path;
       }
       
-      path = Environment::getPrefix() + "/backdrops/" + res;
+      path = Environment::getPrefix() + "/share/opencde/backdrops/" + res;
       if (Filesystem::fileExists(path))
       {
         return path;
