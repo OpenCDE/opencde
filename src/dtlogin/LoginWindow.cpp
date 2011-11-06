@@ -218,7 +218,7 @@ void LoginWindow::onPasswordActivate(void* caller)
 
 #ifdef PLATFORM_LINUX
 
-  spwd = getspnam(username.c_str());
+  struct spwd *spwd = getspnam(username.c_str());
 
   if (spwd != NULL)
   {

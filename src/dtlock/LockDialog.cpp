@@ -147,7 +147,7 @@ void LockDialog::onPasswordActivate(void* caller)
 
 #ifdef PLATFORM_LINUX
 
-  spwd = getspnam(OpenCDE::Environment::getVariable("USER").c_str());
+  struct spwd *spwd = getspnam(OpenCDE::Environment::getVariable("USER").c_str());
 
   if (spwd != NULL)
   {
