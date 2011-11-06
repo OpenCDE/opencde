@@ -2,7 +2,7 @@
 
 DTSESSION=`which $0`
 BIN=`dirname $DTSESSION`
-PREFIX=`cd $BIN/..; pwd`
+PREFIX=`dirname $BIN`
 export OPENCDE_PREFIX=$PREFIX
 
 $OPENCDE_PREFIX/bin/dtsplash -s 2

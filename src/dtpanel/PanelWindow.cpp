@@ -164,7 +164,7 @@ PanelWindow::PanelWindow() : Motif::Window("panelWindow")
       exitButton->setBottomOffset(5);
       exitButton->setRightOffset(2);
       exitButton->setLabelType(Motif::LabelType::PIXMAP);
-      exitButton->setLabelPixmap(OpenCDE::Environment::getPrefix() + "/share/opencde/pixmaps/Fpexit.s.pm", true);
+      exitButton->setLabelPixmap(OpenCDE::Environment::getPrefix() + "/share/opencde/pixmaps/Fpexit.s.xpm", true);
       exitButton->setActivateFunction(FUNCTION(PanelWindow::onExitButtonClicked));
 
       panelWidth+=31;
