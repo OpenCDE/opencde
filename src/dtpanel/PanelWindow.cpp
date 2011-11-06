@@ -497,7 +497,7 @@ void PanelWindow::onCalTimerTick(void* caller)
   int height = iconButtons.at(calButtonIndex)->getHeight();
 
   std::string day;
-  int day_x = 24;
+  int day_x = 22;
   const int day_y = 39;
 
   int bufsize = 5;
