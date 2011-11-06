@@ -37,6 +37,8 @@ bool Component::getToggled()
 
   XtSetArg(args[0], XmNset, &toggled);
   XtGetValues(widget, args, 1);
+  
+  return toggled;
 }
 
 void Component::setVisible(bool visible)
@@ -298,7 +300,7 @@ void Component::setPixmap(std::string path)
 
   XpmReadFileToPixmap(XtDisplay(widget), DefaultRootWindow(XtDisplay(widget)), (char*)path.c_str(), &p, NULL, &attr);
 
-  if(p == NULL)
+  if(!p)
   {
     return;
   }
@@ -495,7 +497,7 @@ void Component::setLabelPixmap(std::string path, bool transparent)
 
   XpmReadFileToPixmap(XtDisplay(widget), DefaultRootWindow(XtDisplay(widget)), (char*)path.c_str(), &pixmap, NULL, &attributes);
 
-  if(pixmap == NULL)
+  if (!pixmap)
   {
     return;
   }
@@ -503,12 +505,12 @@ void Component::setLabelPixmap(std::string path, bool transparent)
   XtSetArg(args[0], XmNlabelPixmap, pixmap);
   XtSetValues(widget, args, 1);
 
-  if(transparent == true)
+  if (transparent)
   {
     colorSymbol.pixel = arm;
     XpmReadFileToPixmap(XtDisplay(widget), DefaultRootWindow(XtDisplay(widget)), (char*)path.c_str(), &mask, NULL, &attributes);
 
-    if(mask == NULL)
+    if (!mask)
     {
       return;
     }

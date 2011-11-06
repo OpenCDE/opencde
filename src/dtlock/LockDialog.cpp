@@ -134,7 +134,6 @@ void LockDialog::onShow(void* caller)
 
 void LockDialog::onPasswordActivate(void* caller)
 {
-  struct spwd *spwd = NULL;
   struct passwd* pass = NULL;
   char* encryptedPassword = NULL;
 

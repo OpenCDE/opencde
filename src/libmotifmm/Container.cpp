@@ -191,7 +191,6 @@ void Container::setIconPixmap(std::string path)
 {
   Arg args[1];
   Pixmap p;
-  Pixmap m;
   Pixel back;
   XpmAttributes attr;
 

@@ -91,7 +91,7 @@ PanelWindow::PanelWindow() : Motif::Window("panelWindow")
       lockButton->setTopOffset(5);
       lockButton->setLeftOffset(2);
       lockButton->setLabelType(Motif::LabelType::PIXMAP);
-      lockButton->setLabelPixmap(OpenCDE::Environment::getPrefix() + "/share/opencde/pixmaps/Fplock.s.pm", true);
+      lockButton->setLabelPixmap(OpenCDE::Environment::getPrefix() + "/share/opencde/pixmaps/Fplock.s.xpm", true);
       lockButton->setActivateFunction(FUNCTION(PanelWindow::onLockButtonClicked));
 
       panelWidth+=36;
@@ -536,7 +536,6 @@ void PanelWindow::onClockTimerTick(void* caller)
 {
   if(clockPixmap == 0)
   {
-    Arg args[2];
     Pixel back;
     XpmAttributes attr;
   

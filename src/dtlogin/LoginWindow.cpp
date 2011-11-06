@@ -203,7 +203,6 @@ void LoginWindow::onPasswordActivate(void* caller)
   bool auth = false;
   std::string username;
   struct passwd* pass = NULL;
-  struct spwd *spwd = NULL;
   char* encryptedPassword = NULL;
 
   userEntry = true;
