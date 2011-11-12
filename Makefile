@@ -42,8 +42,8 @@ install.all: install.dirs
 
 
 install.lib: install.dirs
-	cp lib/libmotifmm.so ${PREFIX}/lib/
-	cp lib/libopencde.so ${PREFIX}/lib/
+	cp lib/libmotifmm.so* ${PREFIX}/lib/
+	cp lib/libopencde.so* ${PREFIX}/lib/
 
 uninstall:
 	rm -r -f ${PREFIX}/share/opencde

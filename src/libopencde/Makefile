@@ -1,7 +1,10 @@
 include ../../config.Mk
 
 OBJ=Environment.o Shell.o Ini.o Filesystem.o ExceptionDialog.o Workspace.o vdesk.o
-OUT=../../lib/libopencde.so
+BASELIB=libopencde.so
+SONAME=${BASELIB}.2
+OUTFILE=${SONAME}.0.0
+OUT=../../lib/${OUTFILE}
 
 .SUFFIXES: .o
 
@@ -9,7 +12,9 @@ OUT=../../lib/libopencde.so
 all: ${OUT}
 
 ${OUT}: ${OBJ}
-	${CPP} -shared -o ${OUT} ${OBJ} ${LDFLAGS} -lXpm -lXm -lXt -lX11
+	${CPP} -shared -Wl,soname,${SONAME} -o ${OUT} ${OBJ} ${LDFLAGS} -lXpm -lXm -lXt -lX11
+	ln -s ${OUTFILE} ../../lib/${SONAME}
+	ln -s ${OUTFILE} ../../lib/${BASELIB}
 	cp -r include/* ../../include
 
 .cpp.o:
