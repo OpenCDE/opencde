@@ -25,4 +25,5 @@ ${OUT}: ${OBJ}
 clean:
 	rm -f ${OUT} ${OBJ}
 	rm -rf ../../include
+	rm -f ../../lib/${BASELIB}*
 

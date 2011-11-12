@@ -12,7 +12,7 @@ OUT=../../lib/${OUTFILE}
 all: ${OUT}
 
 ${OUT}: ${OBJ}
-	${CPP} -shared -Wl,soname,${SONAME} -o ${OUT} ${OBJ} ${LDFLAGS} -lXpm -lXm -lXt -lX11
+	${CPP} -shared -Wl,-soname,${SONAME} -o ${OUT} ${OBJ} ${LDFLAGS} -lXpm -lXm -lXt -lX11
 	ln -s ${OUTFILE} ../../lib/${SONAME}
 	ln -s ${OUTFILE} ../../lib/${BASELIB}
 	cp -r include/* ../../include
@@ -23,4 +23,5 @@ ${OUT}: ${OBJ}
 .PHONY: clean
 clean:
 	rm -f ${OUT} ${OBJ}
+	rm -f ../../lib/${BASELIB}*
 
