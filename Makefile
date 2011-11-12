@@ -21,7 +21,7 @@ install:
 
 	cp bin/dtlogin ${PREFIX}/bin/
 	cp bin/dtfile ${PREFIX}/bin/
-	# cp bin/dtpad ${PREFIX}/bin/
+	cp bin/dtpad ${PREFIX}/bin/
 	cp bin/dtpanel ${PREFIX}/bin/
 	cp bin/dtrun ${PREFIX}/bin/
 	cp bin/dtsession ${PREFIX}/bin/

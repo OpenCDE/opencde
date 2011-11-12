@@ -1,7 +1,7 @@
 all:
 	@${MAKE} -C libmotifmm
 	@${MAKE} -C libopencde
-	# @${MAKE} -C dtpad
+	@${MAKE} -C dtpad
 	@${MAKE} -C dtlock
 	@${MAKE} -C dtlogin
 	@${MAKE} -C dtsplash
@@ -12,7 +12,7 @@ all:
 clean:
 	@${MAKE} -C libmotifmm clean
 	@${MAKE} -C libopencde clean
-	# @${MAKE} -C dtpad clean
+	@${MAKE} -C dtpad clean
 	@${MAKE} -C dtlock clean
 	@${MAKE} -C dtlogin clean
 	@${MAKE} -C dtsplash clean
