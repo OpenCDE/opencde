@@ -1,0 +1,23 @@
+/* XPM */
+static char * ODtShred_s_xpm[] = {
+"16 16 4 1",
+" 	c #FFFFFFFFFFFF",
+".	c #000000000000",
+"X	c #999999999999",
+"o	c #CDCD00000000",
+"                ",
+"   ..........   ",
+"   .XXXXXXXX.   ",
+"   .X.X.X..ooooo",
+"   .XXXXXXXXooo ",
+"   .X.X.X..X.o  ",
+" .............. ",
+"   XXX XXX XX   ",
+"   XX. ..X .X   ",
+"    XX XXX XX   ",
+"    X. ..X .X   ",
+"     X  X  X    ",
+"           X    ",
+"                ",
+"                ",
+"                "};
