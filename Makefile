@@ -39,6 +39,7 @@ install.all: install.dirs
 	${INST} -m 0755 bin/dtterm ${INSTDIR}/bin/
 	${INST} -m 0755 bin/dtwm ${INSTDIR}/bin/
 	cp -r share/opencde ${INSTDIR}/share/
+	test "${PREFIX}" = "/usr" && sed -e 's|export LD_LIB.*PATH||' -i ${INSTDIR}/share/opencde/dtlogin/scripts/session
 	cp -r etc/opencde ${INSTDIR}/etc/
 
 
