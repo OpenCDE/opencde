@@ -20,26 +20,23 @@ install.dirs:
 	mkdir -p ${PREFIX}/etc
 
 install.sys: install.dirs
-	cp bin/dtlock ${PREFIX}/bin/
-	chmod u=rwxs ${PREFIX}/bin/dtlock
-	chmod g=rx ${PREFIX}/bin/dtlock
-	chmod o=rx ${PREFIX}/bin/dtlock
-	cp bin/dtlogin ${PREFIX}/bin/
+	${INST} -s -m 0755 bin/dtlock ${PREFIX}/bin/
+	chmod u+s ${PREFIX}/bin/dtlock
+	${INST} -s -m 0755 bin/dtlogin ${PREFIX}/bin/
 
 install.bin: install.dirs
-	mkdir -p ${PREFIX}/bin/
-	cp bin/dtfile ${PREFIX}/bin/
-	cp bin/dtpanel ${PREFIX}/bin/
-	cp bin/dtrun ${PREFIX}/bin/
-	cp bin/dtsplash ${PREFIX}/bin/
+	${INST} -s -m 0755 bin/dtfile ${PREFIX}/bin/
+	${INST} -s -m 0755 bin/dtpanel ${PREFIX}/bin/
+	${INST} -s -m 0755 bin/dtrun ${PREFIX}/bin/
+	${INST} -s -m 0755 bin/dtsplash ${PREFIX}/bin/
 
 install.xm: install.dirs
-	cp bin/dtpad ${PREFIX}/bin/
+	${INST} -s -m 0755 bin/dtpad ${PREFIX}/bin/
 
 install.all: install.dirs
-	cp bin/dtsession ${PREFIX}/bin/
-	cp bin/dtterm ${PREFIX}/bin/
-	cp bin/dtwm ${PREFIX}/bin/
+	${INST} -s -m 0755 bin/dtsession ${PREFIX}/bin/
+	${INST} -s -m 0755 bin/dtterm ${PREFIX}/bin/
+	${INST} -s -m 0755 bin/dtwm ${PREFIX}/bin/
 	cp -r share/opencde ${PREFIX}/share/
 	cp -r etc/opencde ${PREFIX}/etc/
 
