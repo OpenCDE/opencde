@@ -2,10 +2,10 @@ Dtpanel*highlightColor: #B24D7A
 Dtpanel*background: #AEB2C3
 #*Dtpanel*panelWindow.background: Orange
 Dtpanel*exitDialog*fontList: -*-helvetica-*-r-*-*-14-*-*-*-*-*-*-*
-Dtpanel*desktopsPanel*desktopButton0.background: #6366AB
 Dtpanel*desktopsPanel*desktopButton1.background: #6366AB
 Dtpanel*desktopsPanel*desktopButton2.background: #6366AB
 Dtpanel*desktopsPanel*desktopButton3.background: #6366AB
+Dtpanel*desktopsPanel*desktopButton4.background: #6366AB
 Dtpanel*desktopsPanel*fontList: -*-helvetica-*-r-*-*-14-*-*-*-*-*-*-*
 Dtpanel*menuWindow*fontList: -*-helvetica-*-r-*-*-13-*-*-*-*-*-*-*
 Dtpanel*menuWindow*foreground: White
