@@ -1,6 +1,6 @@
 include config.Mk
 INSTDIR=${DESTDIR}${PREFIX}
-CPPFLAGS=${FSH} ${CPPFLAGS}
+CPPFLAGS += -D${FSH}
 
 all:
 	@${MAKE} -C src
@@ -43,7 +43,7 @@ install.all: install.dirs
 ifeq ($(PREFIX),/usr) 
 	sed -e 's|export LD_LIB.*PATH||' -i ${INSTDIR}/share/opencde/dtlogin/scripts/session
 endif
-ifeq ($(FSH),-DUSE_FSH)
+ifeq ($(FSH),FSH)
 	cp -r etc/opencde ${DESTDIR}/etc/
 else
 	cp -r etc/opencde ${INSTDIR}/etc/

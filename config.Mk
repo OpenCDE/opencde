@@ -1,14 +1,14 @@
 # Available platforms:- FREEBSD LINUX OTHER
 PLATFORM=FREEBSD
-#FSH values: -DUSE_FSH ""
+#FSH values: FSH ""
 FSH=""
 PREFIX=/usr/local
 
 INST=install -c
-CC=gcc
+CC=/usr/bin/gcc
 CFLAGS=-Wall -Os -I/usr/X11R6/include -I/usr/local/include
 
-CPP=g++
+CPP=/usr/bin/g++
 CPPFLAGS=-Wall -Os -I/usr/X11R6/include -I/usr/local/include
 
 LDFLAGS=-L/usr/X11R6/lib -L/usr/local/lib

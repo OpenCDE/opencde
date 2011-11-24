@@ -19,7 +19,7 @@ ${OUT}: ${OBJ}
 	cp -r include/* ../../include
 
 .cpp.o:
-	${CPP} ${CPPFLAGS} -fPIC -DPLATFORM_${PLATFORM} -c -Iinclude $< -o $@
+	${CPP} ${CPPFLAGS} -fPIC -DPLATFORM_${PLATFORM} -DUSE_${FSH} -c -Iinclude $< -o $@
 
 .PHONY: clean
 clean:

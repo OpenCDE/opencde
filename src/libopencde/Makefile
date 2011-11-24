@@ -18,7 +18,7 @@ ${OUT}: ${OBJ}
 	cp -r include/* ../../include
 
 .cpp.o:
-	${CPP} ${CPPFLAGS} -fPIC -DPLATFORM_${PLATFORM} -c -Iinclude -I../../include $< -o $@
+	${CPP} ${CPPFLAGS} -fPIC -DPLATFORM_${PLATFORM} -DUSE_${FSH} -c -Iinclude -I../../include $< -o $@
 
 .PHONY: clean
 clean:
