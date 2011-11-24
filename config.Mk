@@ -1,6 +1,7 @@
 # Available platforms:- FREEBSD LINUX OTHER
 PLATFORM=FREEBSD
-USE_FSH=no
+#FSH values: -DUSE_FSH ""
+FSH=""
 PREFIX=/usr/local
 
 INST=install -c

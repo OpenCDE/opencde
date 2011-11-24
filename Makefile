@@ -1,5 +1,6 @@
 include config.Mk
 INSTDIR=${DESTDIR}${PREFIX}
+CPPFLAGS=${FSH} ${CPPFLAGS}
 
 all:
 	@${MAKE} -C src
@@ -39,9 +40,14 @@ install.all: install.dirs
 	${INST} -m 0755 bin/dtterm ${INSTDIR}/bin/
 	${INST} -m 0755 bin/dtwm ${INSTDIR}/bin/
 	cp -r share/opencde ${INSTDIR}/share/
-	test "${PREFIX}" = "/usr" && sed -e 's|export LD_LIB.*PATH||' -i ${INSTDIR}/share/opencde/dtlogin/scripts/session
+ifeq ($(PREFIX),/usr) 
+	sed -e 's|export LD_LIB.*PATH||' -i ${INSTDIR}/share/opencde/dtlogin/scripts/session
+endif
+ifeq ($(FSH),-DUSE_FSH)
+	cp -r etc/opencde ${DESTDIR}/etc/
+else
 	cp -r etc/opencde ${INSTDIR}/etc/
-
+endif
 
 install.lib: install.dirs
 	cp lib/libmotifmm.so* ${INSTDIR}/lib/
