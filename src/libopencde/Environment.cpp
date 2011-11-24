@@ -12,9 +12,14 @@ void Environment::initialize(int argc, char* argv[])
   std::string bin = Shell::executeFetch("dirname " + app);
   prefix = Shell::executeFetch("cd " + bin + "/..; pwd");
   name = app.substr(app.find_last_of('/') + 1);
+#ifdef USE_FSH
+  std::string conf = "/etc/opencde/" + name;
+#else 
+  std::string conf = prefix + "/etc/opencde/" + name;
+#endif
   setenv("OPENCDE_PREFIX", prefix.c_str(), 1);
 
-  if(Filesystem::folderExists(prefix + "/etc/opencde/" + name) == true)
+  if(Filesystem::folderExists(conf) == true)
   {
     if(Filesystem::folderExists(getHome() + "/.opencde") == false)
     {
@@ -23,7 +28,7 @@ void Environment::initialize(int argc, char* argv[])
 
     if(Filesystem::folderExists(getHome() + "/.opencde/" + name) == false)
     {
-      Filesystem::copyFolder(prefix + "/etc/opencde/" + name, getHome() + "/.opencde/" + name);
+      Filesystem::copyFolder(conf, getHome() + "/.opencde/" + name);
     }
   }
 

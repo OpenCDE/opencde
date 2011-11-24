@@ -1,6 +1,6 @@
 # Available platforms:- FREEBSD LINUX OTHER
 PLATFORM=FREEBSD
-
+USE_FSH=no
 PREFIX=/usr/local
 
 INST=install -c
