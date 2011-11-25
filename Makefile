@@ -3,7 +3,9 @@ INSTDIR=${DESTDIR}${PREFIX}
 CPPFLAGS += -D${FSH}
 
 all:
+	cp script/* bin/
 	@${MAKE} -C src
+	
 
 clean:
 	@${MAKE} -C src clean
@@ -50,8 +52,8 @@ else
 endif
 
 install.lib: install.dirs
-	cp lib/libmotifmm.so* ${INSTDIR}/lib/
-	cp lib/libopencde.so* ${INSTDIR}/lib/
+	cp -P lib/libmotifmm.so* ${INSTDIR}/lib/
+	cp -P lib/libopencde.so* ${INSTDIR}/lib/
 
 uninstall:
 	rm -r -f ${INSTDIR}/share/opencde
@@ -67,6 +69,6 @@ uninstall:
 	rm -f ${INSTDIR}/bin/dtterm
 	rm -f ${INSTDIR}/bin/dtwm
 
-	rm -f ${INSTDIR}/lib/libmotifmm.so
-	rm -f ${INSTDIR}/lib/libopencde.so
+	rm -f ${INSTDIR}/lib/libmotifmm.so*
+	rm -f ${INSTDIR}/lib/libopencde.so*
 

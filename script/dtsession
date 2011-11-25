@@ -1,0 +1,24 @@
+#!/bin/sh
+
+DTSESSION=`which $0`
+BIN=`dirname $DTSESSION`
+PREFIX=`dirname $BIN`
+export OPENCDE_PREFIX=$PREFIX
+
+if [ -z "$LD_LIBRARY_PATH" ]; then
+	export LD_LIBRARY_PATH="$OPENCDE_PREFIX/lib"
+else
+
+	case "$LD_LIBRARY_PATH" in
+		*"$OPENCDE_PREFIX/lib"*) ;;
+		*) export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:$OPENCDE_PREFIX/lib" ;;
+	esac
+fi
+
+$OPENCDE_PREFIX/bin/dtsplash -s 2
+
+$OPENCDE_PREFIX/bin/dtwm &
+xsetroot -solid Gray
+xsetroot -cursor_name left_ptr
+$OPENCDE_PREFIX/bin/dtpanel
+
