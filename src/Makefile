@@ -8,6 +8,7 @@ all:
 	@${MAKE} -C dtpanel
 	@${MAKE} -C dtrun
 	@${MAKE} -C dtfile
+	@${MAKE} -C dtwm
 
 clean:
 	@${MAKE} -C libmotifmm clean
@@ -20,3 +21,4 @@ clean:
 	@${MAKE} -C dtpanel clean
 	@${MAKE} -C dtrun clean
 	@${MAKE} -C dtfile clean
+	@${MAKE} -C dtwm clean
