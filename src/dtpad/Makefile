@@ -1,8 +1,4 @@
-
-# Begin user code block <abstract>
-# End user code block <abstract>
-
-#
+include ../../config.Mk
 # README: Portions of this file are merged at file generation
 # time. Edits can be made *only* in between specified code blocks, look
 # for keywords <Begin user code> and <End user code>.
@@ -17,15 +13,15 @@
 
       USER_SRCS = utilities.c
       USER_OBJS = utilities.o
-    USER_CFLAGS = 
- USER_LIBRARIES =
- DTPAD_ARGS = 
+#    USER_CFLAGS = 
+# USER_LIBRARIES =
+# DTPAD_ARGS = 
 
 # End user code block <make_user_files>
 
              RM = rm -f
              CC = gcc
-         CFLAGS = $(USER_CFLAGS) 
+#         CFLAGS = $(USER_CFLAGS) 
            LIBS = $(USER_LIBRARIES) -lXm -lXt -lSM -lICE -lXp -lXext -lX11 -lm
 
 OFILES = $(USER_OBJS) \
