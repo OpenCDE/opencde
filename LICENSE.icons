@@ -4,14 +4,14 @@ They are distributed under the GPL v2 license, a copy of which is provided in
 the file 'doc/LICENSE.GPL2'.  The original copyright notice for the 3dpixmaps
 icon set is provided in the file 'doc/3dpixmaps-COPYRIGHT'.
 	share/opencde/dtpanel/icons
-		FileManager.xpm
+		ODtfile.l.xpm
 		Mail2.xpm
 		Multimedia2.xpm
 		Multimedia3.xpm
 		TextEditor.xpm
 		cli.xpm
-		earth_3d.s.xpm
-		earth_3d.xpm
+		ODtwww.m.xpm
+		ODtwww.l.xpm
 		text_3d.xpm
 		text_blue.3d.xpm
 		xterm.next.xpm
@@ -21,16 +21,16 @@ The following icons were created by Robert Tomsick
 (robert@tomsick.net) specifically for OpenCDE, and are hereby released into 
 the public domain:
 	share/opencde/dtpanel/icons
-		cal.xpm
-		calculator.m.xpm
-		clock.xpm
-		clock.m.xpm
-		controlpanel.xpm
-		documentation.xpm
-		dtterm.xpm
-		dtterm-root.xpm
-		dtterm.m.xpm
-		dtterm-root.m.xpm
+		ODtcal.l.xpm
+		ODtcalc.m.xpm
+		ODtclock.l.xpm
+		ODtclock.m.xpm
+		ODtctrlpanel.l.xpm
+		ODthelp.l.xpm
+		ODtterm.l.xpm
+		ODtterm-root.l.xpm
+		ODtterm.m.xpm
+		ODtterm-root.m.xpm
 	share/opencde/pixmaps/
 		Fplock.s.xpm
 		Fpexit.s.xpm
