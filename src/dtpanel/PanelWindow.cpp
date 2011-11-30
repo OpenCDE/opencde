@@ -223,7 +223,8 @@ PanelWindow::PanelWindow() : Motif::Window("panelWindow")
         clockTimer->setIntervalFunction(FUNCTION(PanelWindow::onClockTimerTick));
 	
 	
-	std::string clockPath = OpenCDE::Filesystem::pathToResource(std::string("clock.xpm"), std::string("dtpanel"), OpenCDE::Filesystem::ICON);
+	std::string clockPath = 
+OpenCDE::Filesystem::pathToResource(std::string("ODtclock.l.xpm"), std::string("dtpanel"), OpenCDE::Filesystem::ICON);
 	iconButtons.at(clockButtonIndex)->setPixmap(clockPath);
         onClockTimerTick(NULL);
       }
@@ -523,7 +524,7 @@ void PanelWindow::onCalTimerTick(void* caller)
 
 
   iconButtons.at(calButtonIndex)->setPixmap(
-  	OpenCDE::Filesystem::pathToResource(std::string("cal.xpm"), 
+  	OpenCDE::Filesystem::pathToResource(std::string("ODtcal.l.xpm"), 
 						std::string("dtpanel"), 
 						OpenCDE::Filesystem::ICON));
   iconButtons.at(calButtonIndex)->setWidth(width);
@@ -548,7 +549,8 @@ void PanelWindow::onClockTimerTick(void* caller)
     attr.numsymbols = 1;
     attr.closeness = 80000;
   
-    std::string clockPath = OpenCDE::Filesystem::pathToResource(std::string("clock.xpm"), std::string("dtpanel"), OpenCDE::Filesystem::ICON);
+    std::string clockPath = 
+OpenCDE::Filesystem::pathToResource(std::string("ODtclock.l.xpm"), std::string("dtpanel"), OpenCDE::Filesystem::ICON);
     XpmReadFileToPixmap(XtDisplay(widget), DefaultRootWindow(XtDisplay(widget)), (
 char*)clockPath.c_str(), &clockPixmap, NULL, &attr);
   }
