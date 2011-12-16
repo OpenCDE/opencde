@@ -29,6 +29,12 @@ $ cd opencde
 $ make PLATFORM=FREEBSD
 # make PREFIX=/usr/local install
 
+There are two versions of dtwm: the standard version is a wrapper script 
+for mwm, while the other is a fork of mwm, which was at one point bundled
+with OpenCDE. 
+The fork is currently available from https://github.com/idunham/dtwm.git
+if you prefer to use it; it is licensed under the OpenMotif license.
+
 Enjoy,
 
 The OpenCDE Consortium
