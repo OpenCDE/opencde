@@ -3,6 +3,7 @@ INSTDIR=${DESTDIR}${PREFIX}
 CPPFLAGS += -D${FSH}
 
 all:
+	mkdir -p bin
 	cp script/* bin/
 	@${MAKE} -C src
 	
@@ -19,7 +20,7 @@ clean:
 
 install.dirs:
 	mkdir -p ${INSTDIR}/bin
-	mkdir -p ${INSTDIR}/lib
+	mkdir -p ${INSTDIR}/lib${LIBSUFFIX}
 	mkdir -p ${INSTDIR}/share
 #	mkdir -p ${INSTDIR}/etc
 
@@ -52,8 +53,8 @@ install.xm: install.dirs
 #endif
 
 install.lib: install.dirs
-	cp -P lib/libmotifmm.so* ${INSTDIR}/lib/
-	cp -P lib/libopencde.so* ${INSTDIR}/lib/
+	cp -P lib/libmotifmm.so* ${INSTDIR}/lib${LIBSUFFIX}/
+	cp -P lib/libopencde.so* ${INSTDIR}/lib${LIBSUFFIX}/
 
 uninstall:
 	rm -r -f ${INSTDIR}/share/opencde

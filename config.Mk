@@ -3,6 +3,7 @@ PLATFORM=FREEBSD
 #FSH values: FSH ""
 FSH=""
 PREFIX=/usr/local
+LIBSUFFIX=
 
 INST=install -c
 CC=gcc
