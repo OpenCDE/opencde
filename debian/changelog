@@ -1,0 +1,12 @@
+opencde (0.6.2.4-ibid) unstable; urgency=low
+
+  * Update packaging to use my local git branch
+  * Clear out most non-dfsg stuff
+
+ -- Ibidem <ibid_ag@lavabit.com> Sat, 12 Nov 2011 16:17:00 -0700
+
+opencde (0.6.2.0+cvs-20110820-1) unstable; urgency=low
+
+  * Initial release (Closes: #nnnn)  <nnnn is the bug number of your ITP>
+
+ -- Ibidem <ibid_ag@lavabit.com>  Sun, 11 Sep 2011 14:47:27 -0700

@@ -1,0 +1,32 @@
+Changes
+	* (motifmm) Added support for accelerators.
+
+	* (dtpanel) Individual desktop buttons can now have their
+	  color set. Bring on the AIX theme!
+
+	* (dtfile) Status bar now reflects file information (hidden
+	  etc...). The icon title, and window title also change
+	  accordingly.
+
+	* (dtfile) Now relative or absolute paths can be set to the
+	  desired pixmap icon images in 'filetypes.ini'
+
+	* (dtfile) The user can now expore their filesystem through
+	  the use of double clicking on directories.
+
+	* (dtpad) Fill the title bar with the name of the file loaded.
+
+	* (dtpad) Make dtpad(1) accept a file name on the command line.
+
+	* (dtpad) Improve handling of source text so that the text
+	  widgets share the same source.
+
+	* (dtpad) Hookup the status bar line field to go to a line.
+
+	* (dtpad) Use Motif's built-in line calculations rather than
+	  our manual version.
+
+	* (dtfile) Completed double clicking on item (outputs selected
+	  item name to console) and now also runs the program specified
+	  in the .ini
+

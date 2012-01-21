@@ -1,0 +1,253 @@
+Proposed on-line documentation design
+Version: 1.0
+Authors: Robert Tomsick <robert@tomsick.net>
+
+Description
+-----------
+This document describes the design of the OpenCDE online help system.
+
+It defines the following:
+    - Filesystem conventions/layout
+    - Documentation authoring guidelines
+        - tone and style
+        - markup template(s)/conventions
+    - dthelp functionality
+
+Within this document, the terms "MUST", "MAY", "SHOULD", "MAY NOT", and
+"MUST NOT" are defined as in RFC <TODO>.
+
+File Structure
+--------------
+Documentation is to be organized according to the application to which
+the documentation corresponds, and grouped according to the 
+tasks/features of the application.
+
+Documentation will be kept in a single directory tree (location TBD)
+with the following structure:
+
+|- doc
+    |- en
+        |- html
+            |- root.html
+            |- global
+                |- terminology
+                    |- <term>.html
+            |- <application>
+                |- terminology
+                    |- <term>.html
+                |- <task section>
+                    |- <task>.html
+        |- images
+            |- global
+            |- <application>
+                (optional -- for app. sections w/ many images:)
+                |- <task section>
+                    |- <feature>
+                    
+<application> is to be replaced with the name of the application in
+question Examples: "dtpanel", "dtfile", etc.
+
+<task section> is to be replaced with a string consisting of a single
+token describing a set of tasks; this is to allow the documentation to
+be divided according to the functionality of the application being 
+documented.  Examples: "printing", "filehandling", "menu_editing"
+
+<task> is to be replaced with the name of the feature or task documented 
+by a single HTML document.  Examples: "print_preview", as part of 
+"print_preview.html" would correspond to the "Print Preview" feature of
+an application.
+
+An example file structure for the dtpanel application might look as 
+follows:
+
+    |- doc
+        |- html
+            |- [...]
+            |- dtpanel
+				|- terminology
+					|- locking.html
+                |- menu
+                    |- editing.html
+                    |- icons.html
+                |- workspaces
+                    |- using.html
+        |- images
+            |- global
+            |- dtpanel
+                |- menu
+                    |- custom_menu_screenshot.xpm
+                    |- icon_template.xpm
+                    
+In the above example, one might expect information to be presented as 
+such:
+
+    dtpanel -> menu -> editing
+        Describes how to edit the category titles, add applications to
+        drawers, use the drawers/menus to launch applications, etc.
+    dtpanel -> menu -> icons
+        Describes the acceptable file formats for menu icons, icon color
+        standards, icon sizing guidelines, creation tips, etc.
+    dtpanel -> workspaces -> using
+        Describes how to use the "workspace" or "virtual desktop" 
+        feature of the application.
+
+
+Documentation Guidelines - Writing Style
+------------------------
+Documentation MUST:
+    - Use proper punctuation, capitalization, grammar, and spelling.
+    - Link all terminology to the appropriate terminology document
+      (either global or application-specific) and use the same terms as
+      are defined in said document.
+    - Use consistent terminology and consistent descriptions:
+        - Example - CORRECT:
+            "The 'Print Preview' feature may be used to preview a 
+             document prior to printing" [...] "To view a preview of the
+             document, select the 'Print Preview' feature from the 
+             'File' menu."
+        - Example - INCORRECT:
+            "The 'Page Preview' feature may be used to preview a 
+             page prior to printing" [...] "To view a preview of the
+             document, select the 'Print Preview' feature from the 
+             'File' menu."
+
+Documentation SHOULD:
+    - Be as simple and easy-to-understand as possible.
+    - Provide examples of features the use of which is not immediately
+      obvious to the user.
+    - Require no more than a basic high-school/secondary-school 
+      knowledge of the language in which it is written.
+    - Avoid repetition.
+    - Demonstrate a clear and full understanding of the functionality 
+      being documented.
+
+Documentation MAY:
+	- Offer real-world analogies.
+		- Example: Comparing the "desktop" metaphor of computing with 
+		  the layout of a physical desk.
+	- Offer comparisons to other features within OpenCDE (though such
+      comparisons should probably be used sparingly if at all so as to 
+      prevent "link hell".)
+    - Assume knowledge of product functionality outlined elsewhere in
+      the documentation.  It is strongly recommended, but not required,
+      that references to such functionality be accompanied by links to 
+      the corresponding parts of the product's documentation.  In cases
+      where a link is not provided, the use of terminology should be 
+      such that users may easily search the product documentation on 
+      their own.
+      
+Documentation MUST NOT:
+	- Use the passive voice:
+        - Example - CORRECT:
+            "To view a preview of the document, select 'Print Preview' 
+            from the 'File' menu."
+        - Example - INCORRECT:
+            "A preview of the document may be viewed by selecting
+            'Print Preview' from the 'File' menu."
+    - Mention religion, politics, sexual preference, financial
+      status, or other inflammatory or controversial topics.
+    - Use humor.  While humor may make documentation seem more 
+      enjoyable to read, it does not always come across well and poses
+      problems for internationalization.
+    - Use "you", "I", or "we".
+    - Use trademarks or brand names without proper citation.
+    - Use copyrighted material without explicit (AND DOCUMENTED) 
+      permission.
+	- Make derogatory, critical, or antagonistic remarks towards any 
+	  person, place, or product, even when such remarks are used 
+	  colloquially.
+			- Example - CORRECT:
+				"[...] This feature should be compatible with all but a
+				few Motif applications. [...]"
+			- Example - INCORRECT:
+				"[...] This feature should be compatible with all but 
+				the most retarded Motif applications. [...]"
+	- Use profanity (i.e. "swear" or "curse" words).
+	- Use region-specific examples in a manner which would prevent the
+	  substitution of a similar example during internationalization.
+			- Example - ACCEPTABLE
+				"Clicking the 'Send Mail' will send the message.  This 
+				 action is similar to dropping a letter in a post box --
+				 once it's been sent it cannot be recalled."
+				 
+				 (This is acceptable, as most nations have a postal 
+				 system, and thus the example is suitable for 
+				 internationalization.)
+	- Assume a knowledge of product functionality not outlined elsewhere
+	  in the documentation.
+
+Documentation Guidelines - Markup Conventions
+---------------------------------------------
+
+URLs
+
+	- URLs used in links, etc. should be relative.
+	- URLs to external resources are NOT allowed.  (There are two 
+	  reasons for this: 1) for remote URLs, not all users will have an
+	  active Internet connection, 2) for local URLs, not all users may
+	  have the external software/documentation/resources available.)
+
+Terminology
+
+	Terminology should be accompanied by a link to the definition page
+	for the term in question.  The text of the term should also appear 
+	in italics (i.e. wrapped with the <i> tag).
+	
+	Example:
+		
+		dtpanel also offers <a href="../../terminology/locking.html">
+		<i>locking</i></a> functionality.
+
+Bold, italics, underline
+	
+	Bold, italics, and underline tags should be used sparingly.  Their
+	use may or may not carry semantic meaning depending on the context.
+	In cases where they do not carry semantic meaning, their use may 
+	prove confusing or distracting to users.
+	
+	Examples of reasonable use for bold/italics:
+		
+		Emptying the trash will <b>permanently</b> delete its contents.
+		
+		Screen locking is intended as a convenience, and is <u>not</u> a
+		substitute for securing the data stored on a workstation.
+	
+Images
+	
+	The 'src' attribute of an image tag MUST be a relative URL.
+	
+	Only images included within the OpenCDE documentation tree may be 
+	used.
+	
+	Image tags MUST contain an 'alt' attribute, the contents of which 
+	MUST be a description of the contents of the image.
+	
+Header Structure
+	
+	Tasks
+	
+	Each document within the documentation tree which covers a single 
+	task (see File Structure for examples) must contain a header 
+	structure as follows:
+	
+		<html>
+			<head>
+				<title>$APPLICATION / $SECTION / $TASK</title>
+			</head>
+			
+			<body>
+				<p><a href="../..">$APPLICATION</a> / 
+					<a href="..">$SECTION</a> /
+					<b>$TASK</b>
+				</p>
+				
+				<p>BODY CONTENT GOES HERE</p>
+			</body>
+		</html>
+
+	
+	Sections
+	
+	
+	
+	Terminology

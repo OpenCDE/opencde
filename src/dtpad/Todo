@@ -1,0 +1,13 @@
+Spell Checking
+Wrapping to Fit
+Printing
+Status bar does not update on line count change
+Keyboard shortcuts
+Help buttons
+Format menu is not functional
+Man page needs to be written
+Overstrike set by insert key does not change GUI state.
+Internationalize title bar name
+Improve the consistency of the statusBar label styles
+Handle Dirty flag for prompting of saves
+Make cursors match up when switching from wrap to fit and back.

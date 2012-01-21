@@ -1,0 +1,2 @@
+shlibs:Depends=libc6 (>= 2.3), libgcc1 (>= 1:4.1.1), libice6 (>= 1:1.0.0), libmotif4, libsm6, libstdc++6 (>= 4.2.1), libx11-6, libxext6, libxp6, libxpm4, libxt6
+misc:Depends=

@@ -1,0 +1,4 @@
+Keys DefaultKeyBindings
+{
+        Alt<Key>F2      root|icon|window        f.exec "dtrun &"
+}

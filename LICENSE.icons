@@ -1,0 +1,36 @@
+The following icons are distributed with and/or without modification, from icons
+taken from the "3dpixmaps" 1.21 packge and are Copyright 1999, Joerg Mertin. 
+They are distributed under the GPL v2 license, a copy of which is provided in
+the file 'doc/LICENSE.GPL2'.  The original copyright notice for the 3dpixmaps
+icon set is provided in the file 'doc/3dpixmaps-COPYRIGHT'.
+	share/opencde/dtpanel/icons
+		ODtfile.l.xpm
+		Mail2.xpm
+		Multimedia2.xpm
+		Multimedia3.xpm
+		TextEditor.xpm
+		cli.xpm
+		ODtwww.m.xpm
+		ODtwww.l.xpm
+		text_3d.xpm
+		text_blue.3d.xpm
+		xterm.next.xpm
+
+
+The following icons were created by Robert Tomsick 
+(robert@tomsick.net) specifically for OpenCDE, and are hereby released into 
+the public domain:
+	share/opencde/dtpanel/icons
+		ODtcal.l.xpm
+		ODtcalc.m.xpm
+		ODtclock.l.xpm
+		ODtclock.m.xpm
+		ODtctrlpanel.l.xpm
+		ODthelp.l.xpm
+		ODtterm.l.xpm
+		ODtterm-root.l.xpm
+		ODtterm.m.xpm
+		ODtterm-root.m.xpm
+	share/opencde/pixmaps/
+		Fplock.s.xpm
+		Fpexit.s.xpm

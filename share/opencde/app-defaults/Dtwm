@@ -1,0 +1,12 @@
+Dtwm*highlightColor: #B24D7A
+Dtwm*highlightThickness: 1
+Dtwm*activeBackground: #B24D7A
+Dtwm*background: #AEB2C3
+Dtwm*title*fontList: -*-helvetica-bold-r-*-*-17-*-*-*-*-*-*-*
+Dtwm*menu*fontList: -*-helvetica-medium-r-*-*-12-*-*-*-*-*-*-*
+Dtwm*icon*fontList: -*-helvetica-bold-r-*-*-12-*-*-*-*-*-*-*
+Dtwm*resizeBorderWidth: 6
+Dtwm*moveOpaque: True
+Dtwm*iconPlacement: Top Left
+Dtwm*iconAutoPlace: True
+

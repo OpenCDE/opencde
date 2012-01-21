@@ -1,0 +1,5 @@
+TODO
+
+1) Add SONAME support to Makefile (remove LD_LIBRARY_PATH hack.)
+2) Merge XmHTML into supporting library tree (with mghis's patch).
+3) Start initial implementation of dthelp
