@@ -1,0 +1,50 @@
+Source: opencde
+Section: nonfree/x11
+Priority: extra
+Maintainer: Ibidem <ibid_ag@lavabit.com>
+Build-Depends: debhelper (>= 7.0.50~), libmotif-dev (>= 2.2)
+Standards-Version: 3.8.4
+Homepage: <insert the upstream URL, if relevant>
+#Vcs-Git: git://git.debian.org/collab-maint/opencde-0.6.2.0+cvs.git
+#Vcs-Browser: http://git.debian.org/?p=collab-maint/opencde-0.6.2.0+cvs.git;a=summary
+
+Package: opencde
+Architecture: any
+Section: contrib/x11
+Depends: ${shlibs:Depends}, ${misc:Depends}
+Description: A BSD-licensed CDE clone
+ OpenCDE is a clone of the Open Group's Common Desktop Environment,
+ licensed under a two-clause BSD style license. At this stage it is
+ incomplete, but fairly usable. dtpanel, dtpad, dtlock, dtwm, and
+ dtfile (demo) are the most relevant parts.
+ While dtlogin is included, no init file has been provided.
+# This includes a fork of the OpenMotif mwm (dtwm), which is not free.
+#Depends: opencde-shared, opencde-libs
+
+#Package: opencde-shared
+#Architecture: all
+#Section: contrib/x11
+#Description: OpenCDE shared files
+# This contains pixmaps, scripts, and configuration for OpenCDE.
+
+#Package: opencde-libs
+#Architecture: any
+#Depends: ${shlibs:Depends}
+#Section: contrib/libs
+#Description: libopencde and libmotifmm
+# libmotifmm is a C++ wrapper for Motif, roughly inspired by the Swing API.
+# libopencde provides other functions for OpenCDE.
+# Headers are located in the OpenCDE source, so these are solely depend-
+# encies for OpenCDE.
+#
+#Package: opencde-xm
+#Architecture: any
+#Depends: ${shlibs:Depends}, opencde-shared
+#Section: contrib/editors
+#Description: dtpad and miscellaneous other pure Motif programs
+# This contains those programs from OpenCDE which only use Motif.
+#Package: opencde-0.6.2.0+cvs-doc
+#
+#Architecture: all
+#Description: documentation for opencde-0.6.2.0+cvs
+# <insert long description, indented with spaces>

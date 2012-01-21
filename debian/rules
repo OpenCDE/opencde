@@ -1,0 +1,43 @@
+#!/usr/bin/make -f
+#debian/rules file written by Isaac Dunham (Ibidem)
+# just from the Policy
+clean:
+	make clean
+	rm -rf debian/files debian/opencde/ build binary
+
+build:
+	#any magic to configure it goes here
+	make -C src PLATFORM=LINUX PREFIX=/usr
+	#touch build
+
+binary-indep:
+	# use this if you use a separate package for scripts/configuration
+	# must be present, may do nothing
+
+binary-arch: build
+	dh_testdir
+	dh_testroot
+	dh_prep
+	dh_installdirs
+	make install.dirs PREFIX=/usr DESTDIR=debian/opencde
+	make install.lib install.xm install.sys install.bin install.all PREFIX=/usr DESTDIR=debian/opencde
+	#mkdir -p debian/opencde/usr/share
+	#cp -r ./bin debian/opencde/usr/
+	#NOTE that some stuff should be in /etc, not /usr/etc
+	#cp -r ./share/* debian/opencde/usr/share/
+	dh_installchangelogs
+	dh_installdocs
+	dh_strip
+	dh_fixperms
+	dh_installdeb
+	dh_shlibdeps
+	dh_gencontrol
+	dh_md5sums
+	dh_builddeb
+          
+binary: build binary-arch binary-indep
+	#touch binary
+
+binary-xm: build
+	make install.dirs install.xm DESTDIR=debian/opencde-xm PREFIX=/usr
+.PHONY: clean build clean
