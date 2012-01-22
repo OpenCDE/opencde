@@ -236,19 +236,6 @@ editCB( Widget w, XtPointer client_data,
 		case EDIT_CLEAR:
 			edit_clear(widget);
 			break;
-			if (False == XmTextGetSelectionPosition(widget, 
-			    &left, &right)) 
-				break; 
-			s = calloc(1 + right - left, sizeof(char));
-			if (NULL == s) {
-				perror("Dtpad (calloc)");
-				exit(1);
-			}
-			for (i = 0; i < right - left; i++) s[i] = ' ';
-			s[right - left] = '\0';
-			XmTextReplace(widget, left, right, s);
-			XtFree(s);
-			break;
 		default:
 			break;
 	}
