@@ -118,8 +118,8 @@ int main( int argc, char **argv)
     /* End user code block <create_dtpad> */
     
     ac = 0;
-    XtSetArg(args[ac], XmNx, 493); ac++;
-    XtSetArg(args[ac], XmNy, 130); ac++;
+    XtSetArg(args[ac], XmNx, 482); ac++;
+    XtSetArg(args[ac], XmNy, 171); ac++;
     XtSetArg(args[ac], XmNwidth, 558); ac++;
     XtSetArg(args[ac], XmNheight, 554); ac++;
     dtpad = XtCreatePopupShell((char *)"dtpad",
