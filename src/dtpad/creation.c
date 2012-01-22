@@ -73,8 +73,8 @@ extern void saveCB(Widget, XtPointer, XtPointer);
 extern void editCB(Widget, XtPointer, XtPointer);
 extern void statusBarToggleCB(Widget, XtPointer, XtPointer);
 extern void overstrikeToggleCB(Widget, XtPointer, XtPointer);
+extern void wrapToFitToggleCB(Widget, XtPointer, XtPointer);
 extern void backupSaveToggleCB(Widget, XtPointer, XtPointer);
-extern void docWrapModifyCB(Widget, XtPointer, XtPointer);
 extern void BxVerifyNumericCB(Widget, XtPointer, XtPointer);
 extern void lineTextFieldActivateCB(Widget, XtPointer, XtPointer);
 
@@ -277,8 +277,8 @@ CreatemainWindow(Widget parent)
     XtManageChild(fileMenu);
     
     ac = 0;
-    XtSetArg(args[ac], XmNx, 0); ac++;
-    XtSetArg(args[ac], XmNy, 0); ac++;
+    XtSetArg(args[ac], XmNx, 634); ac++;
+    XtSetArg(args[ac], XmNy, 187); ac++;
     XtSetArg(args[ac], XmNwidth, 161); ac++;
     XtSetArg(args[ac], XmNheight, 188); ac++;
     filePdMenu = XmCreatePulldownMenu(XtParent(fileMenu),
@@ -556,7 +556,7 @@ CreatemainWindow(Widget parent)
         args, 
         ac);
     XtManageChild(wrapToFitToggleButton);
-    XtAddCallback(wrapToFitToggleButton, XmNvalueChangedCallback, BxManageCB, (XtPointer)"unsupportedMessageBox");
+    XtAddCallback(wrapToFitToggleButton, XmNvalueChangedCallback, wrapToFitToggleCB, (XtPointer)0);
     
     ac = 0;
     backupOnSaveToggleButton = XmCreateToggleButton(optionsPdMenu,
@@ -630,14 +630,13 @@ CreatemainWindow(Widget parent)
     
     ac = 0;
     XtSetArg(args[ac], XmNeditMode, XmMULTI_LINE_EDIT); ac++;
-    XtSetArg(args[ac], XmNwordWrap, False); ac++;
+    XtSetArg(args[ac], XmNwordWrap, True); ac++;
     XtSetArg(args[ac], XmNscrollHorizontal, False); ac++;
     documentTextWrapped = XmCreateText(textWindowWrapped,
         (char *)"documentTextWrapped",
         args, 
         ac);
     XtManageChild(documentTextWrapped);
-    XtAddCallback(documentTextWrapped, XmNmodifyVerifyCallback, docWrapModifyCB, (XtPointer)0);
     
     ac = 0;
     XtSetArg(args[ac], XmNscrollingPolicy, XmAPPLICATION_DEFINED); ac++;

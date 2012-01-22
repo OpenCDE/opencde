@@ -18,8 +18,8 @@
 ! End user code block <top> 
 
 *dtpad.title: Text Editor
-*dtpad.x: 482
-*dtpad.y: 171
+*dtpad.x: 624
+*dtpad.y: 131
 *dtpad.width: 558
 *dtpad.height: 554
 *dtpad*truncatedWcsSubstringGetMB.dialogTitle: Internal Error: XmCOPY_TRUNCATED!

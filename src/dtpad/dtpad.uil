@@ -69,7 +69,6 @@ procedure BxManageCB(string);
 procedure BxUnmanageCB(string);
 procedure BxVerifyNumericCB();
 procedure backupSaveToggleCB();
-procedure docWrapModifyCB();
 procedure editCB(integer);
 procedure fileOpenCB();
 procedure findDlgCB(integer);
@@ -80,6 +79,7 @@ procedure overstrikeToggleCB();
 procedure saveAsCB();
 procedure saveCB();
 procedure statusBarToggleCB();
+procedure wrapToFitToggleCB();
 !(BX) "XtPointer" "XmTextGetSource(documentTextWrapped)"
 identifier XmTextGetSource$adocumentTex0;
 
@@ -1518,8 +1518,8 @@ object closeButton : XmPushButton widget {
 
 object filePdMenu : XmPulldownMenu widget {
     arguments {
-        XmNx = 0;
-        XmNy = 0;
+        XmNx = 634;
+        XmNy = 187;
         XmNwidth = 161;
         XmNheight = 188;
     };
@@ -1823,7 +1823,7 @@ object wrapToFitToggleButton : XmToggleButton widget {
     controls {
     };
     callbacks {
-        XmNvalueChangedCallback = procedure BxManageCB("unsupportedMessageBox");
+        XmNvalueChangedCallback = procedure wrapToFitToggleCB();
     };
 };
 
@@ -1983,13 +1983,12 @@ object documentTextWrapped : XmText widget {
         XmNeditMode = XmMULTI_LINE_EDIT;
 !(BX)   _XmNfontList = font_table(
 !(BX)		font('-*-lucidatypewriter-medium-r-*-*-*-120-100-100-m-*-iso8859-1'));
-        XmNwordWrap = false;
+        XmNwordWrap = true;
         XmNscrollHorizontal = false;
     };
     controls {
     };
     callbacks {
-        XmNmodifyVerifyCallback = procedure docWrapModifyCB();
     };
 };
 
@@ -2206,8 +2205,8 @@ object mainWindow : XmMainWindow widget {
 !(BX)object dtpad : TopLevelShell widget {
 !(BX)    arguments {
 !(BX)        _XmNtitle = "Text Editor";
-!(BX)        XmNx = 482;
-!(BX)        XmNy = 171;
+!(BX)        XmNx = 624;
+!(BX)        XmNy = 131;
 !(BX)        XmNwidth = 558;
 !(BX)        XmNheight = 554;
 !(BX)    };
