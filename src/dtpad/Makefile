@@ -1,4 +1,9 @@
+
+# Begin user code block <abstract>
 include ../../config.Mk
+# End user code block <abstract>
+
+#
 # README: Portions of this file are merged at file generation
 # time. Edits can be made *only* in between specified code blocks, look
 # for keywords <Begin user code> and <End user code>.
@@ -21,8 +26,8 @@ include ../../config.Mk
 
              RM = rm -f
              CC = gcc
-#         CFLAGS = $(USER_CFLAGS) 
-           LIBS = $(USER_LIBRARIES) -lXm -lXt -lSM -lICE -lXp -lXext -lX11 -lm
+         CFLAGS = $(USER_CFLAGS) 
+           LIBS = $(USER_LIBRARIES) -lXm -lXt -lSM -lICE -lXp -lXext -lX11
 
 OFILES = $(USER_OBJS) \
          main.o \
