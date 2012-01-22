@@ -22,3 +22,4 @@ void update_window_title(Widget, char *);
 void set_app_name(char *);
 char *get_app_name();
 void batch_wrap(Widget, char *, char *, int *, XmTextPosition);
+void edit_clear(Widget);

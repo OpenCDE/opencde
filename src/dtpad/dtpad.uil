@@ -93,6 +93,81 @@ list BaseStyleReasons : callbacks {
 !(BX)};
 
 
+object truncatedWcsSubstringGetMB : XmMessageDialog widget {
+    arguments {
+        XmNdialogStyle = XmDIALOG_APPLICATION_MODAL;
+!(BX)   _XmNdialogTitle = compound_string("Internal Error: XmCOPY_TRUNCATED" &
+!(BX) "!");
+        XmNdialogType = XmDIALOG_ERROR;
+        XmNokLabelString = compound_string("Dismiss");
+!(BX)   _XmNmessageString = compound_string("An error has occurred wherein th" &
+!(BX) "e selection of the document text has", separate=true) &
+!(BX) compound_string("resulted in a truncation of a string inside of the system. This should ", separate=true) &
+!(BX) compound_string("be a temporary error, but if this continues to happen, please report ", separate=true) &
+!(BX) compound_string("a bug to the OpenCDE development team.");
+        XmNx = 701;
+        XmNy = 233;
+    };
+    controls {
+        Xm_Cancel unmanaged {
+        };
+        Xm_Help unmanaged {
+        };
+    };
+    callbacks {
+        XmNokCallback = procedure BxManageCB("truncatedWcsSubstringGetMB");
+    };
+};
+
+!(BX)object truncatedWcsSubstringGetDialogShell : XmDialogShell widget {
+!(BX)    arguments {
+!(BX)        XmNwidth = 486;
+!(BX)        XmNheight = 135;
+!(BX)    };
+!(BX)    controls {
+!(BX)         unmanaged XmMessageDialog truncatedWcsSubstringGetMB;
+!(BX)    };
+!(BX)    callbacks {
+!(BX)    };
+!(BX)};
+
+object failedWcsSubstringGetMB : XmMessageDialog widget {
+    arguments {
+        XmNdialogStyle = XmDIALOG_APPLICATION_MODAL;
+!(BX)   _XmNdialogTitle = compound_string("Internal Error: XmCOPY_FAILED!");
+        XmNdialogType = XmDIALOG_ERROR;
+        XmNokLabelString = compound_string("Dismiss");
+!(BX)   _XmNmessageString = compound_string("An internal error occured where " &
+!(BX) "extracting the selection from the document", separate=true) &
+!(BX) compound_string("text has failed in some fashion. The rest of the program should continue ", separate=true) &
+!(BX) compound_string("to work, but if this error continues to occur, please send an email to the ", separate=true) &
+!(BX) compound_string("development team of OpenCDE with a bug report.");
+        XmNx = 635;
+        XmNy = 272;
+    };
+    controls {
+        Xm_Cancel unmanaged {
+        };
+        Xm_Help unmanaged {
+        };
+    };
+    callbacks {
+        XmNokCallback = procedure BxUnmanageCB("failedWcsSubstringGetMB");
+    };
+};
+
+!(BX)object failedWcsSubstringGetDialogShell : XmDialogShell widget {
+!(BX)    arguments {
+!(BX)        XmNwidth = 510;
+!(BX)        XmNheight = 135;
+!(BX)    };
+!(BX)    controls {
+!(BX)         unmanaged XmMessageDialog failedWcsSubstringGetMB;
+!(BX)    };
+!(BX)    callbacks {
+!(BX)    };
+!(BX)};
+
 object unsupportedMessageBox : XmMessageDialog widget {
     arguments {
         XmNdialogStyle = XmDIALOG_APPLICATION_MODAL;
@@ -2101,6 +2176,8 @@ object mainWindow : XmMainWindow widget {
         XmNheight = 554;
     };
     controls {
+!(BX)         unmanaged XmDialogShell truncatedWcsSubstringGetDialogShell;
+!(BX)         unmanaged XmDialogShell failedWcsSubstringGetDialogShell;
 !(BX)         unmanaged XmDialogShell unsupportedDialogShell;
 !(BX)         unmanaged XmDialogShell lineOutOfRangeDialogShell;
 !(BX)         unmanaged XmDialogShell backupErrorDialogShell;

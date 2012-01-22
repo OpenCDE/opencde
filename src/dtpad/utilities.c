@@ -727,3 +727,48 @@ allfound:
 	*buffer_len = bufsize;
 	XtFree(start);
 }
+
+void
+edit_clear(Widget widget)
+{
+	int i, len, bufsize;
+	wchar_t *buffer;
+	XmTextPosition left, right;
+
+	if (False == XmTextGetSelectionPosition(widget, &left, &right))
+		return;
+
+	len = right - left;
+	bufsize = (1 + len) * sizeof(wchar_t);
+	buffer = XtMalloc(bufsize);
+
+	if (NULL == buffer) {
+		perror("Dtpad (out of memory)");
+		exit(1);
+	}
+
+	switch (XmTextGetSubstringWcs(widget, left, len, bufsize, buffer)) {
+	case XmCOPY_SUCCEEDED:
+		break;
+	case XmCOPY_FAILED:
+		manage_widget(widget, 
+		    "edit_clear()", "failedWcsSubstringGetMB");
+		goto edit_clear_fail;
+	case XmCOPY_TRUNCATED:
+		manage_widget(widget,
+		    "edit_clear()", "truncatedWcsSubstringGetMB");
+		goto edit_clear_fail;
+	default:
+		perror("edit_clear(): This should never happen.");
+		exit(1);
+	}
+
+	for (i = 0; i < len; i++) 
+		if (L'\n' != buffer[i])
+			buffer[i] = L' ';
+
+	XmTextReplaceWcs(widget, left, right, buffer);
+
+edit_clear_fail:
+	XtFree(buffer);
+}

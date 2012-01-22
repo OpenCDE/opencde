@@ -234,6 +234,8 @@ editCB( Widget w, XtPointer client_data,
 			XmTextRemove(widget);
 			break;
 		case EDIT_CLEAR:
+			edit_clear(widget);
+			break;
 			if (False == XmTextGetSelectionPosition(widget, 
 			    &left, &right)) 
 				break; 

@@ -62,13 +62,13 @@ extern void BX_SET_BACKGROUND_COLOR(Widget, ArgList, Cardinal *, Pixel);
  * Declarations for callbacks and handlers.
  */
 extern void BxExitCB(Widget, XtPointer, XtPointer);
+extern void BxManageCB(Widget, XtPointer, XtPointer);
 extern void BxUnmanageCB(Widget, XtPointer, XtPointer);
 extern void findDlgCB(Widget, XtPointer, XtPointer);
 extern void saveAsCB(Widget, XtPointer, XtPointer);
 extern void fileOpenCB(Widget, XtPointer, XtPointer);
 extern void includeFileCB(Widget, XtPointer, XtPointer);
 extern void newDocCB(Widget, XtPointer, XtPointer);
-extern void BxManageCB(Widget, XtPointer, XtPointer);
 extern void saveCB(Widget, XtPointer, XtPointer);
 extern void editCB(Widget, XtPointer, XtPointer);
 extern void statusBarToggleCB(Widget, XtPointer, XtPointer);
@@ -89,6 +89,10 @@ CreatemainWindow(Widget parent)
     Cardinal cdc; 
     Boolean  argok; 
     Widget   mainWindow;
+    Widget   truncatedWcsSubstringGetDialogShell;
+    Widget   truncatedWcsSubstringGetMB;
+    Widget   failedWcsSubstringGetDialogShell;
+    Widget   failedWcsSubstringGetMB;
     Widget   unsupportedDialogShell;
     Widget   unsupportedMessageBox;
     Widget   lineOutOfRangeDialogShell;
@@ -1520,6 +1524,76 @@ CreatemainWindow(Widget parent)
     XtAddCallback(unsupportedMessageBox, XmNokCallback, BxUnmanageCB, (XtPointer)"unsupportedMessageBox");
     XtUnmanageChild(XtNameToWidget(unsupportedMessageBox, "*Cancel"));
     XtUnmanageChild(XtNameToWidget(unsupportedMessageBox, "*Help"));
+    
+    ac = 0;
+    XtSetArg(args[ac], XmNwidth, 510); ac++;
+    XtSetArg(args[ac], XmNheight, 135); ac++;
+    failedWcsSubstringGetDialogShell = XmCreateDialogShell(mainWindow,
+        (char *)"failedWcsSubstringGetDialogShell",
+        args, 
+        ac);
+    
+    ac = 0;
+    {
+        XmString    tmp0;
+        
+        tmp0 = (XmString) BX_CONVERT(failedWcsSubstringGetDialogShell, (char *)"Dismiss", 
+                XmRXmString, 0, &argok);
+        XtSetArg(args[ac], XmNokLabelString, tmp0); if (argok) ac++;
+        XtSetArg(args[ac], XmNdialogStyle, XmDIALOG_APPLICATION_MODAL); ac++;
+        XtSetArg(args[ac], XmNdialogType, XmDIALOG_ERROR); ac++;
+        XtSetArg(args[ac], XmNx, 635); ac++;
+        XtSetArg(args[ac], XmNy, 272); ac++;
+        failedWcsSubstringGetMB = XtCreateWidget((char *)"failedWcsSubstringGetMB",
+            xmMessageBoxWidgetClass,
+            failedWcsSubstringGetDialogShell,
+            args, 
+            ac);
+        
+        /**
+         * Free any memory allocated for resources.
+         */
+        XmStringFree((XmString)tmp0);
+    }
+    
+    XtAddCallback(failedWcsSubstringGetMB, XmNokCallback, BxUnmanageCB, (XtPointer)"failedWcsSubstringGetMB");
+    XtUnmanageChild(XtNameToWidget(failedWcsSubstringGetMB, "*Cancel"));
+    XtUnmanageChild(XtNameToWidget(failedWcsSubstringGetMB, "*Help"));
+    
+    ac = 0;
+    XtSetArg(args[ac], XmNwidth, 486); ac++;
+    XtSetArg(args[ac], XmNheight, 135); ac++;
+    truncatedWcsSubstringGetDialogShell = XmCreateDialogShell(mainWindow,
+        (char *)"truncatedWcsSubstringGetDialogShell",
+        args, 
+        ac);
+    
+    ac = 0;
+    {
+        XmString    tmp0;
+        
+        tmp0 = (XmString) BX_CONVERT(truncatedWcsSubstringGetDialogShell, (char *)"Dismiss", 
+                XmRXmString, 0, &argok);
+        XtSetArg(args[ac], XmNokLabelString, tmp0); if (argok) ac++;
+        XtSetArg(args[ac], XmNdialogStyle, XmDIALOG_APPLICATION_MODAL); ac++;
+        XtSetArg(args[ac], XmNdialogType, XmDIALOG_ERROR); ac++;
+        XtSetArg(args[ac], XmNx, 701); ac++;
+        XtSetArg(args[ac], XmNy, 233); ac++;
+        truncatedWcsSubstringGetMB = XtCreateWidget((char *)"truncatedWcsSubstringGetMB",
+            xmMessageBoxWidgetClass,
+            truncatedWcsSubstringGetDialogShell,
+            args, 
+            ac);
+        
+        /**
+         * Free any memory allocated for resources.
+         */
+        XmStringFree((XmString)tmp0);
+    }
+    
+    XtAddCallback(truncatedWcsSubstringGetMB, XmNokCallback, BxManageCB, (XtPointer)"truncatedWcsSubstringGetMB");
+    XtUnmanageChild(XtNameToWidget(truncatedWcsSubstringGetMB, "*Cancel"));
+    XtUnmanageChild(XtNameToWidget(truncatedWcsSubstringGetMB, "*Help"));
     ac = 0;
     XtSetArg(args[ac], XmNmenuBar, menuBar); ac++;
     XtSetArg(args[ac], XmNworkWindow, mainForm); ac++;

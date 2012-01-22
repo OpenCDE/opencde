@@ -22,6 +22,10 @@
 *dtpad.y: 130
 *dtpad.width: 558
 *dtpad.height: 554
+*dtpad*truncatedWcsSubstringGetMB.dialogTitle: Internal Error: XmCOPY_TRUNCATED!
+*dtpad*truncatedWcsSubstringGetMB.messageString: :::t\"An error has occurred wherein the selection of the document text has\":t\"resulted in a truncation of a string inside of the system. This should \":t\"be a temporary error, but if this continues to happen, please report \"\"a bug to the OpenCDE development team.\"
+*dtpad*failedWcsSubstringGetMB.dialogTitle: Internal Error: XmCOPY_FAILED!
+*dtpad*failedWcsSubstringGetMB.messageString: :::t\"An internal error occured where extracting the selection from the document\":t\"text has failed in some fashion. The rest of the program should continue \":t\"to work, but if this error continues to occur, please send an email to the \"\"development team of OpenCDE with a bug report.\"
 *dtpad*unsupportedMessageBox.dialogTitle: Unsupported Feature
 *dtpad*unsupportedMessageBox.okLabelString: Dismiss
 *dtpad*unsupportedMessageBox.messageString: :::t\"We apologize, but the feature you have just tried is not currently supported\":t\"by this version. We are aware of the limitation, and would appreciate any\"\"help in implementing it. Sorry!\"
