@@ -15,7 +15,7 @@ else
 	esac
 fi
 
-export XFILESEARCHPATH="$XFILESEARCHPATH:$OPENCDE_PREFIX/share/opencde/app-defaults/%N"
+export XAPPLRESDIR="$OPENCDE_PREFIX/share/opencde/app-defaults/"
 
 $OPENCDE_PREFIX/bin/dtsplash -s 2
 
