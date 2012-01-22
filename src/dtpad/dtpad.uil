@@ -80,7 +80,6 @@ procedure overstrikeToggleCB();
 procedure saveAsCB();
 procedure saveCB();
 procedure statusBarToggleCB();
-procedure wrapToFitToggleCB();
 !(BX) "XtPointer" "XmTextGetSource(documentTextWrapped)"
 identifier XmTextGetSource$adocumentTex0;
 
@@ -93,6 +92,42 @@ list BaseStyleReasons : callbacks {
 !(BX)list BaseStyleHandlers : handlers {
 !(BX)};
 
+
+object unsupportedMessageBox : XmMessageDialog widget {
+    arguments {
+        XmNdialogStyle = XmDIALOG_APPLICATION_MODAL;
+!(BX)   _XmNdialogTitle = compound_string("Unsupported Feature");
+        XmNdialogType = XmDIALOG_WARNING;
+!(BX)   _XmNokLabelString = compound_string("Dismiss");
+!(BX)   _XmNmessageString = compound_string("We apologize, but the feature yo" &
+!(BX) "u have just tried is not currently supported", separate=true) &
+!(BX) compound_string("by this version. We are aware of the limitation, and would appreciate any", separate=true) &
+!(BX) compound_string("help in implementing it. Sorry!");
+        XmNx = 0;
+        XmNy = 0;
+    };
+    controls {
+        Xm_Cancel unmanaged {
+        };
+        Xm_Help unmanaged {
+        };
+    };
+    callbacks {
+        XmNokCallback = procedure BxUnmanageCB("unsupportedMessageBox");
+    };
+};
+
+!(BX)object unsupportedDialogShell : XmDialogShell widget {
+!(BX)    arguments {
+!(BX)        XmNwidth = 505;
+!(BX)        XmNheight = 122;
+!(BX)    };
+!(BX)    controls {
+!(BX)         unmanaged XmMessageDialog unsupportedMessageBox;
+!(BX)    };
+!(BX)    callbacks {
+!(BX)    };
+!(BX)};
 
 object lineOutOfRangeMessageBox : XmMessageDialog widget {
     arguments {
@@ -221,8 +256,8 @@ object stringNotFoundMessageBox : XmMessageDialog widget {
 object fdFindLabel : XmLabel widget {
     arguments {
 !(BX)   _XmNlabelString = compound_string("Find:");
-        XmNwidth = 249;
-        XmNheight = 20;
+        XmNwidth = 204;
+        XmNheight = 17;
     };
     controls {
     };
@@ -232,8 +267,8 @@ object fdFindLabel : XmLabel widget {
 
 object fdFindTextField : XmTextField widget {
     arguments {
-        XmNwidth = 249;
-        XmNheight = 30;
+        XmNwidth = 204;
+        XmNheight = 27;
     };
     controls {
     };
@@ -244,8 +279,8 @@ object fdFindTextField : XmTextField widget {
 object fdChangeLabel : XmLabel widget {
     arguments {
 !(BX)   _XmNlabelString = compound_string("Change To:");
-        XmNwidth = 249;
-        XmNheight = 20;
+        XmNwidth = 204;
+        XmNheight = 17;
     };
     controls {
     };
@@ -255,8 +290,8 @@ object fdChangeLabel : XmLabel widget {
 
 object fdChangeTextField : XmTextField widget {
     arguments {
-        XmNwidth = 249;
-        XmNheight = 30;
+        XmNwidth = 204;
+        XmNheight = 27;
     };
     controls {
     };
@@ -266,7 +301,7 @@ object fdChangeTextField : XmTextField widget {
 
 object separator7 : XmSeparator widget {
     arguments {
-        XmNwidth = 249;
+        XmNwidth = 204;
         XmNheight = 20;
     };
     controls {
@@ -280,8 +315,8 @@ object fdFindPushButton : XmPushButton widget {
 !(BX)   _XmNlabelString = compound_string("Find");
         XmNx = 0;
         XmNy = 0;
-        XmNwidth = 83;
-        XmNheight = 24;
+        XmNwidth = 68;
+        XmNheight = 21;
     };
     controls {
     };
@@ -293,10 +328,10 @@ object fdFindPushButton : XmPushButton widget {
 object fdChangePushButton : XmPushButton widget {
     arguments {
 !(BX)   _XmNlabelString = compound_string("Change");
-        XmNx = 83;
+        XmNx = 68;
         XmNy = 0;
-        XmNwidth = 83;
-        XmNheight = 24;
+        XmNwidth = 68;
+        XmNheight = 21;
     };
     controls {
     };
@@ -308,10 +343,10 @@ object fdChangePushButton : XmPushButton widget {
 object fdChangeAllPushButton : XmPushButton widget {
     arguments {
 !(BX)   _XmNlabelString = compound_string("Change All");
-        XmNx = 166;
+        XmNx = 136;
         XmNy = 0;
-        XmNwidth = 83;
-        XmNheight = 24;
+        XmNwidth = 68;
+        XmNheight = 21;
     };
     controls {
     };
@@ -323,8 +358,8 @@ object fdChangeAllPushButton : XmPushButton widget {
 object fdButtonBox1 : XmButtonBox widget {
     arguments {
         XmNequalSize = true;
-        XmNwidth = 249;
-        XmNheight = 24;
+        XmNwidth = 204;
+        XmNheight = 21;
     };
     controls {
          managed XmPushButton fdFindPushButton;
@@ -338,7 +373,7 @@ object fdButtonBox1 : XmButtonBox widget {
 object separator8 : XmSeparator widget {
     arguments {
         XmNseparatorType = XmNO_LINE;
-        XmNwidth = 249;
+        XmNwidth = 204;
         XmNheight = 5;
     };
     controls {
@@ -350,10 +385,10 @@ object separator8 : XmSeparator widget {
 object fdClosePushButton : XmPushButton widget {
     arguments {
 !(BX)   _XmNlabelString = compound_string("Close");
-        XmNx = 52;
+        XmNx = 42;
         XmNy = 0;
-        XmNwidth = 46;
-        XmNheight = 24;
+        XmNwidth = 38;
+        XmNheight = 21;
     };
     controls {
     };
@@ -365,10 +400,10 @@ object fdClosePushButton : XmPushButton widget {
 object fdHelpPushButton : XmPushButton widget {
     arguments {
 !(BX)   _XmNlabelString = compound_string("Help");
-        XmNx = 150;
+        XmNx = 123;
         XmNy = 0;
-        XmNwidth = 46;
-        XmNheight = 24;
+        XmNwidth = 38;
+        XmNheight = 21;
     };
     controls {
     };
@@ -379,8 +414,8 @@ object fdHelpPushButton : XmPushButton widget {
 object fdButtonBox2 : XmButtonBox widget {
     arguments {
         XmNequalSize = true;
-        XmNwidth = 249;
-        XmNheight = 24;
+        XmNwidth = 204;
+        XmNheight = 21;
     };
     controls {
          managed XmPushButton fdClosePushButton;
@@ -564,9 +599,9 @@ object fileNameLabel : XmLabel widget {
         XmNrightOffset = 10;
         XmNtopOffset = 10;
         XmNleftWidget = XmLabel fileLabel;
-        XmNx = 47;
+        XmNx = 49;
         XmNy = 10;
-        XmNwidth = 435;
+        XmNwidth = 433;
         XmNheight = 30;
     };
     controls {
@@ -586,7 +621,7 @@ object printerLabel : XmLabel widget {
         XmNtopOffset = 10;
         XmNtopWidget = XmLabel fileLabel;
         XmNx = 10;
-        XmNy = 45;
+        XmNy = 42;
     };
     controls {
     };
@@ -604,9 +639,9 @@ object printerTextField : XmTextField widget {
         XmNtopOffset = 40;
         XmNleftWidget = XmLabel printerLabel;
         XmNrightWidget = XmLabel copiesLabel;
-        XmNx = 69;
+        XmNx = 67;
         XmNy = 40;
-        XmNwidth = 233;
+        XmNwidth = 244;
         XmNheight = 30;
     };
     controls {
@@ -627,7 +662,7 @@ object copiesLabel : XmLabel widget {
         XmNtopOffset = 5;
         XmNrightWidget = XmTextField copiesTextField;
         XmNtopWidget = XmLabel fileNameLabel;
-        XmNx = 322;
+        XmNx = 331;
         XmNy = 45;
     };
     controls {
@@ -668,7 +703,7 @@ object bannerLabel : XmLabel widget {
         XmNtopOffset = 15;
         XmNtopWidget = XmLabel printerLabel;
         XmNx = 10;
-        XmNy = 80;
+        XmNy = 74;
     };
     controls {
     };
@@ -729,7 +764,7 @@ object printerCmdOptsLabel : XmLabel widget {
         XmNtopOffset = 10;
         XmNtopWidget = XmToggleButton printPageNumbersToggleButton;
         XmNx = 10;
-        XmNy = 157;
+        XmNy = 156;
     };
     controls {
     };
@@ -749,9 +784,9 @@ object textField2 : XmTextField widget {
         XmNtopOffset = 5;
         XmNleftWidget = XmLabel printerCmdOptsLabel;
         XmNtopWidget = XmToggleButton printPageNumbersToggleButton;
-        XmNx = 202;
-        XmNy = 152;
-        XmNwidth = 280;
+        XmNx = 163;
+        XmNy = 151;
+        XmNwidth = 319;
         XmNheight = 30;
     };
     controls {
@@ -772,9 +807,9 @@ object bannerTextField : XmTextField widget {
         XmNtopOffset = 5;
         XmNleftWidget = XmLabel bannerLabel;
         XmNtopWidget = XmTextField printerTextField;
-        XmNx = 143;
+        XmNx = 121;
         XmNy = 75;
-        XmNwidth = 339;
+        XmNwidth = 361;
         XmNheight = 30;
     };
     controls {
@@ -789,7 +824,7 @@ object printForm : XmForm widget {
         XmNresizePolicy = XmRESIZE_GROW;
         XmNx = 11;
         XmNy = 11;
-        XmNheight = 198;
+        XmNheight = 201;
     };
     controls {
          managed XmTextField bannerTextField;
@@ -852,7 +887,7 @@ object settingsSeparator : XmSeparator widget {
         XmNtopOffset = 10;
         XmNtopWidget = XmRadioBox settingsRadioBox;
         XmNx = 5;
-        XmNy = 163;
+        XmNy = 159;
         XmNwidth = 460;
         XmNheight = 12;
     };
@@ -940,8 +975,8 @@ object leftAlignToggleButton : XmToggleButton widget {
     arguments {
         XmNset = TRUE;
 !(BX)   _XmNlabelString = compound_string("Left Align");
-        XmNwidth = 97;
-        XmNheight = 22;
+        XmNwidth = 87;
+        XmNheight = 21;
     };
     controls {
     };
@@ -952,8 +987,8 @@ object leftAlignToggleButton : XmToggleButton widget {
 object rightAlignToggleButton : XmToggleButton widget {
     arguments {
 !(BX)   _XmNlabelString = compound_string("Right Align");
-        XmNwidth = 97;
-        XmNheight = 22;
+        XmNwidth = 87;
+        XmNheight = 21;
     };
     controls {
     };
@@ -964,8 +999,8 @@ object rightAlignToggleButton : XmToggleButton widget {
 object justifyToggleButton : XmToggleButton widget {
     arguments {
 !(BX)   _XmNlabelString = compound_string("Justify");
-        XmNwidth = 97;
-        XmNheight = 22;
+        XmNwidth = 87;
+        XmNheight = 21;
     };
     controls {
     };
@@ -976,8 +1011,8 @@ object justifyToggleButton : XmToggleButton widget {
 object centerToggleButton : XmToggleButton widget {
     arguments {
 !(BX)   _XmNlabelString = compound_string("Center");
-        XmNwidth = 97;
-        XmNheight = 22;
+        XmNwidth = 87;
+        XmNheight = 21;
     };
     controls {
     };
@@ -993,8 +1028,8 @@ object settingsRadioBox : XmRadioBox widget {
         XmNtopOffset = 50;
         XmNx = 10;
         XmNy = 50;
-        XmNwidth = 103;
-        XmNheight = 103;
+        XmNwidth = 93;
+        XmNheight = 99;
     };
     controls {
          managed XmToggleButton leftAlignToggleButton;
@@ -1009,10 +1044,10 @@ object settingsRadioBox : XmRadioBox widget {
 object paragraphPushButton : XmPushButton widget {
     arguments {
 !(BX)   _XmNlabelString = compound_string("Paragraph");
-        XmNx = 28;
-        XmNy = 8;
-        XmNwidth = 79;
-        XmNheight = 24;
+        XmNx = 42;
+        XmNy = 9;
+        XmNwidth = 62;
+        XmNheight = 21;
     };
     controls {
     };
@@ -1023,10 +1058,10 @@ object paragraphPushButton : XmPushButton widget {
 object allPushButton : XmPushButton widget {
     arguments {
 !(BX)   _XmNlabelString = compound_string("All");
-        XmNx = 136;
-        XmNy = 8;
-        XmNwidth = 79;
-        XmNheight = 24;
+        XmNx = 146;
+        XmNy = 9;
+        XmNwidth = 62;
+        XmNheight = 21;
     };
     controls {
     };
@@ -1037,10 +1072,10 @@ object allPushButton : XmPushButton widget {
 object closePushButton : XmPushButton widget {
     arguments {
 !(BX)   _XmNlabelString = compound_string("Close");
-        XmNx = 244;
-        XmNy = 8;
-        XmNwidth = 79;
-        XmNheight = 24;
+        XmNx = 251;
+        XmNy = 9;
+        XmNwidth = 62;
+        XmNheight = 21;
     };
     controls {
     };
@@ -1052,10 +1087,10 @@ object closePushButton : XmPushButton widget {
 object helpPushButton : XmPushButton widget {
     arguments {
 !(BX)   _XmNlabelString = compound_string("Help");
-        XmNx = 352;
-        XmNy = 8;
-        XmNwidth = 79;
-        XmNheight = 24;
+        XmNx = 355;
+        XmNy = 9;
+        XmNwidth = 62;
+        XmNheight = 21;
     };
     controls {
     };
@@ -1076,7 +1111,7 @@ object buttonBox : XmButtonBox widget {
         XmNtopOffset = 5;
         XmNtopWidget = XmSeparator settingsSeparator;
         XmNx = 5;
-        XmNy = 180;
+        XmNy = 176;
         XmNwidth = 460;
         XmNheight = 40;
     };
@@ -1408,10 +1443,10 @@ object closeButton : XmPushButton widget {
 
 object filePdMenu : XmPulldownMenu widget {
     arguments {
-        XmNx = 594;
-        XmNy = 68;
-        XmNwidth = 132;
-        XmNheight = 160;
+        XmNx = 0;
+        XmNy = 0;
+        XmNwidth = 119;
+        XmNheight = 139;
     };
     controls {
          managed XmPushButton newButton;
@@ -1435,7 +1470,7 @@ object fileMenu : XmCascadeButton widget {
         XmNx = 4;
         XmNy = 4;
         XmNwidth = 38;
-        XmNheight = 22;
+        XmNheight = 19;
     };
     controls {
          unmanaged XmPulldownMenu filePdMenu;
@@ -1454,6 +1489,7 @@ object undoButton : XmPushButton widget {
     controls {
     };
     callbacks {
+        XmNactivateCallback = procedure BxManageCB("unsupportedMessageBox");
     };
 };
 
@@ -1572,6 +1608,7 @@ object checkSpellingButton : XmPushButton widget {
     controls {
     };
     callbacks {
+        XmNactivateCallback = procedure BxManageCB("unsupportedMessageBox");
     };
 };
 
@@ -1601,8 +1638,8 @@ object editMenu : XmCascadeButton widget {
 !(BX)   _XmNlabelString = compound_string("Edit");
         XmNx = 42;
         XmNy = 4;
-        XmNwidth = 40;
-        XmNheight = 22;
+        XmNwidth = 38;
+        XmNheight = 19;
     };
     controls {
          unmanaged XmPulldownMenu editPdMenu;
@@ -1711,7 +1748,7 @@ object wrapToFitToggleButton : XmToggleButton widget {
     controls {
     };
     callbacks {
-        XmNvalueChangedCallback = procedure wrapToFitToggleCB();
+        XmNvalueChangedCallback = procedure BxManageCB("unsupportedMessageBox");
     };
 };
 
@@ -1731,8 +1768,8 @@ object optionsPdMenu : XmPulldownMenu widget {
     arguments {
         XmNx = 0;
         XmNy = 0;
-        XmNwidth = 129;
-        XmNheight = 90;
+        XmNwidth = 107;
+        XmNheight = 78;
     };
     controls {
          managed XmToggleButton statusLineToggleButton;
@@ -1748,10 +1785,10 @@ object optionsMenu : XmCascadeButton widget {
     arguments {
 !(BX)   _XmNmnemonic = keysym("O");
 !(BX)   _XmNlabelString = compound_string("Options");
-        XmNx = 145;
+        XmNx = 130;
         XmNy = 4;
-        XmNwidth = 68;
-        XmNheight = 22;
+        XmNwidth = 56;
+        XmNheight = 19;
     };
     controls {
          unmanaged XmPulldownMenu optionsPdMenu;
@@ -1788,8 +1825,8 @@ object helpPdMenu : XmPulldownMenu widget {
     arguments {
         XmNx = 0;
         XmNy = 0;
-        XmNwidth = 62;
-        XmNheight = 46;
+        XmNwidth = 56;
+        XmNheight = 40;
     };
     controls {
          managed XmPushButton aboutButton;
@@ -1803,10 +1840,10 @@ object helpMenu : XmCascadeButton widget {
     arguments {
 !(BX)   _XmNmnemonic = keysym("H");
 !(BX)   _XmNlabelString = compound_string("Help");
-        XmNx = 509;
+        XmNx = 516;
         XmNy = 4;
-        XmNwidth = 45;
-        XmNheight = 22;
+        XmNwidth = 38;
+        XmNheight = 19;
     };
     controls {
          unmanaged XmPulldownMenu helpPdMenu;
@@ -1819,7 +1856,7 @@ object menuBar : XmMenuBar widget {
     arguments {
         XmNmenuHelpWidget = XmCascadeButton helpMenu;
         XmNwidth = 558;
-        XmNheight = 30;
+        XmNheight = 27;
     };
     controls {
          managed XmCascadeButton fileMenu;
@@ -1904,7 +1941,7 @@ object mainForm : XmForm widget {
     arguments {
         XmNresizePolicy = XmRESIZE_GROW;
         XmNwidth = 558;
-        XmNheight = 524;
+        XmNheight = 527;
     };
     controls {
          unmanaged XmScrolledWindow textWindowWrapped;
@@ -1991,7 +2028,7 @@ object totalCountLabel : XmLabel widget {
         XmNrightOffset = 0;
         XmNleftWidget = XmLabel totalLabel;
         XmNx = 195;
-        XmNy = 10;
+        XmNy = 13;
     };
     controls {
     };
@@ -2012,8 +2049,8 @@ object messageTextField : XmTextField widget {
         XmNrightOffset = 0;
         XmNleftWidget = XmLabel totalCountLabel;
         XmNrightWidget = XmLabel overstrikeLabel;
-        XmNx = 213;
-        XmNy = 5;
+        XmNx = 210;
+        XmNy = 8;
     };
     controls {
     };
@@ -2030,8 +2067,8 @@ object overstrikeLabel : XmLabel widget {
         XmNbottomAttachment = XmATTACH_FORM;
         XmNbottomOffset = 10;
         XmNrightOffset = 5;
-        XmNx = 387;
-        XmNy = 10;
+        XmNx = 344;
+        XmNy = 13;
     };
     controls {
     };
@@ -2060,12 +2097,11 @@ object mainWindow : XmMainWindow widget {
         XmNmenuBar = XmMenuBar menuBar;
         XmNworkWindow = XmForm mainForm;
         XmNmessageWindow = XmForm statusBar;
-        XmNx = 590;
-        XmNy = 42;
         XmNwidth = 558;
         XmNheight = 554;
     };
     controls {
+!(BX)         unmanaged XmDialogShell unsupportedDialogShell;
 !(BX)         unmanaged XmDialogShell lineOutOfRangeDialogShell;
 !(BX)         unmanaged XmDialogShell backupErrorDialogShell;
 !(BX)         unmanaged XmDialogShell changeAllCompleteDialogShell;
@@ -2093,8 +2129,8 @@ object mainWindow : XmMainWindow widget {
 !(BX)object dtpad : TopLevelShell widget {
 !(BX)    arguments {
 !(BX)        _XmNtitle = "Text Editor";
-!(BX)        XmNx = 584;
-!(BX)        XmNy = 16;
+!(BX)        XmNx = 493;
+!(BX)        XmNy = 130;
 !(BX)        XmNwidth = 558;
 !(BX)        XmNheight = 554;
 !(BX)    };

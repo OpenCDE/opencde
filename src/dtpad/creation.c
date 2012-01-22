@@ -62,8 +62,8 @@ extern void BX_SET_BACKGROUND_COLOR(Widget, ArgList, Cardinal *, Pixel);
  * Declarations for callbacks and handlers.
  */
 extern void BxExitCB(Widget, XtPointer, XtPointer);
-extern void findDlgCB(Widget, XtPointer, XtPointer);
 extern void BxUnmanageCB(Widget, XtPointer, XtPointer);
+extern void findDlgCB(Widget, XtPointer, XtPointer);
 extern void saveAsCB(Widget, XtPointer, XtPointer);
 extern void fileOpenCB(Widget, XtPointer, XtPointer);
 extern void includeFileCB(Widget, XtPointer, XtPointer);
@@ -73,7 +73,6 @@ extern void saveCB(Widget, XtPointer, XtPointer);
 extern void editCB(Widget, XtPointer, XtPointer);
 extern void statusBarToggleCB(Widget, XtPointer, XtPointer);
 extern void overstrikeToggleCB(Widget, XtPointer, XtPointer);
-extern void wrapToFitToggleCB(Widget, XtPointer, XtPointer);
 extern void backupSaveToggleCB(Widget, XtPointer, XtPointer);
 extern void docWrapModifyCB(Widget, XtPointer, XtPointer);
 extern void BxVerifyNumericCB(Widget, XtPointer, XtPointer);
@@ -90,6 +89,8 @@ CreatemainWindow(Widget parent)
     Cardinal cdc; 
     Boolean  argok; 
     Widget   mainWindow;
+    Widget   unsupportedDialogShell;
+    Widget   unsupportedMessageBox;
     Widget   lineOutOfRangeDialogShell;
     Widget   lineOutOfRangeMessageBox;
     Widget   backupErrorDialogShell;
@@ -243,8 +244,6 @@ CreatemainWindow(Widget parent)
     XtInitializeWidgetClass((WidgetClass)xmTextWidgetClass);
     
     ac = 0;
-    XtSetArg(args[ac], XmNx, 590); ac++;
-    XtSetArg(args[ac], XmNy, 42); ac++;
     XtSetArg(args[ac], XmNwidth, 558); ac++;
     XtSetArg(args[ac], XmNheight, 554); ac++;
     mainWindow = XmCreateMainWindow(parent,
@@ -255,7 +254,7 @@ CreatemainWindow(Widget parent)
     
     ac = 0;
     XtSetArg(args[ac], XmNwidth, 558); ac++;
-    XtSetArg(args[ac], XmNheight, 30); ac++;
+    XtSetArg(args[ac], XmNheight, 27); ac++;
     menuBar = XmCreateMenuBar(mainWindow,
         (char *)"menuBar",
         args, 
@@ -266,7 +265,7 @@ CreatemainWindow(Widget parent)
     XtSetArg(args[ac], XmNx, 4); ac++;
     XtSetArg(args[ac], XmNy, 4); ac++;
     XtSetArg(args[ac], XmNwidth, 38); ac++;
-    XtSetArg(args[ac], XmNheight, 22); ac++;
+    XtSetArg(args[ac], XmNheight, 19); ac++;
     fileMenu = XmCreateCascadeButton(menuBar,
         (char *)"fileMenu",
         args, 
@@ -274,10 +273,10 @@ CreatemainWindow(Widget parent)
     XtManageChild(fileMenu);
     
     ac = 0;
-    XtSetArg(args[ac], XmNx, 594); ac++;
-    XtSetArg(args[ac], XmNy, 68); ac++;
-    XtSetArg(args[ac], XmNwidth, 132); ac++;
-    XtSetArg(args[ac], XmNheight, 160); ac++;
+    XtSetArg(args[ac], XmNx, 0); ac++;
+    XtSetArg(args[ac], XmNy, 0); ac++;
+    XtSetArg(args[ac], XmNwidth, 119); ac++;
+    XtSetArg(args[ac], XmNheight, 139); ac++;
     filePdMenu = XmCreatePulldownMenu(XtParent(fileMenu),
         (char *)"filePdMenu",
         args, 
@@ -360,8 +359,8 @@ CreatemainWindow(Widget parent)
     ac = 0;
     XtSetArg(args[ac], XmNx, 42); ac++;
     XtSetArg(args[ac], XmNy, 4); ac++;
-    XtSetArg(args[ac], XmNwidth, 40); ac++;
-    XtSetArg(args[ac], XmNheight, 22); ac++;
+    XtSetArg(args[ac], XmNwidth, 38); ac++;
+    XtSetArg(args[ac], XmNheight, 19); ac++;
     editMenu = XmCreateCascadeButton(menuBar,
         (char *)"editMenu",
         args, 
@@ -381,6 +380,7 @@ CreatemainWindow(Widget parent)
         args, 
         ac);
     XtManageChild(undoButton);
+    XtAddCallback(undoButton, XmNactivateCallback, BxManageCB, (XtPointer)"unsupportedMessageBox");
     
     ac = 0;
     separator4 = XmCreateSeparator(editPdMenu,
@@ -457,6 +457,7 @@ CreatemainWindow(Widget parent)
         args, 
         ac);
     XtManageChild(checkSpellingButton);
+    XtAddCallback(checkSpellingButton, XmNactivateCallback, BxManageCB, (XtPointer)"unsupportedMessageBox");
     
     ac = 0;
     XtSetArg(args[ac], XmNsubMenuId, editPdMenu); ac++;
@@ -509,10 +510,10 @@ CreatemainWindow(Widget parent)
     XtSetValues(formatMenu, args, ac);
     
     ac = 0;
-    XtSetArg(args[ac], XmNx, 145); ac++;
+    XtSetArg(args[ac], XmNx, 130); ac++;
     XtSetArg(args[ac], XmNy, 4); ac++;
-    XtSetArg(args[ac], XmNwidth, 68); ac++;
-    XtSetArg(args[ac], XmNheight, 22); ac++;
+    XtSetArg(args[ac], XmNwidth, 56); ac++;
+    XtSetArg(args[ac], XmNheight, 19); ac++;
     optionsMenu = XmCreateCascadeButton(menuBar,
         (char *)"optionsMenu",
         args, 
@@ -522,8 +523,8 @@ CreatemainWindow(Widget parent)
     ac = 0;
     XtSetArg(args[ac], XmNx, 0); ac++;
     XtSetArg(args[ac], XmNy, 0); ac++;
-    XtSetArg(args[ac], XmNwidth, 129); ac++;
-    XtSetArg(args[ac], XmNheight, 90); ac++;
+    XtSetArg(args[ac], XmNwidth, 107); ac++;
+    XtSetArg(args[ac], XmNheight, 78); ac++;
     optionsPdMenu = XmCreatePulldownMenu(XtParent(optionsMenu),
         (char *)"optionsPdMenu",
         args, 
@@ -551,7 +552,7 @@ CreatemainWindow(Widget parent)
         args, 
         ac);
     XtManageChild(wrapToFitToggleButton);
-    XtAddCallback(wrapToFitToggleButton, XmNvalueChangedCallback, wrapToFitToggleCB, (XtPointer)0);
+    XtAddCallback(wrapToFitToggleButton, XmNvalueChangedCallback, BxManageCB, (XtPointer)"unsupportedMessageBox");
     
     ac = 0;
     backupOnSaveToggleButton = XmCreateToggleButton(optionsPdMenu,
@@ -566,10 +567,10 @@ CreatemainWindow(Widget parent)
     XtSetValues(optionsMenu, args, ac);
     
     ac = 0;
-    XtSetArg(args[ac], XmNx, 509); ac++;
+    XtSetArg(args[ac], XmNx, 516); ac++;
     XtSetArg(args[ac], XmNy, 4); ac++;
-    XtSetArg(args[ac], XmNwidth, 45); ac++;
-    XtSetArg(args[ac], XmNheight, 22); ac++;
+    XtSetArg(args[ac], XmNwidth, 38); ac++;
+    XtSetArg(args[ac], XmNheight, 19); ac++;
     helpMenu = XmCreateCascadeButton(menuBar,
         (char *)"helpMenu",
         args, 
@@ -579,8 +580,8 @@ CreatemainWindow(Widget parent)
     ac = 0;
     XtSetArg(args[ac], XmNx, 0); ac++;
     XtSetArg(args[ac], XmNy, 0); ac++;
-    XtSetArg(args[ac], XmNwidth, 62); ac++;
-    XtSetArg(args[ac], XmNheight, 46); ac++;
+    XtSetArg(args[ac], XmNwidth, 56); ac++;
+    XtSetArg(args[ac], XmNheight, 40); ac++;
     helpPdMenu = XmCreatePulldownMenu(XtParent(helpMenu),
         (char *)"helpPdMenu",
         args, 
@@ -609,7 +610,7 @@ CreatemainWindow(Widget parent)
     ac = 0;
     XtSetArg(args[ac], XmNresizePolicy, XmRESIZE_GROW); ac++;
     XtSetArg(args[ac], XmNwidth, 558); ac++;
-    XtSetArg(args[ac], XmNheight, 524); ac++;
+    XtSetArg(args[ac], XmNheight, 527); ac++;
     mainForm = XmCreateForm(mainWindow,
         (char *)"mainForm",
         args, 
@@ -667,8 +668,8 @@ CreatemainWindow(Widget parent)
         tmp0 = (XmString) BX_CONVERT(statusBar, (char *)"Insert", 
                 XmRXmString, 0, &argok);
         XtSetArg(args[ac], XmNlabelString, tmp0); if (argok) ac++;
-        XtSetArg(args[ac], XmNx, 387); ac++;
-        XtSetArg(args[ac], XmNy, 10); ac++;
+        XtSetArg(args[ac], XmNx, 344); ac++;
+        XtSetArg(args[ac], XmNy, 13); ac++;
         overstrikeLabel = XmCreateLabel(statusBar,
             (char *)"overstrikeLabel",
             args, 
@@ -685,8 +686,8 @@ CreatemainWindow(Widget parent)
     ac = 0;
     XtSetArg(args[ac], XmNcursorPositionVisible, False); ac++;
     XtSetArg(args[ac], XmNeditable, False); ac++;
-    XtSetArg(args[ac], XmNx, 213); ac++;
-    XtSetArg(args[ac], XmNy, 5); ac++;
+    XtSetArg(args[ac], XmNx, 210); ac++;
+    XtSetArg(args[ac], XmNy, 8); ac++;
     messageTextField = XmCreateTextField(statusBar,
         (char *)"messageTextField",
         args, 
@@ -702,7 +703,7 @@ CreatemainWindow(Widget parent)
         XtSetArg(args[ac], XmNlabelString, tmp0); if (argok) ac++;
         XtSetArg(args[ac], XmNalignment, XmALIGNMENT_CENTER); ac++;
         XtSetArg(args[ac], XmNx, 195); ac++;
-        XtSetArg(args[ac], XmNy, 10); ac++;
+        XtSetArg(args[ac], XmNy, 13); ac++;
         totalCountLabel = XmCreateLabel(statusBar,
             (char *)"totalCountLabel",
             args, 
@@ -884,7 +885,7 @@ CreatemainWindow(Widget parent)
     ac = 0;
     XtSetArg(args[ac], XmNequalSize, True); ac++;
     XtSetArg(args[ac], XmNx, 5); ac++;
-    XtSetArg(args[ac], XmNy, 180); ac++;
+    XtSetArg(args[ac], XmNy, 176); ac++;
     XtSetArg(args[ac], XmNwidth, 460); ac++;
     XtSetArg(args[ac], XmNheight, 40); ac++;
     buttonBox = XmCreateButtonBox(settingsForm,
@@ -894,10 +895,10 @@ CreatemainWindow(Widget parent)
     XtManageChild(buttonBox);
     
     ac = 0;
-    XtSetArg(args[ac], XmNx, 28); ac++;
-    XtSetArg(args[ac], XmNy, 8); ac++;
-    XtSetArg(args[ac], XmNwidth, 79); ac++;
-    XtSetArg(args[ac], XmNheight, 24); ac++;
+    XtSetArg(args[ac], XmNx, 42); ac++;
+    XtSetArg(args[ac], XmNy, 9); ac++;
+    XtSetArg(args[ac], XmNwidth, 62); ac++;
+    XtSetArg(args[ac], XmNheight, 21); ac++;
     paragraphPushButton = XmCreatePushButton(buttonBox,
         (char *)"paragraphPushButton",
         args, 
@@ -905,10 +906,10 @@ CreatemainWindow(Widget parent)
     XtManageChild(paragraphPushButton);
     
     ac = 0;
-    XtSetArg(args[ac], XmNx, 136); ac++;
-    XtSetArg(args[ac], XmNy, 8); ac++;
-    XtSetArg(args[ac], XmNwidth, 79); ac++;
-    XtSetArg(args[ac], XmNheight, 24); ac++;
+    XtSetArg(args[ac], XmNx, 146); ac++;
+    XtSetArg(args[ac], XmNy, 9); ac++;
+    XtSetArg(args[ac], XmNwidth, 62); ac++;
+    XtSetArg(args[ac], XmNheight, 21); ac++;
     allPushButton = XmCreatePushButton(buttonBox,
         (char *)"allPushButton",
         args, 
@@ -916,10 +917,10 @@ CreatemainWindow(Widget parent)
     XtManageChild(allPushButton);
     
     ac = 0;
-    XtSetArg(args[ac], XmNx, 244); ac++;
-    XtSetArg(args[ac], XmNy, 8); ac++;
-    XtSetArg(args[ac], XmNwidth, 79); ac++;
-    XtSetArg(args[ac], XmNheight, 24); ac++;
+    XtSetArg(args[ac], XmNx, 251); ac++;
+    XtSetArg(args[ac], XmNy, 9); ac++;
+    XtSetArg(args[ac], XmNwidth, 62); ac++;
+    XtSetArg(args[ac], XmNheight, 21); ac++;
     closePushButton = XmCreatePushButton(buttonBox,
         (char *)"closePushButton",
         args, 
@@ -928,10 +929,10 @@ CreatemainWindow(Widget parent)
     XtAddCallback(closePushButton, XmNactivateCallback, BxUnmanageCB, (XtPointer)"settingsForm");
     
     ac = 0;
-    XtSetArg(args[ac], XmNx, 352); ac++;
-    XtSetArg(args[ac], XmNy, 8); ac++;
-    XtSetArg(args[ac], XmNwidth, 79); ac++;
-    XtSetArg(args[ac], XmNheight, 24); ac++;
+    XtSetArg(args[ac], XmNx, 355); ac++;
+    XtSetArg(args[ac], XmNy, 9); ac++;
+    XtSetArg(args[ac], XmNwidth, 62); ac++;
+    XtSetArg(args[ac], XmNheight, 21); ac++;
     helpPushButton = XmCreatePushButton(buttonBox,
         (char *)"helpPushButton",
         args, 
@@ -941,8 +942,8 @@ CreatemainWindow(Widget parent)
     ac = 0;
     XtSetArg(args[ac], XmNx, 10); ac++;
     XtSetArg(args[ac], XmNy, 50); ac++;
-    XtSetArg(args[ac], XmNwidth, 103); ac++;
-    XtSetArg(args[ac], XmNheight, 103); ac++;
+    XtSetArg(args[ac], XmNwidth, 93); ac++;
+    XtSetArg(args[ac], XmNheight, 99); ac++;
     XtSetArg(args[ac], XmNisHomogeneous, False); ac++;
     settingsRadioBox = XmCreateRadioBox(settingsForm,
         (char *)"settingsRadioBox",
@@ -952,8 +953,8 @@ CreatemainWindow(Widget parent)
     
     ac = 0;
     XtSetArg(args[ac], XmNset, TRUE); ac++;
-    XtSetArg(args[ac], XmNwidth, 97); ac++;
-    XtSetArg(args[ac], XmNheight, 22); ac++;
+    XtSetArg(args[ac], XmNwidth, 87); ac++;
+    XtSetArg(args[ac], XmNheight, 21); ac++;
     leftAlignToggleButton = XmCreateToggleButton(settingsRadioBox,
         (char *)"leftAlignToggleButton",
         args, 
@@ -961,8 +962,8 @@ CreatemainWindow(Widget parent)
     XtManageChild(leftAlignToggleButton);
     
     ac = 0;
-    XtSetArg(args[ac], XmNwidth, 97); ac++;
-    XtSetArg(args[ac], XmNheight, 22); ac++;
+    XtSetArg(args[ac], XmNwidth, 87); ac++;
+    XtSetArg(args[ac], XmNheight, 21); ac++;
     rightAlignToggleButton = XmCreateToggleButton(settingsRadioBox,
         (char *)"rightAlignToggleButton",
         args, 
@@ -970,8 +971,8 @@ CreatemainWindow(Widget parent)
     XtManageChild(rightAlignToggleButton);
     
     ac = 0;
-    XtSetArg(args[ac], XmNwidth, 97); ac++;
-    XtSetArg(args[ac], XmNheight, 22); ac++;
+    XtSetArg(args[ac], XmNwidth, 87); ac++;
+    XtSetArg(args[ac], XmNheight, 21); ac++;
     justifyToggleButton = XmCreateToggleButton(settingsRadioBox,
         (char *)"justifyToggleButton",
         args, 
@@ -979,8 +980,8 @@ CreatemainWindow(Widget parent)
     XtManageChild(justifyToggleButton);
     
     ac = 0;
-    XtSetArg(args[ac], XmNwidth, 97); ac++;
-    XtSetArg(args[ac], XmNheight, 22); ac++;
+    XtSetArg(args[ac], XmNwidth, 87); ac++;
+    XtSetArg(args[ac], XmNheight, 21); ac++;
     centerToggleButton = XmCreateToggleButton(settingsRadioBox,
         (char *)"centerToggleButton",
         args, 
@@ -1033,7 +1034,7 @@ CreatemainWindow(Widget parent)
     
     ac = 0;
     XtSetArg(args[ac], XmNx, 5); ac++;
-    XtSetArg(args[ac], XmNy, 163); ac++;
+    XtSetArg(args[ac], XmNy, 159); ac++;
     XtSetArg(args[ac], XmNwidth, 460); ac++;
     XtSetArg(args[ac], XmNheight, 12); ac++;
     settingsSeparator = XmCreateSeparator(settingsForm,
@@ -1068,7 +1069,7 @@ CreatemainWindow(Widget parent)
     XtSetArg(args[ac], XmNresizePolicy, XmRESIZE_GROW); ac++;
     XtSetArg(args[ac], XmNx, 11); ac++;
     XtSetArg(args[ac], XmNy, 11); ac++;
-    XtSetArg(args[ac], XmNheight, 198); ac++;
+    XtSetArg(args[ac], XmNheight, 201); ac++;
     printForm = XmCreateForm(printDialog,
         (char *)"printForm",
         args, 
@@ -1076,9 +1077,9 @@ CreatemainWindow(Widget parent)
     XtManageChild(printForm);
     
     ac = 0;
-    XtSetArg(args[ac], XmNx, 143); ac++;
+    XtSetArg(args[ac], XmNx, 121); ac++;
     XtSetArg(args[ac], XmNy, 75); ac++;
-    XtSetArg(args[ac], XmNwidth, 339); ac++;
+    XtSetArg(args[ac], XmNwidth, 361); ac++;
     XtSetArg(args[ac], XmNheight, 30); ac++;
     bannerTextField = XmCreateTextField(printForm,
         (char *)"bannerTextField",
@@ -1087,9 +1088,9 @@ CreatemainWindow(Widget parent)
     XtManageChild(bannerTextField);
     
     ac = 0;
-    XtSetArg(args[ac], XmNx, 202); ac++;
-    XtSetArg(args[ac], XmNy, 152); ac++;
-    XtSetArg(args[ac], XmNwidth, 280); ac++;
+    XtSetArg(args[ac], XmNx, 163); ac++;
+    XtSetArg(args[ac], XmNy, 151); ac++;
+    XtSetArg(args[ac], XmNwidth, 319); ac++;
     XtSetArg(args[ac], XmNheight, 30); ac++;
     textField2 = XmCreateTextField(printForm,
         (char *)"textField2",
@@ -1099,7 +1100,7 @@ CreatemainWindow(Widget parent)
     
     ac = 0;
     XtSetArg(args[ac], XmNx, 10); ac++;
-    XtSetArg(args[ac], XmNy, 157); ac++;
+    XtSetArg(args[ac], XmNy, 156); ac++;
     printerCmdOptsLabel = XmCreateLabel(printForm,
         (char *)"printerCmdOptsLabel",
         args, 
@@ -1128,7 +1129,7 @@ CreatemainWindow(Widget parent)
     
     ac = 0;
     XtSetArg(args[ac], XmNx, 10); ac++;
-    XtSetArg(args[ac], XmNy, 80); ac++;
+    XtSetArg(args[ac], XmNy, 74); ac++;
     bannerLabel = XmCreateLabel(printForm,
         (char *)"bannerLabel",
         args, 
@@ -1147,7 +1148,7 @@ CreatemainWindow(Widget parent)
     XtManageChild(copiesTextField);
     
     ac = 0;
-    XtSetArg(args[ac], XmNx, 322); ac++;
+    XtSetArg(args[ac], XmNx, 331); ac++;
     XtSetArg(args[ac], XmNy, 45); ac++;
     copiesLabel = XmCreateLabel(printForm,
         (char *)"copiesLabel",
@@ -1156,9 +1157,9 @@ CreatemainWindow(Widget parent)
     XtManageChild(copiesLabel);
     
     ac = 0;
-    XtSetArg(args[ac], XmNx, 69); ac++;
+    XtSetArg(args[ac], XmNx, 67); ac++;
     XtSetArg(args[ac], XmNy, 40); ac++;
-    XtSetArg(args[ac], XmNwidth, 233); ac++;
+    XtSetArg(args[ac], XmNwidth, 244); ac++;
     XtSetArg(args[ac], XmNheight, 30); ac++;
     printerTextField = XmCreateTextField(printForm,
         (char *)"printerTextField",
@@ -1168,7 +1169,7 @@ CreatemainWindow(Widget parent)
     
     ac = 0;
     XtSetArg(args[ac], XmNx, 10); ac++;
-    XtSetArg(args[ac], XmNy, 45); ac++;
+    XtSetArg(args[ac], XmNy, 42); ac++;
     printerLabel = XmCreateLabel(printForm,
         (char *)"printerLabel",
         args, 
@@ -1177,9 +1178,9 @@ CreatemainWindow(Widget parent)
     
     ac = 0;
     XtSetArg(args[ac], XmNalignment, XmALIGNMENT_BEGINNING); ac++;
-    XtSetArg(args[ac], XmNx, 47); ac++;
+    XtSetArg(args[ac], XmNx, 49); ac++;
     XtSetArg(args[ac], XmNy, 10); ac++;
-    XtSetArg(args[ac], XmNwidth, 435); ac++;
+    XtSetArg(args[ac], XmNwidth, 433); ac++;
     XtSetArg(args[ac], XmNheight, 30); ac++;
     fileNameLabel = XmCreateLabel(printForm,
         (char *)"fileNameLabel",
@@ -1285,8 +1286,8 @@ CreatemainWindow(Widget parent)
     XtManageChild(findDialogRowColumn);
     
     ac = 0;
-    XtSetArg(args[ac], XmNwidth, 249); ac++;
-    XtSetArg(args[ac], XmNheight, 20); ac++;
+    XtSetArg(args[ac], XmNwidth, 204); ac++;
+    XtSetArg(args[ac], XmNheight, 17); ac++;
     fdFindLabel = XmCreateLabel(findDialogRowColumn,
         (char *)"fdFindLabel",
         args, 
@@ -1294,8 +1295,8 @@ CreatemainWindow(Widget parent)
     XtManageChild(fdFindLabel);
     
     ac = 0;
-    XtSetArg(args[ac], XmNwidth, 249); ac++;
-    XtSetArg(args[ac], XmNheight, 30); ac++;
+    XtSetArg(args[ac], XmNwidth, 204); ac++;
+    XtSetArg(args[ac], XmNheight, 27); ac++;
     fdFindTextField = XmCreateTextField(findDialogRowColumn,
         (char *)"fdFindTextField",
         args, 
@@ -1303,8 +1304,8 @@ CreatemainWindow(Widget parent)
     XtManageChild(fdFindTextField);
     
     ac = 0;
-    XtSetArg(args[ac], XmNwidth, 249); ac++;
-    XtSetArg(args[ac], XmNheight, 20); ac++;
+    XtSetArg(args[ac], XmNwidth, 204); ac++;
+    XtSetArg(args[ac], XmNheight, 17); ac++;
     fdChangeLabel = XmCreateLabel(findDialogRowColumn,
         (char *)"fdChangeLabel",
         args, 
@@ -1312,8 +1313,8 @@ CreatemainWindow(Widget parent)
     XtManageChild(fdChangeLabel);
     
     ac = 0;
-    XtSetArg(args[ac], XmNwidth, 249); ac++;
-    XtSetArg(args[ac], XmNheight, 30); ac++;
+    XtSetArg(args[ac], XmNwidth, 204); ac++;
+    XtSetArg(args[ac], XmNheight, 27); ac++;
     fdChangeTextField = XmCreateTextField(findDialogRowColumn,
         (char *)"fdChangeTextField",
         args, 
@@ -1321,7 +1322,7 @@ CreatemainWindow(Widget parent)
     XtManageChild(fdChangeTextField);
     
     ac = 0;
-    XtSetArg(args[ac], XmNwidth, 249); ac++;
+    XtSetArg(args[ac], XmNwidth, 204); ac++;
     XtSetArg(args[ac], XmNheight, 20); ac++;
     separator7 = XmCreateSeparator(findDialogRowColumn,
         (char *)"separator7",
@@ -1331,8 +1332,8 @@ CreatemainWindow(Widget parent)
     
     ac = 0;
     XtSetArg(args[ac], XmNequalSize, True); ac++;
-    XtSetArg(args[ac], XmNwidth, 249); ac++;
-    XtSetArg(args[ac], XmNheight, 24); ac++;
+    XtSetArg(args[ac], XmNwidth, 204); ac++;
+    XtSetArg(args[ac], XmNheight, 21); ac++;
     fdButtonBox1 = XmCreateButtonBox(findDialogRowColumn,
         (char *)"fdButtonBox1",
         args, 
@@ -1342,8 +1343,8 @@ CreatemainWindow(Widget parent)
     ac = 0;
     XtSetArg(args[ac], XmNx, 0); ac++;
     XtSetArg(args[ac], XmNy, 0); ac++;
-    XtSetArg(args[ac], XmNwidth, 83); ac++;
-    XtSetArg(args[ac], XmNheight, 24); ac++;
+    XtSetArg(args[ac], XmNwidth, 68); ac++;
+    XtSetArg(args[ac], XmNheight, 21); ac++;
     fdFindPushButton = XmCreatePushButton(fdButtonBox1,
         (char *)"fdFindPushButton",
         args, 
@@ -1352,10 +1353,10 @@ CreatemainWindow(Widget parent)
     XtAddCallback(fdFindPushButton, XmNactivateCallback, findDlgCB, (XtPointer)FNDLG_FIND);
     
     ac = 0;
-    XtSetArg(args[ac], XmNx, 83); ac++;
+    XtSetArg(args[ac], XmNx, 68); ac++;
     XtSetArg(args[ac], XmNy, 0); ac++;
-    XtSetArg(args[ac], XmNwidth, 83); ac++;
-    XtSetArg(args[ac], XmNheight, 24); ac++;
+    XtSetArg(args[ac], XmNwidth, 68); ac++;
+    XtSetArg(args[ac], XmNheight, 21); ac++;
     fdChangePushButton = XmCreatePushButton(fdButtonBox1,
         (char *)"fdChangePushButton",
         args, 
@@ -1364,10 +1365,10 @@ CreatemainWindow(Widget parent)
     XtAddCallback(fdChangePushButton, XmNactivateCallback, findDlgCB, (XtPointer)FNDLG_CHANGE);
     
     ac = 0;
-    XtSetArg(args[ac], XmNx, 166); ac++;
+    XtSetArg(args[ac], XmNx, 136); ac++;
     XtSetArg(args[ac], XmNy, 0); ac++;
-    XtSetArg(args[ac], XmNwidth, 83); ac++;
-    XtSetArg(args[ac], XmNheight, 24); ac++;
+    XtSetArg(args[ac], XmNwidth, 68); ac++;
+    XtSetArg(args[ac], XmNheight, 21); ac++;
     fdChangeAllPushButton = XmCreatePushButton(fdButtonBox1,
         (char *)"fdChangeAllPushButton",
         args, 
@@ -1377,7 +1378,7 @@ CreatemainWindow(Widget parent)
     
     ac = 0;
     XtSetArg(args[ac], XmNseparatorType, XmNO_LINE); ac++;
-    XtSetArg(args[ac], XmNwidth, 249); ac++;
+    XtSetArg(args[ac], XmNwidth, 204); ac++;
     XtSetArg(args[ac], XmNheight, 5); ac++;
     separator8 = XmCreateSeparator(findDialogRowColumn,
         (char *)"separator8",
@@ -1387,8 +1388,8 @@ CreatemainWindow(Widget parent)
     
     ac = 0;
     XtSetArg(args[ac], XmNequalSize, True); ac++;
-    XtSetArg(args[ac], XmNwidth, 249); ac++;
-    XtSetArg(args[ac], XmNheight, 24); ac++;
+    XtSetArg(args[ac], XmNwidth, 204); ac++;
+    XtSetArg(args[ac], XmNheight, 21); ac++;
     fdButtonBox2 = XmCreateButtonBox(findDialogRowColumn,
         (char *)"fdButtonBox2",
         args, 
@@ -1396,10 +1397,10 @@ CreatemainWindow(Widget parent)
     XtManageChild(fdButtonBox2);
     
     ac = 0;
-    XtSetArg(args[ac], XmNx, 52); ac++;
+    XtSetArg(args[ac], XmNx, 42); ac++;
     XtSetArg(args[ac], XmNy, 0); ac++;
-    XtSetArg(args[ac], XmNwidth, 46); ac++;
-    XtSetArg(args[ac], XmNheight, 24); ac++;
+    XtSetArg(args[ac], XmNwidth, 38); ac++;
+    XtSetArg(args[ac], XmNheight, 21); ac++;
     fdClosePushButton = XmCreatePushButton(fdButtonBox2,
         (char *)"fdClosePushButton",
         args, 
@@ -1408,10 +1409,10 @@ CreatemainWindow(Widget parent)
     XtAddCallback(fdClosePushButton, XmNactivateCallback, BxUnmanageCB, (XtPointer)"findDialogForm");
     
     ac = 0;
-    XtSetArg(args[ac], XmNx, 150); ac++;
+    XtSetArg(args[ac], XmNx, 123); ac++;
     XtSetArg(args[ac], XmNy, 0); ac++;
-    XtSetArg(args[ac], XmNwidth, 46); ac++;
-    XtSetArg(args[ac], XmNheight, 24); ac++;
+    XtSetArg(args[ac], XmNwidth, 38); ac++;
+    XtSetArg(args[ac], XmNheight, 21); ac++;
     fdHelpPushButton = XmCreatePushButton(fdButtonBox2,
         (char *)"fdHelpPushButton",
         args, 
@@ -1497,6 +1498,28 @@ CreatemainWindow(Widget parent)
         ac);
     XtUnmanageChild(XtNameToWidget(lineOutOfRangeMessageBox, "*Cancel"));
     XtUnmanageChild(XtNameToWidget(lineOutOfRangeMessageBox, "*Help"));
+    
+    ac = 0;
+    XtSetArg(args[ac], XmNwidth, 505); ac++;
+    XtSetArg(args[ac], XmNheight, 122); ac++;
+    unsupportedDialogShell = XmCreateDialogShell(mainWindow,
+        (char *)"unsupportedDialogShell",
+        args, 
+        ac);
+    
+    ac = 0;
+    XtSetArg(args[ac], XmNdialogStyle, XmDIALOG_APPLICATION_MODAL); ac++;
+    XtSetArg(args[ac], XmNdialogType, XmDIALOG_WARNING); ac++;
+    XtSetArg(args[ac], XmNx, 0); ac++;
+    XtSetArg(args[ac], XmNy, 0); ac++;
+    unsupportedMessageBox = XtCreateWidget((char *)"unsupportedMessageBox",
+        xmMessageBoxWidgetClass,
+        unsupportedDialogShell,
+        args, 
+        ac);
+    XtAddCallback(unsupportedMessageBox, XmNokCallback, BxUnmanageCB, (XtPointer)"unsupportedMessageBox");
+    XtUnmanageChild(XtNameToWidget(unsupportedMessageBox, "*Cancel"));
+    XtUnmanageChild(XtNameToWidget(unsupportedMessageBox, "*Help"));
     ac = 0;
     XtSetArg(args[ac], XmNmenuBar, menuBar); ac++;
     XtSetArg(args[ac], XmNworkWindow, mainForm); ac++;

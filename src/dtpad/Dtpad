@@ -18,10 +18,13 @@
 ! End user code block <top> 
 
 *dtpad.title: Text Editor
-*dtpad.x: 584
-*dtpad.y: 16
+*dtpad.x: 493
+*dtpad.y: 130
 *dtpad.width: 558
 *dtpad.height: 554
+*dtpad*unsupportedMessageBox.dialogTitle: Unsupported Feature
+*dtpad*unsupportedMessageBox.okLabelString: Dismiss
+*dtpad*unsupportedMessageBox.messageString: :::t\"We apologize, but the feature you have just tried is not currently supported\":t\"by this version. We are aware of the limitation, and would appreciate any\"\"help in implementing it. Sorry!\"
 *dtpad*lineOutOfRangeMessageBox.dialogTitle: Line Number Out of Range
 *dtpad*lineOutOfRangeMessageBox.messageString: You must specify a line number less than or equal to the total number of lines in the file.
 *dtpad*backupErrorMessageBox.dialogTitle: Backup Failure
