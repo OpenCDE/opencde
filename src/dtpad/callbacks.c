@@ -95,7 +95,6 @@ void
 newDocCB( Widget w, XtPointer client_data, 
  		XtPointer call_data)
 {
-	XmString str;
 	Widget widget;
 	
 	widget = get_document_text(w, "newDocCB");
@@ -193,8 +192,6 @@ void
 saveCB( Widget w, XtPointer client_data, 
  		XtPointer call_data)
 {
-	Widget widget;
-	
 	if (NULL == get_save_path())
 		manage_widget(w, "saveCB", "saveAsFileSelectionBox");
 	else 
@@ -205,14 +202,11 @@ void
 editCB( Widget w, XtPointer client_data, 
  		XtPointer call_data)
 {
-	int i;
-	char *s;
 	long action;
 	Time time;
 	Widget widget;
 	XButtonEvent *event;
 	XmPushButtonCallbackStruct *acs;
-	XmTextPosition left, right;
 	
 	action = (long) client_data;
 	acs = (XmPushButtonCallbackStruct *) call_data; 
@@ -285,17 +279,11 @@ overstrikeToggleCB( Widget w, XtPointer client_data,
 	XtCallActionProc(docw_w, "toggle-overstrike", NULL, NULL, 0);
 	
 	switch (acs->set) {
-		case XmSET:
-			s = XmStringCreateLocalized("Overstrike");
-			XtVaSetValues(overstrike_lbl_w, 
-			    XmNlabelString, s, NULL); 
-			break;
-		default:
-			s = XmStringCreateLocalized("Insert");
-			XtVaSetValues(overstrike_lbl_w,
-			    XmNlabelString, s, NULL); 
-			break;
+	case XmSET: s = XmStringCreateLocalized("Overstrike"); break;
+	default: s = XmStringCreateLocalized("Insert"); break;
 	}
+
+	XtVaSetValues(overstrike_lbl_w, XmNlabelString, s, NULL); 
 	
 	XmStringFree(s);
 }

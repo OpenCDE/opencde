@@ -23,3 +23,4 @@ void set_app_name(char *);
 char *get_app_name();
 void batch_wrap(Widget, char *, char *, int *, XmTextPosition);
 void edit_clear(Widget);
+void toggle_overstrike_gui(Widget, XEvent *, String *, Cardinal);

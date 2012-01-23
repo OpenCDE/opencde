@@ -59,13 +59,12 @@ void
 drop_soft_breaks(XmTextPosition start, XmTextPosition end)
 {
 	struct soft_break_lst *breaks, *nxt, *prev;
-	XmTextPosition pos;
 	
 	breaks = soft_breaks;
 	prev = NULL;
 	
 	while (NULL != breaks) {
-		if (start <= breaks->pos <= end) {
+		if ((start <= breaks->pos) && (breaks->pos <= end)) {
 			nxt = breaks->nxt;
 			XtFree((char *) breaks);
 			breaks = nxt;
@@ -179,7 +178,7 @@ long_to_string(long n)
 		exit(1);
 	}
 	
-	sprintf(s, "%d\0", n);
+	sprintf(s, "%ld", n);
 	
 	return s;
 }
@@ -203,7 +202,7 @@ get_file_contents(Widget w, char *cb, char *path)
 	if (NULL == (file = fopen(path, "r"))) {
 		perror("Dtpad (fopen)");
 		manage_widget(w, cb, "fileNotFoundMessageBox");
-		return;
+		return NULL;
 	}
 	
 	if (fseek(file, 0, SEEK_END)) {
@@ -608,7 +607,6 @@ int
 bw_next_line(char **buffer, size_t *brk, Dimension d, XmRenderTable rtbl)
 {
 	int res;
-	char c;
 	char *buf, *tmp;
 	int count, old;
 	Dimension width;
@@ -740,7 +738,7 @@ edit_clear(Widget widget)
 
 	len = right - left;
 	bufsize = (1 + len) * sizeof(wchar_t);
-	buffer = XtMalloc(bufsize);
+	buffer = malloc(bufsize);
 
 	if (NULL == buffer) {
 		perror("Dtpad (out of memory)");
@@ -770,5 +768,16 @@ edit_clear(Widget widget)
 	XmTextReplaceWcs(widget, left, right, buffer);
 
 edit_clear_fail:
-	XtFree(buffer);
+	free(buffer);
+}
+
+void
+toggle_overstrike_gui(Widget w, XEvent *ev, String *argv, Cardinal argc)
+{
+	char *cb;
+	Widget os_toggle_w;
+
+	cb = "toggle_overstrike_gui";
+	os_toggle_w = get_widget_by_name(w, cb, "overstrikeToggleButton");
+	XtCallActionProc(os_toggle_w, "ArmAndActivate", NULL, NULL, 0);
 }

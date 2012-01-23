@@ -54,6 +54,9 @@ extern Pixmap XPM_PIXMAP(Widget, char **);
 extern void BX_SET_BACKGROUND_COLOR(Widget, ArgList, Cardinal *, Pixel);
 
 /* Begin user code block <globals> */
+static XtActionsRec dtpad_actions[] = {
+    {"toggle-overstrike-gui", (XtActionProc) toggle_overstrike_gui}
+};
 /* End user code block <globals> */
 
 /**
@@ -108,6 +111,7 @@ int main( int argc, char **argv)
     XmRepTypeInstallTearOffModelConverter();
     
     /* Begin user code block <create_shells> */
+	XtAppAddActions(app, dtpad_actions, XtNumber(dtpad_actions));
     /* End user code block <create_shells> */
     
     /*
@@ -118,8 +122,8 @@ int main( int argc, char **argv)
     /* End user code block <create_dtpad> */
     
     ac = 0;
-    XtSetArg(args[ac], XmNx, 624); ac++;
-    XtSetArg(args[ac], XmNy, 131); ac++;
+    XtSetArg(args[ac], XmNx, 507); ac++;
+    XtSetArg(args[ac], XmNy, 205); ac++;
     XtSetArg(args[ac], XmNwidth, 558); ac++;
     XtSetArg(args[ac], XmNheight, 554); ac++;
     dtpad = XtCreatePopupShell((char *)"dtpad",

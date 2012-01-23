@@ -18,8 +18,8 @@
 ! End user code block <top> 
 
 *dtpad.title: Text Editor
-*dtpad.x: 624
-*dtpad.y: 131
+*dtpad.x: 507
+*dtpad.y: 205
 *dtpad.width: 558
 *dtpad.height: 554
 *dtpad*truncatedWcsSubstringGetMB.dialogTitle: Internal Error: XmCOPY_TRUNCATED!
@@ -154,7 +154,9 @@
 *dtpad*licenseButton.labelString: License
 *dtpad*helpMenu.mnemonic: H
 *dtpad*helpMenu.labelString: Help
+*dtpad*documentTextWrapped.translations: #override <Key>osfInsert: toggle-overstrike-gui()
 *dtpad*documentTextWrapped.fontList: -*-lucidatypewriter-medium-r-*-*-*-120-100-100-m-*-iso8859-1
+*dtpad*documentText.translations: #override <Key>osfInsert: toggle-overstrike-gui()
 *dtpad*documentText.fontList: -*-lucidatypewriter-medium-r-*-*-*-120-100-100-m-*-iso8859-1
 *dtpad*totalLabel.labelString: Total:
 *dtpad*lineLabel.labelString: Line:

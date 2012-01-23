@@ -1347,8 +1347,8 @@ object licenseMessageBox : XmMessageDialog widget {
 !(BX) compound_string("WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR PROFITS, WHETHER IN AN", separate=true) &
 !(BX) compound_string("ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF", separate=true) &
 !(BX) compound_string("OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.", separate=true);
-        XmNx = 545;
-        XmNy = 419;
+        XmNx = 0;
+        XmNy = 0;
     };
     controls {
         Xm_Cancel unmanaged {
@@ -1518,8 +1518,8 @@ object closeButton : XmPushButton widget {
 
 object filePdMenu : XmPulldownMenu widget {
     arguments {
-        XmNx = 634;
-        XmNy = 187;
+        XmNx = 0;
+        XmNy = 0;
         XmNwidth = 161;
         XmNheight = 188;
     };
@@ -1946,6 +1946,8 @@ object menuBar : XmMenuBar widget {
 
 object documentText : XmText widget {
     arguments {
+!(BX)   _XmNtranslations = translation_table(
+!(BX)		'#override <Key>osfInsert: toggle-overstrike-gui()');
         XmNeditMode = XmMULTI_LINE_EDIT;
 !(BX)   _XmNfontList = font_table(
 !(BX)		font('-*-lucidatypewriter-medium-r-*-*-*-120-100-100-m-*-iso8859-1'));
@@ -1980,6 +1982,8 @@ object textWindow : XmScrolledWindow widget {
 
 object documentTextWrapped : XmText widget {
     arguments {
+!(BX)   _XmNtranslations = translation_table(
+!(BX)		'#override <Key>osfInsert: toggle-overstrike-gui()');
         XmNeditMode = XmMULTI_LINE_EDIT;
 !(BX)   _XmNfontList = font_table(
 !(BX)		font('-*-lucidatypewriter-medium-r-*-*-*-120-100-100-m-*-iso8859-1'));
@@ -2205,8 +2209,8 @@ object mainWindow : XmMainWindow widget {
 !(BX)object dtpad : TopLevelShell widget {
 !(BX)    arguments {
 !(BX)        _XmNtitle = "Text Editor";
-!(BX)        XmNx = 624;
-!(BX)        XmNy = 131;
+!(BX)        XmNx = 507;
+!(BX)        XmNy = 205;
 !(BX)        XmNwidth = 558;
 !(BX)        XmNheight = 554;
 !(BX)    };

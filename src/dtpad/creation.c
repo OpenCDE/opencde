@@ -277,8 +277,8 @@ CreatemainWindow(Widget parent)
     XtManageChild(fileMenu);
     
     ac = 0;
-    XtSetArg(args[ac], XmNx, 634); ac++;
-    XtSetArg(args[ac], XmNy, 187); ac++;
+    XtSetArg(args[ac], XmNx, 0); ac++;
+    XtSetArg(args[ac], XmNy, 0); ac++;
     XtSetArg(args[ac], XmNwidth, 161); ac++;
     XtSetArg(args[ac], XmNheight, 188); ac++;
     filePdMenu = XmCreatePulldownMenu(XtParent(fileMenu),
@@ -784,8 +784,8 @@ CreatemainWindow(Widget parent)
         ac);
     
     ac = 0;
-    XtSetArg(args[ac], XmNx, 545); ac++;
-    XtSetArg(args[ac], XmNy, 419); ac++;
+    XtSetArg(args[ac], XmNx, 0); ac++;
+    XtSetArg(args[ac], XmNy, 0); ac++;
     licenseMessageBox = XtCreateWidget((char *)"licenseMessageBox",
         xmMessageBoxWidgetClass,
         licenseDialogShell,
