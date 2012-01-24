@@ -27,7 +27,7 @@ include ../../config.Mk
              RM = rm -f
              CC = gcc
          CFLAGS = $(USER_CFLAGS) 
-           LIBS = $(USER_LIBRARIES) -lXm -lXt -lSM -lICE -lXp -lXext -lX11 -lm
+           LIBS = $(USER_LIBRARIES) -lXm -lXt -lSM -lICE -lXp -lXext -lX11
 
 OFILES = $(USER_OBJS) \
          main.o \
