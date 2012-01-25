@@ -9,10 +9,10 @@ OUT=../../bin/dtpanel
 all: ${OUT}
 
 ${OUT}: ${OBJ}
-	${CPP} -o ${OUT} ${OBJ} -L../../lib ${LDFLAGS} -lmotifmm -lopencde
+	${CPP} -o ${OUT} ${OBJ} -L../../lib ${LDFLAGS} -lmotifmm -lopencde -lX11 -lXm -lXpm -lXt
 
 .cpp.o:
-	${CPP} ${CPPFLAGS} -DPLATFORM_${PLATFORM} -c -I../libmotifmm/include -I../libopencde/include $< -o $@ -lXpm
+	${CPP} ${CPPFLAGS} -DPLATFORM_${PLATFORM} -c -I../libmotifmm/include -I../libopencde/include $< -o $@
 
 .PHONY: clean
 clean:
