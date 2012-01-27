@@ -10,7 +10,7 @@ module main_uil
 version = 'V2.2'
 names = case_sensitive
 !(BX) bx_info("c_options", "")
-!(BX) bx_info("c_libs", "-lXm -lXt -lSM -lICE -lXp -lXext -lX11")
+!(BX) bx_info("c_libs", "-lXm -lXt -lSM -lICE -lXp -lXext -lX11 -lm")
 !(BX) bx_info("c_cflags", "")
 !(BX) bx_info("c_cc", "gcc")
 !(BX) bx_info("c_excludeungenerated", "false")
@@ -43,7 +43,6 @@ names = case_sensitive
 !(BX) bx_info("include_path", "/home/arcfide/code/opencde/src/dtpad",
 !(BX)		".", false)
 !(BX) bx_info("xrunner_command", "$(M_ROOT)/arch/X11.5/Xm1.2/mic_xm.o", false)
-!(BX) bx_info("purify_command", "purify", false)
 !(BX) bx_info("system_directory", "/opt/bxpro-6.2")
 !(BX) bx_info("builder_version", "BuilderXcessory PRO Version 6.2")
 !(BX) bx_info("build_lang", "C")
