@@ -1,6 +1,7 @@
 include config.Mk
 INSTDIR=${DESTDIR}${PREFIX}
-CPPFLAGS += -D${FSH}
+#This will define -DFSH if proper, etc.dirs, + install.etc
+include makefsh.${FSH}
 
 all:
 	mkdir -p bin
@@ -16,20 +17,19 @@ clean:
 # otherwise install.sys and install.bin would need install.lib
 # and install.all
 # install.xm is for straight Motif binaries.
-#install: install.lib install.sys install.xm install.bin install.all
+install: install.lib install.sys install.xm install.bin install.all
 
-install.dirs:
+install.dirs: etc.dirs
 	mkdir -p ${INSTDIR}/bin
 	mkdir -p ${INSTDIR}/lib${LIBSUFFIX}
 	mkdir -p ${INSTDIR}/share
-#	mkdir -p ${INSTDIR}/etc
 
-install.sys: install.dirs
+install.sys: install.dirs install.etc
 	${INST} -s -m 0755 bin/dtlock ${INSTDIR}/bin/
 	chmod u+s ${INSTDIR}/bin/dtlock
 	${INST} -s -m 0755 bin/dtlogin ${INSTDIR}/bin/
 
-install.bin: install.dirs
+install.bin: install.dirs install.etc
 	${INST} -s -m 0755 bin/dtfile ${INSTDIR}/bin/
 	${INST} -s -m 0755 bin/dtpanel ${INSTDIR}/bin/
 	${INST} -s -m 0755 bin/dtrun ${INSTDIR}/bin/
@@ -38,19 +38,10 @@ install.bin: install.dirs
 install.xm: install.dirs
 	${INST} -s -m 0755 bin/dtpad ${INSTDIR}/bin/
 
-#install.all: install.dirs
-#	${INST} -m 0755 bin/dtsession ${INSTDIR}/bin/
-#	${INST} -m 0755 bin/dtterm ${INSTDIR}/bin/
-#	${INST} -m 0755 bin/dtwm ${INSTDIR}/bin/
+install.all: install.dirs install.etc
 #	cp -r share/opencde ${INSTDIR}/share/
 #ifeq ($(PREFIX),/usr) 
 #	sed -e 's|export LD_LIB.*PATH||' -i ${INSTDIR}/share/opencde/dtlogin/scripts/session
-#endif
-#ifeq ($(FSH),FSH)
-#	cp -r etc/opencde ${DESTDIR}/etc/
-#else
-#	cp -r etc/opencde ${INSTDIR}/etc/
-#endif
 
 install.lib: install.dirs
 	cp -P lib/libmotifmm.so* ${INSTDIR}/lib${LIBSUFFIX}/

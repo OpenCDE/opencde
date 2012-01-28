@@ -1,0 +1,12 @@
+# Included automatically when FSH=n
+# XAPPDIR should be the directory where app-defaults/ may be found
+XAPPDIR=${PREFIX}/share/opencde
+etc.dirs: 
+	mkdir -p ${DESTDIR}/${XAPPDIR}
+	mkdir -p ${INSTDIR}/etc
+install.etc: etc.dirs
+	cp -r etc/opencde ${INSTDIR}/etc
+	cp -r share/opencde ${INSTDIR}/share
+	cp -r app-defaults/ ${DESTDIR}/${XAPPDIR}
+	
+

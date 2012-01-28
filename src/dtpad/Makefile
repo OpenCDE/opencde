@@ -61,7 +61,7 @@ clean::
 # Begin user code block <end_makefile>
 global: all
 	cp -f ./dtpad ../../bin/
-	cp -f Dtpad ../../share/opencde/app-defaults/
+	cp -f Dtpad ../../app-defaults/
 
 run: dtpad
 	XAPPLRESDIR=./ ./dtpad ${DTPAD_ARGS}
