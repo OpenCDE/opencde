@@ -12,6 +12,6 @@ else
 	CONFIG=$PREFIX/share/opencde/dtwm/dtwmrc
 fi
 
-XFILESEARCHPATH=$PREFIX/share/opencde/app-defaults/Dtwm mwm -name Dtwm \
+XUSERFILESEARCHPATH=$PREFIX/share/opencde/app-defaults/Dtwm mwm -name Dtwm \
 -xrm "Dtwm*configFile: $CONFIG"
 
